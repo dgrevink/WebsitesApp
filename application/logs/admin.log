@@ -1,0 +1,17 @@
+19/08/13 14:02:02	127.0.0.1	8	NO_USER	0	User failed login attempt - login provided: gestion@ideva.ca
+19/08/13 14:02:10	127.0.0.1	1	dgrevink@starplace.org	0	User logged in successfully !
+19/08/13 14:04:41	127.0.0.1	1	dgrevink@starplace.org	0	Created menu #1 ( test ) 
+19/08/13 14:04:52	127.0.0.1	1	dgrevink@starplace.org	0	Saved config.php
+19/08/13 14:04:56	127.0.0.1	1	dgrevink@starplace.org	0	User logged out.
+19/08/13 14:05:04	127.0.0.1	8	NO_USER	0	User failed login attempt - login provided: david@starplace.org
+19/08/13 14:05:11	127.0.0.1	1	dgrevink@starplace.org	0	User logged in successfully !
+19/08/13 14:05:12	127.0.0.1	1	dgrevink@starplace.org	0	User logged in successfully !
+19/08/13 14:05:23	127.0.0.1	1	dgrevink@starplace.org	0	Created menu #2 ( test ) 
+19/08/13 14:27:16	127.0.0.1	1	dgrevink@starplace.org	0	Updated record #282 ( language ) on table tablefields
+19/08/13 14:27:34	127.0.0.1	1	dgrevink@starplace.org	0	Updated record #282 ( language ) on table tablefields
+19/08/13 14:28:27	127.0.0.1	1	dgrevink@starplace.org	0	Updated record #282 ( language ) on table tablefields
+19/08/13 14:28:37	127.0.0.1	1	dgrevink@starplace.org	0	Updated record #1 ( starplace.org ) on table users
+19/08/13 14:35:57	127.0.0.1	1	dgrevink@starplace.org	0	Saved menu node #2 ( test ) 
+19/08/13 14:36:02	127.0.0.1	1	dgrevink@starplace.org	0	Saved menu node #2 ( test ) 
+19/08/13 14:36:04	127.0.0.1	1	dgrevink@starplace.org	0	Saved menu node #2 ( test ) 
+19/08/13 14:36:09	127.0.0.1	1	dgrevink@starplace.org	0	History #2 retrieved for contents

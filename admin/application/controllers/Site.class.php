@@ -8,6 +8,8 @@ WSLoader::load_base('menu');
 WSLoader::load_base('templates');
 WSLoader::load_base('log');
 
+$userlanguage = '';
+
 class Site extends WSController {
 
 	var $language = DEFAULT_LANGUAGE;
@@ -49,6 +51,8 @@ class Site extends WSController {
 	}
 
 	function index() {
+		global $userlanguage;
+
 		if ($this->auth->session['idle'] <= ($this->auth->session['timestamp'] + 1)) {
 			WSLog::admin( WS_INFO, $this->auth->session['username'], 0, 'User logged in successfully !' );
 		}
@@ -58,6 +62,7 @@ class Site extends WSController {
 			die();
 		}
 		$this->language = $user->language;
+		$userlanguage = $user->language;
 		$user_group = $user->find_parent('groups');
 		$this->parameters['modules'] 	= unserialize($user_group->rights);
 		$this->parameters['tables'] 	= unserialize($user_group->datarights);
@@ -106,7 +111,7 @@ class Site extends WSController {
 		$state = ($page=='')?'uk-active':'none';
 		$menu[] = array(
 			'path' => $this->config->get(DEPLOYMENT, 'config', 'html_root') . '/' . $this->current_language ,
-			'name' => 'Dashboard',
+			'name' => WSDTranslations::getLabel('SYSTEM_MENU_DASHBOARD'),
 			'icon' => "icon-dashboard",
 			'state' => $state,
 			'children' => array()
@@ -118,7 +123,7 @@ class Site extends WSController {
 		if (isset($this->parameters['modules'][WSR_CONTENTS])) {
 			$menu[] = array(
 				'path' => '#',
-				'name' => "Contenu",
+				'name' => WSDTranslations::getLabel('SYSTEM_MENU_CONTENT'),
 				'icon' => "icon-th",
 				'state' => ($page == 'content')?'uk-active':'none',
 				'children' => array(
@@ -133,7 +138,7 @@ class Site extends WSController {
 		if (isset($this->parameters['modules'][WSR_FILES])) {
 			$menu[] = array(
 				'path' => '#',
-				'name' => "Media",
+				'name' => WSDTranslations::getLabel('SYSTEM_MENU_MEDIA'),
 				'icon' => "icon-folder-close-alt",
 				'state' => ($page == 'files')?'uk-active':'none',
 				'children' => array(
@@ -160,7 +165,7 @@ class Site extends WSController {
 			$forms = array();
 			$forms[] = array(
 				'path' => $this->config->get(DEPLOYMENT, 'config', 'html_root') . '/' . $this->current_language . '/forms/',
-				'name' => 'Gérer',
+				'name' => WSDTranslations::getLabel('SYSTEM_MENU_FORMS_HANDLE'),
 				'state' => ($page == "forms" && $subpage == '')?'uk-active':'none'
 			);
 			foreach($formsd as $form) {
@@ -172,7 +177,7 @@ class Site extends WSController {
 			}
 			$menu[] = array(
 				'path' => '#',
-				'name' => "Formulaires",
+				'name' => WSDTranslations::getLabel('SYSTEM_MENU_FORMS'),
 				'icon' => "icon-check",
 				'state' => ($page == 'forms')?'uk-active':'none',
 				'children' => $forms
@@ -181,13 +186,13 @@ class Site extends WSController {
 		if (isset($this->parameters['modules'][WSR_NEWSLETTERS])) {
 			$menu[] = array(
 				'path' => "#",
-				'name' => "Newsletters",
+				'name' => WSDTranslations::getLabel('SYSTEM_MENU_NEWSLETTERS'),
 				'icon' => "icon-envelope-alt",
 				'state' => ($page == 'newsletters')?'uk-active':'none',
 				'children' => array(
 					array(
 						'path' => $this->config->get(DEPLOYMENT, 'config', 'html_root') . '/' . $this->current_language . '/newsletters',
-						'name' => "Gérer",
+						'name' => WSDTranslations::getLabel('SYSTEM_MENU_NEWSLETTERS_HANDLE'),
 						'state' => ($page == 'newsletters')?'uk-active':'none',
 					)
 				)
@@ -204,7 +209,7 @@ class Site extends WSController {
 								$state = ($page == $module->name)?'uk-active':'none';
 								$found = false;
 								foreach ($menu as $kmi => $mi) {
-									if ($mi['name'] == $module->menu_fr) {
+									if ($mi['name'] == $module->{'menu_' . $userlanguage}) {
 										$found = true;
 										$menu[$kmi]['children'][] = array(
 											'path' => $this->config->get(DEPLOYMENT, 'config', 'html_root') . '/' . ($module->monolanguage=='1'?$module->default_language:$this->current_language) . '/tables/' . $module->name,
@@ -217,7 +222,7 @@ class Site extends WSController {
 								if (!$found) {
 									$menu[] = array(
 										'path' => '#',
-										'name' => $module->menu_fr,
+										'name' => $module->{'menu_' . $userlanguage},
 										'state' => 'none',
 										'icon' => 'icon-archive',
 										'children' => array(
@@ -291,44 +296,37 @@ class Site extends WSController {
 			case 'accueil':
 				include('Dashboard.class.php');
 				$module = new Home($this->template, $this->language, $this->current_language, $this->params, $this->parameters, $this->auth);
-				$contents = $module->_index();
 			break;
 			case 'content':
 				include('Content.class.php');
 				$module = new Content($this->template, $this->language, $this->current_language, $this->params, $this->parameters, $this->auth, $this->auth);
-				$contents = $module->_index();
 			break;
 			case 'newsletters':
 				include('Newsletters.class.php');
 				$module = new Newsletters($this->template, $this->language, $this->current_language, $this->params, $this->parameters, $this->auth);
-				$contents = $module->_index();
 			break;
 			case 'parameters':
 				include('Parameters.class.php');
 				$module = new Parameters($this->template, $this->language, $this->current_language, $this->params, $this->parameters, $this->auth);
-				$contents = $module->_index();
 			break;
 			case 'files':
 				include('Files.class.php');
 				$module = new Files($this->template, $this->language, $this->current_language, $this->params, $this->parameters, $this->auth);
-				$contents = $module->_index();
 			break;
 			case 'forms':
 				include('Forms.class.php');
 				$module = new Forms($this->template, $this->language, $this->current_language, $this->params, $this->parameters, $this->auth);
-				$contents = $module->_index();
 			break;
 			case 'help':
 				include('Help.class.php');
 				$module = new Help($this->template, $this->language, $this->current_language, $this->params, $this->parameters, $this->auth);
-				$contents = $module->_index();
 			break;
 			default:
 				include('Tables.class.php');
 				$module = new Tables($this->template, $this->language, $this->current_language, $this->params, $this->parameters, $this->auth);
-				$contents = $module->_index();
 			break;
 		}
+		$contents = $module->_index();
 
 		$this->template->assign('current_page', humanize($this->current_page));
 //		$this->template->assign('current_short_page_title', $module->module_name);

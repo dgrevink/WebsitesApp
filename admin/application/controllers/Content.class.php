@@ -99,9 +99,9 @@ class Content extends WSController {
 			$smarty_contents->assign('language', 		generate_hidden('language', $this->current_language));
 			$smarty_contents->assign('title', 			generate_input_text( 'title', WSDTranslations::getLabel('CONTENT_TITLE'), $item->title, "", false, WSDTranslations::getLabel('CONTENT_TITLE_DESCRIPTION') ));
 			$smarty_contents->assign('titleshort', 		generate_input_text( 'titleshort', WSDTranslations::getLabel('CONTENT_TITLESHORT'), $item->titleshort, "", false, WSDTranslations::getLabel('CONTENT_TITLESHORT_DESCRIPTION') ));
-			$smarty_contents->assign('path', 			generate_input_text( 'path', "<span style='font-size: 10px; color: #666; line-height: 10px;'>" . $this->_get_path($item->id, $this->current_language, true) . "</span>", $item->path, "", false, "Le chemin de la page. Ne mettez pas d'accents et remplacez les espaces par des tirets." ));
-			$smarty_contents->assign('hidden', 			generate_select( 'hidden', 'Type', $this->page_status_select, $item->hidden, false, "Une page peut &ecirc;tre publi&eacute;e, en brouillon, cach&eacute;e, ou encore &ecirc;tre une page d'erreur 404 ou mauvais login." ) );
-			$smarty_contents->assign('cached', 			generate_input_checkbox( 'cached', "Cache", $item->cached, "Indique si la page peut &ecirc;tre mise en cache ou pas." ));
+			$smarty_contents->assign('path', 			generate_input_text( 'path', $this->_get_path($item->id, $this->current_language, true), $item->path, "", false, WSDTranslations::getLabel('CONTENT_PATH_DESCRIPTION') ));
+			$smarty_contents->assign('hidden', 			generate_select( 'hidden', WSDTranslations::getLabel('CONTENT_TYPE'), $this->page_status_select, $item->hidden, false, WSDTranslations::getLabel('CONTENT_TYPE_DESCRIPTION') ) );
+			$smarty_contents->assign('cached', 			generate_input_checkbox( 'cached', WSDTranslations::getLabel('CONTENT_CACHED'), $item->cached, WSDTranslations::getLabel('CONTENT_CACHED_DESCRIPTION') ));
 
 
 			$menus = explode(',', $item->menus);
@@ -111,11 +111,11 @@ class Content extends WSController {
 				3 => $config->get('menu_name_3'),
 				4 => $config->get('menu_name_4')
 			);
-			$smarty_contents->assign('menus', 			generate_select( 'menus', 'Menus', $all_menus, $menus, false, "S&eacute;lectionnez les menus dans lesquels cette page devrait appara&icirc;tre.", true ) );
+			$smarty_contents->assign('menus', 			generate_select( 'menus', WSDTranslations::getLabel('CONTENT_MENUS'), $all_menus, $menus, false, WSDTranslations::getLabel('CONTENT_MENUS_DESCRIPTION'), true ) );
 
-			$smarty_contents->assign('sitemap', 		generate_input_checkbox( 'sitemap', "Sitemap", $item->sitemap, "Indique si la page doit &ecirc;tre incluse au sitemap du site (si install&eacute;) ou pas." ));
+			$smarty_contents->assign('sitemap', 		generate_input_checkbox( 'sitemap', WSDTranslations::getLabel('CONTENT_SITEMAP'), $item->sitemap, WSDTranslations::getLabel('CONTENT_SITEMAP_DESCRIPTION') ));
 
-			$smarty_contents->assign('params', 			generate_input_text( 'params', "Param&egrave;tres", $item->params, "", false, "Param&egrave;tres &eacute;ventuellement associ&eacute;s sp&eacute;cifiquement &agrave; cette page." ));
+			$smarty_contents->assign('params', 			generate_input_text( 'params', WSDTranslations::getLabel('CONTENT_PARAMS'), $item->params, "", false, WSDTranslations::getLabel('CONTENT_PARAMS_DESCRIPTION') ));
 
 			$access = explode(',', str_replace(' ', '', $item->access));
 			$groups = array();
@@ -126,13 +126,13 @@ class Content extends WSController {
 				$groups[$group->id] = $group->title;
 			}
 			asort($groups);
-			$smarty_contents->assign('access', 			generate_select( 'access', 'Acc&egrave;s', $groups, $access, false, "S&eacute;lectionnez les groupes ayant acc&egrave;s &agrave; cette page.", true ) );
+			$smarty_contents->assign('access', 			generate_select( 'access', WSDTranslations::getLabel('CONTENT_ACCESS'), $groups, $access, false, WSDTranslations::getLabel('CONTENT_ACCESS'), true ) );
 			
 			foreach ($this->languages as $lang) {
 				if ($lang['code'] != $this->current_language) {
 					$field_name = 'contents_' . $lang['code'] . '_id';
-					$current_language_pages = array('-1' => 'Automatique') + $this->getMenuItemsAsArray(0, $lang['code']);
-					$smarty_contents->assign('language_page_' . $lang['code'],  generate_select( $field_name, 'Page (' . $lang['label'] . ')', $current_language_pages, $item->{$field_name}, false, "Page correspondante dans la langue '" . $lang['label'] . "'. Pr&eacute;ciser 'Automatique' si pas de correspondance. " . MyActiveRecord::Count('contents', "language = '" . $lang['code'] . "'") . ' pages possibles.' ) );
+					$current_language_pages = array('-1' => WSDTranslations::getLabel('CONTENT_LANGUAGE_PAGES')) + $this->getMenuItemsAsArray(0, $lang['code']);
+					$smarty_contents->assign('language_page_' . $lang['code'],  generate_select( $field_name, 'Page (' . $lang['label'] . ')', $current_language_pages, $item->{$field_name}, false, WSDTranslations::getLabel('CONTENT_LANGUAGE_PAGES_LEFT') . $lang['label'] . WSDTranslations::getLabel('CONTENT_LANGUAGE_PAGES_RIGHT') . MyActiveRecord::Count('contents', "language = '" . $lang['code'] . "'") . WSDTranslations::getLabel('CONTENT_LANGUAGE_PAGES_LAST') ) );
 				}
 			}
 
@@ -143,8 +143,8 @@ class Content extends WSController {
 			$smarty_contents->assign('content_4', 		$item->content_4);
 			$smarty_contents->assign('content_5', 		$item->content_5);
 			$smarty_contents->assign('comment', 		$item->comment);
-			$smarty_contents->assign('seodescription', 	generate_input_text( 'seodescription', 'Description', $item->seodescription, "", false, "Description de cette page (pour r&eacute;f&eacute;rencement)." ));
-			$smarty_contents->assign('seokeywords', 	generate_text_area( 'seokeywords', 'Mots-cl&eacute;s', $item->seokeywords, 8, 100, '', false, "Mots-cl&eacute;s de cette page (pour r&eacute;f&eacute;rencement)."  ));
+			$smarty_contents->assign('seodescription', 	generate_input_text( 'seodescription', WSDTranslations::getLabel('CONTENT_SEODESCRIPTION'), $item->seodescription, "", false, WSDTranslations::getLabel('CONTENT_SEODESCRIPTION_DESCRIPTION') ));
+			$smarty_contents->assign('seokeywords', 	generate_text_area( 'seokeywords', WSDTranslations::getLabel('CONTENT_SEOKEYWORDS'), $item->seokeywords, 8, 100, '', false, WSDTranslations::getLabel('CONTENT_SEOKEYWORDS_DESCRIPTION')  ));
 			
 			$creator = MyActiveRecord::FindById('users', $item->creator_id);
 			if ($creator) {

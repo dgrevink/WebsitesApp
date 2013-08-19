@@ -33,7 +33,7 @@ $config['maintenance_text'] = "Q2Ugc2l0ZSBhIMOpdMOpIG1pcyBob3JzIGxpZ25lLg==";
 *            this is used to populate the language_bar
 *
 */
-$config['default_language'] = 'en';
+$config['default_language'] = 'fr';
 $config['languages'][] = 'fr';
 $config['languages'][] = 'en';
 
@@ -65,7 +65,7 @@ $config['menu_name_2'] = "Menu haut droit";
 $config['menu_name_3'] = "Inactif";
 $config['menu_name_4'] = "Inactif";
 
-$config['template_page_id_fr'] = '1';$config['template_page_id_en'] = '2';
+$config['template_page_id_fr'] = '1';$config['template_page_id_en'] = '1';
 
 /*
 *--------------------------------------------------------------------------
