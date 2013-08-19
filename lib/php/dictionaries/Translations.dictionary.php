@@ -9,7 +9,7 @@ class WSDTranslations {
 			'SYSTEM_EXPIRED_SESSION'             => "Votre session a expir&eacute;. ",
 			'SYSTEM_WRONG_CREDENTIALS'           => "Courriel / mot de passe erronn&eacute;. Veuillez r&eacute;-essayer s'il vous plait. ",
 			'SYSTEM_MENU_DASHBOARD'              => 'Dashboard',
-			'SYSTEM_MENU_CONTENT'                => "Content",
+			'SYSTEM_MENU_CONTENT'                => "Contenu",
 			'SYSTEM_MENU_MEDIA'                  => "M&eacute;dia",
 			'SYSTEM_MENU_FORMS'                  => "Formulaires",
 			'SYSTEM_MENU_FORMS_HANDLE'           => 'G&eacute;rer',
