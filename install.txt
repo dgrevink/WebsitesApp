@@ -1,0 +1,39 @@
+PREREQUISITES
+-------------
+
+The system needs the following to run:
+
+	- PHP 5.x
+	- MySQL 5.x
+	- Apache with support for:
+		- .htaccess
+		- mod_rewrite
+	- Possibility to change access rights for files on the server
+
+
+
+
+DEPLOYMENT : How to install Websites in a local, beta or production environment
+----------   ------------------------------------------------------------------
+
+1)  - ZIP the complete package
+2)  - Upload to web server
+3)  - Unzip the files
+4)  - Create empty database on server, take note of connection parameters
+      (db server, login, password and db name)
+5)  - Edit file application/config/config.php and change the parameters
+      accordingly under the deployments section ( for local, beta or production )
+6)  - Change the deployment from whatever it is to local, beta or production
+7)  - access the following page: http://SERVER/admin/phpminiadmin.php
+8)  - Log in phpminiadmin, select import, select file, click import, click OK
+9)  - Make sure the following directories (and subdirectories)
+      have their access rights set to 0777:
+		- application/cache/
+		- application/config/
+		- application/views/
+		- application/log/
+		- admin/application/cache/
+		- admin/application/config/
+		- admin/application/views/
+		- lib/cache
+

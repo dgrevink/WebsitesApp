@@ -1,0 +1,1 @@
+<?php class Wsthistory extends MyActiveRecord {};

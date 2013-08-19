@@ -1,0 +1,10 @@
+/* COMPILE splash.scss => splash.css, DO NOT edit splash.css directly */
+body {
+  background-color: #F3F3F1;
+  margin: 0;
+  padding: 0;
+}
+#wrapper {
+  width: 986px;
+  margin: 0 auto;
+}

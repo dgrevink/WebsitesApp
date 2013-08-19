@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		
+		<title>{$ws_company}{if $technical} - Websites - System Error{/if}</title>
+
+		<link rel="stylesheet" type="text/css" href="../../../../lib/views/css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../../lib/views/css/system.css"/>
+
+	</head>
+
+	<body>
+		{if $technical}
+			<h1>{$ws_company} - Websites System Error</h1>
+			<p>Deployment: <em>{$deployment|upper}</em></p>
+			<p>{$message}</p>
+			<br/><br/>
+			<h2>You can try to <a href='#' onclick='document.location.reload(); return false;'>reload the page</a> or ask your administrator.</h2>
+		{else}
+			<h1>{$ws_company}</h1>
+			<p>{$message}</p>
+		{/if}
+	</body>
+</html>

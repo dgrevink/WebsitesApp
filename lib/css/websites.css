@@ -1,0 +1,84 @@
+
+
+.ws-debug {
+	background-color: rgba( 255, 128, 0, 0.8);
+	padding: 1em;
+	z-index: 100;
+}
+
+
+.xdebug-error {
+	margin-top: 100px;
+}
+
+#ws-beta {
+	z-index: 10000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 113px;
+	height: 113px;
+	background-image: url(../images/beta-banner.gif);
+}
+
+#ws-edit-page {
+	font-family: Helvetica;
+	font-size: 10px;
+	opacity: 0;
+	width: 100px;
+	height: 100px;
+	position: relative;
+}
+
+#ws-edit-page:hover {
+	opacity: 1;
+}
+
+#ws-edit-page a {
+	direction: block;
+	position: absolute;
+	top: 23px;
+	left: 7px;
+	padding: 3px 8px;
+	background-color: orange;
+	color: black;
+	text-decoration: none;
+	-webkit-transform:rotate(-45deg);
+	-moz-transform:rotate(-45deg);
+}
+
+#ws-edit-page a:hover {
+	background-color: black;
+	color: orange;
+}
+
+
+/*
+Login form hooks */
+.ws-login-form-container { position: relative; }
+.ws-login-form-container .ws-login-form-error { color: red; }
+.ws-login-form-container .ws-login-username-container { }
+.ws-login-form-container .ws-login-username-container label { width: 100px; display: inline-block; }
+.ws-login-form-container .ws-login-password-container { }
+.ws-login-form-container .ws-login-password-container label { width: 100px; display: inline-block; }
+/*
+User profile form hooks */
+#ws-profile-form { position: relative; }
+#ws-profile-form-results { position: absolute; top: 0; right: 0; }
+.ws-profile-form-ok { color: green; }
+.ws-profile-form-errors { color: red; }
+#ws-profile-form .comment { font-size: smaller; }
+#ws-profile-form .ws-username { padding: 0 0 10px 0; display: inline-block; }
+#ws-profile-form .websites-forms-input-text { clear: both; display: inline-block; width: 100%; padding: 0 0 10px 0; }
+#ws-profile-form .websites-forms-input-text input { width: 50%; }
+#ws-profile-form .websites-forms-input-text .ws-password-original { width: auto; }
+#ws-profile-form .websites-forms-input-text .ws-password-confirmation { width: auto; }
+#ws-profile-form .websites-forms-input-text .password_strength { width: 40%; margin: 0 10px 0 0; display: inline-block; }
+#ws-profile-form .websites-forms-input-text .password_warning { width: 40%; margin: 0 10px 0 0; display: inline-block; }
+#ws-profile-form .websites-forms-input-text span.password_strength_1 { background-color: #fcb6b1; }
+#ws-profile-form .websites-forms-input-text span.password_strength_2 { background-color: #fccab1; }
+#ws-profile-form .websites-forms-input-text span.password_strength_3 { background-color: #fcfbb1; }
+#ws-profile-form .websites-forms-input-text span.password_strength_4 { background-color: #dafcb1; }
+#ws-profile-form .websites-forms-input-text span.password_strength_5 { background-color: #bcfcb1; }
+#ws-profile-form p { margin: 0; }
+

@@ -1,0 +1,19 @@
+body {
+	font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+	background-color: black;
+	color: white;
+	margin: 2em;
+}
+
+h1 {
+	margin-bottom: .5em;
+	font-size: 18px;
+}
+
+p {
+	margin: 1em;
+}
+
+em {
+	color: #924800 
+}

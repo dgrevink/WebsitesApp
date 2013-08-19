@@ -1,0 +1,21 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+/* COMPILE contents.scss => contents.css, DO NOT edit contents.css directly */
+.indent-1 { margin-left: 10px; }
+
+.indent-2 { margin-left: 20px; }
+
+.indent-3 { margin-left: 30px; }
+
+.indent-4 { margin-left: 40px; }
+
+.indent-5 { margin-left: 50px; }
+
+.indent-6 { margin-left: 60px; }
+
+.indent-7 { margin-left: 70px; }
+
+.indent-8 { margin-left: 80px; }
+
+.indent-9 { margin-left: 90px; }
+
+body { margin: 0; padding: 0; font-family: 'Droid Sans', sans-serif; font-size: 14px; }

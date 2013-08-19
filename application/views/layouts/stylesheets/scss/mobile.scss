@@ -1,0 +1,46 @@
+/* COMPILE mobile.scss => mobile.css, DO NOT edit mobile.css directly */
+
+/* Tablet Portrait - Design for a width of 768px */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+//	* {
+//		color: red !important;
+//	}
+}
+
+/* Mobile Landscape - Design for a width of 480px */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+//	* {
+//		color: orange !important;
+//	}
+}
+
+/* Mobile Portrait design for 320px */
+@media only screen and (max-width: 400px) {
+//	* {
+//		color: green !important;
+//	}
+//	#content {
+//		#header_content {
+//			.illustration {
+//				position: relative;
+//				top: auto;
+//				left: auto;
+//			}
+//			.description {
+//				position: relative;
+//				top: auto;
+//				left: auto;
+//			}
+//			.link {
+//				position: relative;
+//				top: auto;
+//				left: auto;
+//			}
+//		}
+//		.col {
+//			float: left;
+//			clear: both;
+//			height: auto;
+//		}
+//	}
+}

@@ -1,0 +1,1 @@
+<?php class notes extends MyActiveRecord {};

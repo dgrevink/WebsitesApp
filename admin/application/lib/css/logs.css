@@ -1,0 +1,61 @@
+/* @override http://websites/admin/application/lib/css/logs.css */
+
+body {
+	background-color: #111;
+	color: #aaa;
+	padding: 10px;
+	font-size: 12px;
+}
+
+pre a {
+	color: #777;
+}
+
+span {
+	display: block;
+	float: left;
+}
+
+span.count {
+	width: 100px;
+	text-align: right;
+	margin-right: 10px;
+	color: #eee;
+}
+
+span.date {
+	width: 140px;
+}
+
+span.ip {
+	width: 120px;
+}
+
+span.level {
+	width: 60px;
+}
+
+span.user {
+	width: 120px;
+}
+
+span.code {
+	width: 40px;
+}
+
+span.message {
+	color: #aaa;
+}
+
+div.line {
+	line-height: 14px;
+	font-family: Courier, "Courier New", mono;
+	float: left;
+	width: 100%;
+}
+
+div.line:hover {
+	background-color: #333;
+	cursor: default;
+}
+

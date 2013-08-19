@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="{$ws_description}" />
+	<meta name="keywords" content="{$ws_keywords}" />
+	<meta name="robots" content="all" />
+	<meta name="author" content="{$ws_author}" />
+	<meta name="version" content="{$ws_version} {$ws_release}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<title>{$ws_company} - {$ws_title}</title>
+
+	{$ws_headers}
+
+	<link rel="stylesheet" type="text/css" href="../../../lib/css/websites.css" />
+	<link rel="stylesheet" type="text/css" href="../../../lib/js/jquery/fancybox/fancybox/jquery.fancybox-1.3.4.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/css/main.css" media="all"/>
+	<link rel="stylesheet" type="text/css" href="stylesheets/css/mobile.css" media="screen"  />
+	<link rel="stylesheet" type="text/css" href="stylesheets/css/slides.css" media="screen"  />
+	<link rel="stylesheet" type="text/css" href="stylesheets/css/print.css" media="print"/>
+
+	<script type="text/javascript" src="js/site-ck.js"></script>
+</head>
+<body id="{$ws_cpath}" class="{$ws_cparent}">
+	<div id="header-wrapper">
+		<div id="header">
+			<h1 id="logo"><a href="/fr/"><span>{$ws_company}</span></a></h1>
+			<div id='top-menu'>
+				{foreach name=topmenu item=item from=$ws_menu_2}
+					<span><a href="{$item.path}/" class="{$item.state}" title="{$item.label}">{$item.slabel}</a></span>{if !$smarty.foreach.topmenu.last} &nbsp;|&nbsp; {/if}
+				{/foreach}
+			</div>
+			<div id='main-menu'>
+				{foreach name=mainmenu item=item from=$ws_menu_1}
+					<span><a href="{$item.path}/" class="{$item.state}" title="{$item.label}">{$item.label}<div class='dot dot-{$item.id}'></div></a></span>{if !$smarty.foreach.mainmenu.last}&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;{/if}
+				{/foreach}
+			</div>
+		</div>
+	</div><!-- #header-wrapper -->
+
+	<div id="content-wrapper">
+		<div id='content'>
+			<div class='inner'>
+				<ul id='slider'>
+					{$slider}
+				</ul>
+				<div class='col col-1'>{$placeholder_1}</div>
+				<div class='col col-2'>{$placeholder_2}</div>
+				<div class='col col-3'>{$placeholder_3}</div>
+				<div class='clear'>&nbsp;</div>
+			</div>
+		</div><!-- #content -->
+		<div class='clear'>&nbsp;</div>
+	</div><!-- #content-wrapper -->
+
+	<div id='footer-wrapper'>
+		<div class='footer'>
+			<div class='footer-left'>{$placeholder_4}</div>
+			<div class='footer-right'>{$placeholder_5}</div>
+			<div class='clear'>&nbsp;</div>
+		</div>
+	</div><!-- /footer-wrapper -->
+	{$ws_beta}
+	{$ws_analytics}
+</body>
+</html>

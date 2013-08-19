@@ -1,0 +1,15 @@
+/* COMPILE contents.scss => contents.css, DO NOT edit contents.css directly */
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+
+
+@for $i from 1 through 9 {
+  .indent-#{$i} { margin-left: 10px * $i; }
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Droid Sans', sans-serif;
+	font-size: 14px;
+}

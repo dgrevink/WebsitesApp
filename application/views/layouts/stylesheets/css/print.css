@@ -1,0 +1,39 @@
+body {
+    font-family: 'Opens Sans',sans-serif;
+ 
+    /* pt is absolute unit commonly used in print designs */
+    font-size: 12pt;
+}
+a:after {
+    /* Content is used to display (url) after every anchor (a) tag */
+    /*
+       Its value can be broken in 3 parts:
+       " (" prints the opening parathesis with a space before it
+       attr(href) gets the href value of 'a' tag
+       ") " prints the closing parathesis with a space after it
+    */
+   /* content: " (" attr(href) ") "; */
+}
+
+#main-wrapper , body { background: none; }
+
+#left-menu, #main-image, #main-menu {display:none;}
+#footer{display:none;}
+#ws-beta {display:none;}
+
+#main-wrapper #wrapper #header #top #right-side { display: none; }
+.email, .home { display: none; }
+
+
+#main-wrapper #wrapper #header #top { background: none; height: 100px; }
+#main-wrapper #wrapper #header { height: 100px; }
+
+.small-col { display: none !important; }
+.bordered { background: none !important; }
+.main-col { width: 100% !important; }
+#main-logo { position: absolute; left: auto !important; right: 0; }
+#main-logo img {
+	width: 120px;
+}
+
+.gcalendar .active { background-color: #C1D0E3; font-weight: bold; color: black; }
