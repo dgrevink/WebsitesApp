@@ -11,6 +11,8 @@ WSLoader::load_helper('forms-advanced');
 WSLoader::load_helper('file');
 WSLoader::load_support('phpthumb');
 
+$userlanguage = '';
+
 /**
  * Tables
  *
@@ -47,6 +49,8 @@ class Tables extends WSController {
 		if (!$this->_check_rights(WSR_DATA)) {
 			return false;
 		}
+
+		global $userlanguage;
 
 		$config = new WSConfig;
 		$config->load( dirname(__FILE__) . '/../../../application/config/' );
@@ -512,7 +516,7 @@ class Tables extends WSController {
 				$smarty_contents->assign('listing_type', 'list');
 				$smarty_contents->assign('current_language', $this->current_language);
 				$smarty_contents->assign('current_table', $current_table->name);
-				$smarty_contents->assign('current_table_description', nl2br($current_table->description));
+				$smarty_contents->assign('current_table_description', nl2br($current_table->{'description_' . $userlanguage}));
 
 				if ($this->_check_data_rights('tabledefinitions', 'modify')) {
 					$smarty_contents->assign('current_table_id', $current_table->id);
@@ -1265,8 +1269,10 @@ class Tables extends WSController {
 	function _check_rights( $level ) {
 		$user = MyActiveRecord::FindFirst('users', "username like '" . $this->auth->session['username'] . "'");
 		$user_group = $user->find_parent('groups');
+		global $userlanguage;
 		$modules 	= unserialize($user_group->rights);
 		$tables 	= unserialize($user_group->datarights);
+		$userlanguage = $user->language;
 		if (!isset($modules[$level])) {
 			return false;
 		}

@@ -38,6 +38,8 @@ class Home extends WSController {
 			$this->user->init();
 		}
 
+		global $userlanguage;
+
 		$smarty_contents = new Template;
 
 		// Initialize stats for each language defined in the cms
@@ -151,7 +153,7 @@ class Home extends WSController {
 						$stats[$language]['tables'] .= "<a href='/admin/" . $language . "/tables/" . $t->name . "/'>";
 						$stats[$language]['tables'] .= $t->title;
 						$stats[$language]['tables'] .= "</a>";
-						$stats[$language]['tables'] .= "<span>" . nl2br($t->description) . "</span>";
+						$stats[$language]['tables'] .= "<br/><span>" . nl2br($t->{'description_' . $userlanguage}) . "</span>";
 						$stats[$language]['tables'] .= "</li>";
 					}
 				}
