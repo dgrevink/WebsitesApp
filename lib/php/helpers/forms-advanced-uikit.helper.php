@@ -256,6 +256,43 @@ function generate_select( $name, $label, $items, $default, $error, $comment, $mu
 	return implode('', $element);
 }
 
+function generate_checkbox_group( $name, $label, $items, $default_items, $error, $comment='Click on the checkbox to enable or disable it.' )
+{
+	$element = array();
+	$error_class = '';
+	if ($error) $error_class = 'uk-form-danger';
+
+	// Open	
+	$element[] = "<div class='uk-form-row' id='{$name}_container'>";
+
+	// Label
+	$element[] = "<label class='uk-form-label' for='$name'>$label</label>";
+
+
+	// Control
+	$element[] = "<div class='uk-form-controls'>";
+	foreach ($items as $key => $value)
+	{
+		if (!is_array($default_items)) {
+				$element[] = "<input type='checkbox' name='${name}[]' id='${name}_${key}' value='$key' /> <label for='${name}_${key}' class='radio'>$value</label><br/>";
+		}
+		else {
+			if (in_array($key,$default_items))
+				$element[] = "<input type='checkbox' name='${name}[]' id='${name}_${key}' value='$key' checked/> <label for='${name}_${key}' class='radio'>$value</label><br/>";
+			else
+				$element[] = "<input type='checkbox' name='${name}[]' id='${name}_${key}'  value='$key'/> <label for='${name}_${key}' class='radio'>$value</label><br/>";
+		}
+	}
+	$element[] = " <span class='uk-form-help-inline'>$comment" . ($error?$error:'') . "</span>";
+
+	// Close
+	$element[] = "</div>";
+
+	
+	return implode('', $element);
+}
+
+
 
 
 function generate_ckfinder( $name, $label, $default, $description='Click on icon to browse server...', $error = false, $comment = false, $class='' )
@@ -297,49 +334,6 @@ function generate_ckfinder( $name, $label, $default, $description='Click on icon
 
 ##################################################################################################
 
-function generate_checkbox_group( $name, $label, $items, $default_items, $error, $comment='Click on the checkbox to enable or disable it.' )
-{
-	$element = array();
-
-	// Open	
-	$element[] = "<span class='websites-forms-checkbox-group' id='{$name}_container'>";
-
-	// Label
-	$element[] = "<span class='label'>";
-	$element[] = "<label for='$name' id='{$name}_label'>$label </label><br/>";
-	$element[] = "</span>";
-
-	// Error
-	if ($error) {
-		$element[] = "<span class='form-error'>$error<span class='pointer'>&nbsp;</span></span>";
-	}
-	
-	// Control
-	$element[] = "<span class='control'>";
-	foreach ($items as $key => $value)
-	{
-		if (!is_array($default_items)) {
-				$element[] = "<div><input type='checkbox' name='${name}[]' id='${name}_${key}' value='$key'/><label for='${name}_${key}' class='radio'>$value</label></div>";
-		}
-		else {
-			if (in_array($key,$default_items))
-				$element[] = "<div><input type='checkbox' name='${name}[]' id='${name}_${key}' value='$key' checked/><label for='${name}_${key}' class='radio'>$value</label></div>";
-			else
-				$element[] = "<div><input type='checkbox' name='${name}[]' id='${name}_${key}'  value='$key'/><label for='${name}_${key}' class='radio'>$value</label></div>";
-		}
-	}
-	$element[] = "</span>";
-
-	// Comment
-	if ($comment) {
-		$element[] = "<span class='comment'><p>$comment</p></span>";
-	}
-	
-	// Close
-	$element[] = "</span><div style='clear: both;'></div>";
-	
-	return implode('', $element);
-}
 
 
 function generate_select_input( $name, $label, $items, $default, $extra_title, $extra_value, $description='Select an item from this pull-down menu.' )

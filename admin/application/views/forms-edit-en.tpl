@@ -379,24 +379,24 @@
 <div class='uk-article'>
 	<h2 class='uk-article-title' id='sub-page-title'>{$current_page_title}</h2>
 
-	<div class='uk-alert'>Création/modification de formulaire.</div>
+	<div class='uk-alert'>Form creation/modification.</div>
 
 		<div class='uk-float-right'>
-			<a class='uk-button uk-button-primary save-form' href='javascript:void(0)'>Sauvegarder</a>
+			<a class='uk-button uk-button-primary save-form' href='javascript:void(0)'>Save</a>
 		</div>
 		
 		<ul class="uk-tab" data-uk-tab="{literal}{connect:'#tabs'}{/literal}">
 			{if $WSR_FORMS_CREATE}
-			<li class='uk-active'><a href="#parameters"><span>Param&egrave;tres</span></a></li>
+			<li class='uk-active'><a href="#parameters"><span>Parameters</span></a></li>
 			{/if}
 			{if $WSR_FORMS_QUESTIONS}
 			<li><a href="#questions"><span>Questions</span></a></li>
 			{/if}
 			{if $WSR_FORMS_TEXTS}
-			<li><a href="#texts"><span>Textes</span></a></li>
+			<li><a href="#texts"><span>Texts</span></a></li>
 			{/if}
 			{if $WSR_FORMS_CONSULT}
-			<li><a href="#data"><span>Donn&eacute;es</span></a></li>
+			<li><a href="#data"><span>Data</span></a></li>
 			{/if}
 		</ul>
 	
@@ -532,9 +532,5 @@
 	
 
 </form>
-
-	<div class="bendl"></div>
-	<div class="bendr"></div>
-	
 </div>
-
+</div>

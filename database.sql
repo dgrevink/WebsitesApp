@@ -89,7 +89,7 @@ CREATE TABLE `blocks` (
   `position` varchar(256) DEFAULT NULL,
   `lck` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,6 +98,7 @@ CREATE TABLE `blocks` (
 
 LOCK TABLES `blocks` WRITE;
 /*!40000 ALTER TABLE `blocks` DISABLE KEYS */;
+INSERT INTO `blocks` VALUES (1,'fr','Test','<p><img alt=\"\" src=\"/public/images/841.gif\" style=\"height:200px; width:279px\" /></p>\n\n<p>svdvsdvs</p>\n\n<p>vsd</p>\n\n<p>vd</p>\n\n<p>sv</p>\n\n<p>dsv</p>\n\n<p>dsv</p>\n\n<p>sdv</p>\n\n<p>sdv</p>\n\n<p>sdvsd</p>','test','',1);
 /*!40000 ALTER TABLE `blocks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -181,7 +182,6 @@ CREATE TABLE `contents` (
 
 LOCK TABLES `contents` WRITE;
 /*!40000 ALTER TABLE `contents` DISABLE KEYS */;
-INSERT INTO `contents` VALUES (1,'en','test','-1',1,999999,0,'index-home-en','test',0,'test','/en/test/',-1,-1,-1,-1,-1,-1,-1,'','','','content','','empty','','empty','','empty','','empty','','empty','','empty','','empty','','empty','','',0,1,'2013-08-19 14:04:41','2013-08-19 14:04:41',1,'content-1','','','','','','','','','1',1,'no template id found','','','',''),(2,'fr','test','-1',1,999999,0,'','test',0,'test','/fr/test/',-1,-1,-1,-1,-1,-1,-1,'','','','empty','0','empty','0','empty','0','empty','0','empty','0','empty','0','empty','0','empty','0','empty','0','',0,1,'2013-08-19 14:05:23','2013-08-19 14:36:02',1,'content-1','','','','','','','','','1',1,'<p>\n	used 1</p>','','','','');
 /*!40000 ALTER TABLE `contents` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,7 +230,7 @@ CREATE TABLE `faq` (
   `blurb` longtext,
   `porder` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +239,6 @@ CREATE TABLE `faq` (
 
 LOCK TABLES `faq` WRITE;
 /*!40000 ALTER TABLE `faq` DISABLE KEYS */;
-INSERT INTO `faq` VALUES (1,'fr','Bac roulant','bac-roulant','<p>\n	Que vous pouvez mettre dans votre bac roulant destin&eacute; &agrave; la collecte des mati&egrave;res recyclables les contenants et bouteilles de plastique num&eacute;rot&eacute;s de 1 &agrave; 7.</p>\n<p>\n	Que vous pouvez mettre dans votre bac roulant destin&eacute; &agrave; la collecte des mati&egrave;res recyclables les contenants et bouteilles de plastique num&eacute;rot&eacute;s de 1 &agrave; 7.</p>\n<p>\n	Que vous pouvez mettre dans votre bac roulant destin&eacute; &agrave; la collecte des mati&egrave;res recyclables les contenants et bouteilles de plastique num&eacute;rot&eacute;s de 1 &agrave; 7.</p>\n<p>\n	Que vous pouvez mettre dans votre bac roulant destin&eacute; &agrave; la collecte des mati&egrave;res recyclables les contenants et bouteilles de plastique num&eacute;rot&eacute;s de 1 &agrave; 7.</p>\n<p>\n	Que vous pouvez mettre dans votre bac roulant destin&eacute; &agrave; la collecte des mati&egrave;res recyclables les contenants et bouteilles de plastique num&eacute;rot&eacute;s de 1 &agrave; 7.</p>','<p>\n	Que vous pouvez mettre dans votre bac roulant destin&eacute; &agrave; la collecte des mati&egrave;res recyclables les contenants et bouteilles de plastique num&eacute;rot&eacute;s de 1 &agrave; 7.</p>','01'),(2,'fr','Autre FAQ','autre-faq','<p>\n	Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.Autre FAQ qui devrait appara&icirc;tre de temps en temps.</p>','<p>\n	Autre FAQ qui devrait appara&icirc;tre de temps en temps.</p>','02');
 /*!40000 ALTER TABLE `faq` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -266,7 +265,7 @@ CREATE TABLE `filters` (
 
 LOCK TABLES `filters` WRITE;
 /*!40000 ALTER TABLE `filters` DISABLE KEYS */;
-INSERT INTO `filters` VALUES (1,'fr','IDEVA',49,'active=1 and email like &quot;%@ideva.ca&quot;');
+INSERT INTO `filters` VALUES (1,'fr','active hotmail users',49,'active=1 and email like &quot;%@hotmail.com&quot;');
 /*!40000 ALTER TABLE `filters` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -299,7 +298,7 @@ CREATE TABLE `formsdefinitions` (
   `contesterror` text,
   `usecaptcha` int(4) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -308,7 +307,7 @@ CREATE TABLE `formsdefinitions` (
 
 LOCK TABLES `formsdefinitions` WRITE;
 /*!40000 ALTER TABLE `formsdefinitions` DISABLE KEYS */;
-INSERT INTO `formsdefinitions` VALUES (3,'en','normal',100,'Contactez-nous...','<p>\n	bfbb</p>','<p>\n	bdfbdfb</p>','<p>\n	bdfbdfbdf</p>','<p>\n	bbrb cv &nbsp;brbreb</p>\n<p>\n	e</p>\n<p>\n	berberberb<img alt=\"\" src=\"/public/images/841.gif\" style=\"width: 279px; height: 200px;\" /></p>','','a:2:{s:5:\"svsvs\";O:8:\"stdClass\":8:{s:5:\"order\";s:1:\"1\";s:4:\"name\";s:5:\"svsvs\";s:4:\"type\";s:4:\"text\";s:5:\"label\";s:5:\"svsvs\";s:7:\"comment\";s:0:\"\";s:5:\"error\";s:0:\"\";s:9:\"mandatory\";b:0;s:6:\"values\";s:0:\"\";}s:13:\"bfdbffdbdfbdf\";O:8:\"stdClass\":8:{s:5:\"order\";s:1:\"2\";s:4:\"name\";s:13:\"bfdbffdbdfbdf\";s:4:\"type\";s:4:\"text\";s:5:\"label\";s:13:\"bfdbffdbdfbdf\";s:7:\"comment\";s:0:\"\";s:5:\"error\";s:0:\"\";s:9:\"mandatory\";b:0;s:6:\"values\";s:0:\"\";}}',0,0,'','',0,0,0,'',0),(4,'en','normal',100,'Sondages...','','','','','','a:0:{}',0,0,'','',0,0,0,'',0);
+INSERT INTO `formsdefinitions` VALUES (6,'en','',100,'test','','','','','','a:0:{}',0,0,'','',0,0,0,'',0);
 /*!40000 ALTER TABLE `formsdefinitions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -424,7 +423,7 @@ CREATE TABLE `groups` (
 
 LOCK TABLES `groups` WRITE;
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
-INSERT INTO `groups` VALUES (1,'God','a:31:{i:10;s:2:\"10\";i:11;s:2:\"11\";i:12;s:2:\"12\";i:13;s:2:\"13\";i:14;s:2:\"14\";i:15;s:2:\"15\";i:16;s:2:\"16\";i:18;s:2:\"18\";i:17;s:2:\"17\";i:19;s:2:\"19\";i:20;s:2:\"20\";i:30;s:2:\"30\";i:31;s:2:\"31\";i:32;s:2:\"32\";i:33;s:2:\"33\";i:34;s:2:\"34\";i:35;s:2:\"35\";i:36;s:2:\"36\";i:37;s:2:\"37\";i:38;s:2:\"38\";i:40;s:2:\"40\";i:41;s:2:\"41\";i:42;s:2:\"42\";i:43;s:2:\"43\";i:44;s:2:\"44\";i:50;s:2:\"50\";i:51;s:2:\"51\";i:80;s:2:\"80\";i:90;s:2:\"90\";i:91;s:2:\"91\";i:99;s:2:\"99\";}','a:18:{s:6:\"blocks\";s:6:\"blocks\";s:13:\"blocks_modify\";s:13:\"blocks_modify\";s:6:\"nusers\";s:6:\"nusers\";s:13:\"nusers_modify\";s:13:\"nusers_modify\";s:7:\"nblocks\";s:7:\"nblocks\";s:14:\"nblocks_modify\";s:14:\"nblocks_modify\";s:8:\"settings\";s:8:\"settings\";s:15:\"settings_modify\";s:15:\"settings_modify\";s:7:\"filters\";s:7:\"filters\";s:14:\"filters_modify\";s:14:\"filters_modify\";s:6:\"groups\";s:6:\"groups\";s:13:\"groups_modify\";s:13:\"groups_modify\";s:16:\"tabledefinitions\";s:16:\"tabledefinitions\";s:23:\"tabledefinitions_modify\";s:23:\"tabledefinitions_modify\";s:11:\"tablefields\";s:11:\"tablefields\";s:18:\"tablefields_modify\";s:18:\"tablefields_modify\";s:5:\"users\";s:5:\"users\";s:12:\"users_modify\";s:12:\"users_modify\";}','fr'),(3,'Gestionnaires du site','a:16:{i:10;s:2:\"10\";i:11;s:2:\"11\";i:12;s:2:\"12\";i:13;s:2:\"13\";i:14;s:2:\"14\";i:15;s:2:\"15\";i:16;s:2:\"16\";i:18;s:2:\"18\";i:17;s:2:\"17\";i:20;s:2:\"20\";i:30;s:2:\"30\";i:31;s:2:\"31\";i:33;s:2:\"33\";i:34;s:2:\"34\";i:36;s:2:\"36\";i:80;s:2:\"80\";}','a:12:{s:6:\"blocks\";s:6:\"blocks\";s:13:\"blocks_modify\";s:13:\"blocks_modify\";s:4:\"news\";s:4:\"news\";s:11:\"news_modify\";s:11:\"news_modify\";s:8:\"settings\";s:8:\"settings\";s:15:\"settings_modify\";s:15:\"settings_modify\";s:3:\"faq\";s:3:\"faq\";s:10:\"faq_modify\";s:10:\"faq_modify\";s:6:\"slider\";s:6:\"slider\";s:13:\"slider_modify\";s:13:\"slider_modify\";s:11:\"testimonies\";s:11:\"testimonies\";s:18:\"testimonies_modify\";s:18:\"testimonies_modify\";}','fr'),(-1,'Tous','a:0:{}','a:0:{}','fr'),(-2,'Compte site inactif','a:0:{}','a:0:{}','fr'),(13,'','a:0:{}','a:0:{}','');
+INSERT INTO `groups` VALUES (1,'God','a:31:{i:10;s:2:\"10\";i:11;s:2:\"11\";i:12;s:2:\"12\";i:13;s:2:\"13\";i:14;s:2:\"14\";i:15;s:2:\"15\";i:16;s:2:\"16\";i:18;s:2:\"18\";i:17;s:2:\"17\";i:19;s:2:\"19\";i:20;s:2:\"20\";i:30;s:2:\"30\";i:31;s:2:\"31\";i:32;s:2:\"32\";i:33;s:2:\"33\";i:34;s:2:\"34\";i:35;s:2:\"35\";i:36;s:2:\"36\";i:37;s:2:\"37\";i:38;s:2:\"38\";i:40;s:2:\"40\";i:41;s:2:\"41\";i:42;s:2:\"42\";i:43;s:2:\"43\";i:44;s:2:\"44\";i:50;s:2:\"50\";i:51;s:2:\"51\";i:80;s:2:\"80\";i:90;s:2:\"90\";i:91;s:2:\"91\";i:99;s:2:\"99\";}','a:34:{s:6:\"blocks\";s:6:\"blocks\";s:13:\"blocks_modify\";s:13:\"blocks_modify\";s:11:\"photoalbums\";s:11:\"photoalbums\";s:18:\"photoalbums_modify\";s:18:\"photoalbums_modify\";s:4:\"news\";s:4:\"news\";s:11:\"news_modify\";s:11:\"news_modify\";s:8:\"settings\";s:8:\"settings\";s:15:\"settings_modify\";s:15:\"settings_modify\";s:3:\"faq\";s:3:\"faq\";s:10:\"faq_modify\";s:10:\"faq_modify\";s:6:\"slider\";s:6:\"slider\";s:13:\"slider_modify\";s:13:\"slider_modify\";s:9:\"documents\";s:9:\"documents\";s:16:\"documents_modify\";s:16:\"documents_modify\";s:11:\"testimonies\";s:11:\"testimonies\";s:18:\"testimonies_modify\";s:18:\"testimonies_modify\";s:7:\"banners\";s:7:\"banners\";s:14:\"banners_modify\";s:14:\"banners_modify\";s:5:\"notes\";s:5:\"notes\";s:12:\"notes_modify\";s:12:\"notes_modify\";s:7:\"filters\";s:7:\"filters\";s:14:\"filters_modify\";s:14:\"filters_modify\";s:6:\"groups\";s:6:\"groups\";s:13:\"groups_modify\";s:13:\"groups_modify\";s:16:\"tabledefinitions\";s:16:\"tabledefinitions\";s:23:\"tabledefinitions_modify\";s:23:\"tabledefinitions_modify\";s:11:\"tablefields\";s:11:\"tablefields\";s:18:\"tablefields_modify\";s:18:\"tablefields_modify\";s:5:\"users\";s:5:\"users\";s:12:\"users_modify\";s:12:\"users_modify\";s:6:\"nusers\";s:6:\"nusers\";s:13:\"nusers_modify\";s:13:\"nusers_modify\";s:7:\"nblocks\";s:7:\"nblocks\";s:14:\"nblocks_modify\";s:14:\"nblocks_modify\";}','fr'),(3,'Gestionnaires du site','a:16:{i:10;s:2:\"10\";i:11;s:2:\"11\";i:12;s:2:\"12\";i:13;s:2:\"13\";i:14;s:2:\"14\";i:15;s:2:\"15\";i:16;s:2:\"16\";i:18;s:2:\"18\";i:17;s:2:\"17\";i:20;s:2:\"20\";i:30;s:2:\"30\";i:31;s:2:\"31\";i:33;s:2:\"33\";i:34;s:2:\"34\";i:36;s:2:\"36\";i:80;s:2:\"80\";}','a:12:{s:6:\"blocks\";s:6:\"blocks\";s:13:\"blocks_modify\";s:13:\"blocks_modify\";s:4:\"news\";s:4:\"news\";s:11:\"news_modify\";s:11:\"news_modify\";s:8:\"settings\";s:8:\"settings\";s:15:\"settings_modify\";s:15:\"settings_modify\";s:3:\"faq\";s:3:\"faq\";s:10:\"faq_modify\";s:10:\"faq_modify\";s:6:\"slider\";s:6:\"slider\";s:13:\"slider_modify\";s:13:\"slider_modify\";s:11:\"testimonies\";s:11:\"testimonies\";s:18:\"testimonies_modify\";s:18:\"testimonies_modify\";}','fr'),(-1,'Tous','a:0:{}','a:0:{}','fr'),(-2,'Compte site inactif','a:0:{}','a:0:{}','fr');
 /*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -452,7 +451,6 @@ CREATE TABLE `nblocks` (
 
 LOCK TABLES `nblocks` WRITE;
 /*!40000 ALTER TABLE `nblocks` DISABLE KEYS */;
-INSERT INTO `nblocks` VALUES (1,'fr','test 1','','2011-02-23',''),(2,'fr','test 2','','2011-02-23','');
 /*!40000 ALTER TABLE `nblocks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -566,7 +564,7 @@ CREATE TABLE `notes` (
   `content` varchar(256) DEFAULT NULL,
   `path` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -575,7 +573,6 @@ CREATE TABLE `notes` (
 
 LOCK TABLES `notes` WRITE;
 /*!40000 ALTER TABLE `notes` DISABLE KEYS */;
-INSERT INTO `notes` VALUES (1,'fr','Contenu','','__CONTENU__'),(2,'fr','Accueil','http://websitesapp.com/doc/doku.php?id=accueil','__ACCUEIL__'),(3,'fr','Contenu - D&eacute;tails','','/fr/content/'),(4,'fr','Fichiers','','/fr/files'),(5,'fr','Tables - CMS - Documentation','','/tables/notes'),(6,'fr','Tables - CMS - Utilisateurs','','/tables/users');
 /*!40000 ALTER TABLE `notes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -633,7 +630,6 @@ CREATE TABLE `photoalbums` (
 
 LOCK TABLES `photoalbums` WRITE;
 /*!40000 ALTER TABLE `photoalbums` DISABLE KEYS */;
-INSERT INTO `photoalbums` VALUES (1,'fr','Photos la derni&egrave;re descente en folie de d&eacute;cembre','photos-la-derniere-descente-en-folie-de-decembre','2011-12-12','/public/images/albums/2011-12-12/j0399404.jpg',0),(2,'fr','Haut sur la montagne','haut-sur-la-montagne','2011-12-23','/public/images/albums/2011-12-12/jlm-ski-19.jpg',1);
 /*!40000 ALTER TABLE `photoalbums` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -652,7 +648,7 @@ CREATE TABLE `settings` (
   `value` varchar(256) DEFAULT NULL,
   `lck` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -661,7 +657,6 @@ CREATE TABLE `settings` (
 
 LOCK TABLES `settings` WRITE;
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
-INSERT INTO `settings` VALUES (1,'fr','Titre vide.','titre-vide','',1);
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -838,7 +833,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin@websitesapp.com','21232f297a57a5a743894a0e4a801fc3',1,'WebsitesApp Administrator','websitesapp-administrator','fr','','','http://starplace.org','','','','','','','2013-08-19 15:22:53');
+INSERT INTO `users` VALUES (1,'admin@websitesapp.com','21232f297a57a5a743894a0e4a801fc3',1,'WebsitesApp Administrator','websitesapp-administrator','en','','','http://starplace.org','','','','','','','2013-08-19 15:22:53');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -891,7 +886,7 @@ CREATE TABLE `wsthistory` (
   `ddate` datetime DEFAULT NULL,
   `data` longblob,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -912,4 +907,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-08-19 15:36:29
+-- Dump completed on 2013-08-20 17:09:46
