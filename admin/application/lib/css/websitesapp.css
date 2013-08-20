@@ -63,7 +63,11 @@ h6,
   max-width: auto !important;
 }
 .ws-footer {
-  padding: 50px 0 0 0;
+  padding: 30px 10px 10px 10px;
+}
+.ws-footer a {
+  color: #66665c;
+  text-decoration: none;
 }
 .ws-navbar {
   padding: 15px 0;
