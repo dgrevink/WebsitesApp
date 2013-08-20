@@ -448,7 +448,7 @@ class Site extends WSController {
 		
 		$this->template->assign('username', $this->auth_username);
 		if ($this->auth_status == AUTH_IDLED) {
-			$this->template->assign('status', WSDTranslations::getLabel('SYSTEM_WRONG_CREDENTIALS') . $status);
+			$this->template->assign('status', WSDTranslations::getLabel('SYSTEM_EXPIRED_SESSION') . $status);
 			WSLog::admin( WS_WARNING, 'NO_USER', 0, 'Attempt to connect to a session expired CMS: ' . $this->auth_username );
 		}
 		if ($this->auth_status == AUTH_WRONG_LOGIN) {
