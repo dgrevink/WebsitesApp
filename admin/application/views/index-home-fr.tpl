@@ -139,8 +139,10 @@
 
 	<div class='ws-footer'>
 	
-		<p class="left"><a href='http://websitesapp.com'>Websites CMS</a> Version {$version} {$release} - &copy; 2007-{$smarty.now|date_format:"%Y"} par <a href='{$brand_website}' title='{$brand_website_text}'>{$brand}</a></p>
-		<p class="right"><a href="/admin/">{$deployment}:{$database}</a> - {$module_name} {$module_version}</p>
+		<p>
+			<span class="uk-float-left"><a href='http://websitesapp.com'>Websites CMS</a> Version {$version} {$release} - &copy; 2007-{$smarty.now|date_format:"%Y"} par <a href='{$brand_website}' title='{$brand_website_text}'>{$brand}</a></span>
+			<span class="uk-float-right"><a href="/admin/">{$deployment}:{$database}</a> - {$module_name} {$module_version}</span>
+		</p>
 		
 	</div>
 
