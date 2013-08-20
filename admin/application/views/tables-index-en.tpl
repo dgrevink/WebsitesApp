@@ -190,7 +190,7 @@
 </div>
 {/if}
 
-<form name='contentform' id='contentform' class='uk-form' action='../' method='post' enctype='utf-8'>
+<form name='contentform' id='contentform' class='uk-form uk-form-horizontal' action='../' method='post' enctype='utf-8'>
 {$code}
 <script>
 {$rich_editors}

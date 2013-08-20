@@ -7,7 +7,7 @@ WSLoader::load_dictionary('languages');
 WSLoader::load_support('yaml');
 WSLoader::load_support('json');
 
-WSLoader::load_helper('forms-advanced');
+WSLoader::load_helper('forms-advanced-uikit');
 WSLoader::load_helper('file');
 WSLoader::load_support('phpthumb');
 
@@ -97,6 +97,7 @@ class Tables extends WSController {
 				}
 				$table_fields = $current_table->find_children('tablefields', null, "porder asc, name asc");
 				$code = array();
+				$code_hidden = array();
 				$can_edit_structure = ($this->_check_data_rights('tablefields', 'modify'));
 				foreach($table_fields as $field) {
 					$form_field_title = $field->title;
@@ -114,7 +115,7 @@ class Tables extends WSController {
 					}
 					switch($field->type) {
 						case WST_HIDDEN:
-							$code[] = generate_hidden($form_field_title, $record->{$field->title});
+							$code_hidden[] = generate_hidden($form_field_title, $record->{$field->title});
 						break;
 						case WST_TABLE_LINK:
 							$table_related = substr($field->title, 0, strlen($field->title) - 3);
@@ -269,8 +270,7 @@ class Tables extends WSController {
 						case WST_HTML:
 							$code[] = generate_text_area( $form_field_title, "<abbr title='" . $form_field_title ."'>" . $field->name . '</abbr>', $record->{$field->title}, 10, 100, '');
 
-							$rich_editors[] = "CKEDITOR.replace('" . $form_field_title . "',{ height: 300, width: 725, customConfig: '/application/views/ckeditor/config.js'	});" 
-							               .  " $('#" . $form_field_title . "').parent().parent().css('height','500px');";
+							$rich_editors[] = "CKEDITOR.replace('" . $form_field_title . "',{ customConfig: '/application/views/ckeditor/config.js'	});";
 						break;
 						case WST_FILE:
 						case WST_IMAGE:
@@ -300,6 +300,7 @@ class Tables extends WSController {
 				}
 				$code[] = generate_hidden('wsadmin_mode', $mode);
 				$code[] = generate_hidden('wsadmin_table', $current_table->name);
+				$code = array_merge($code, $code_hidden);
 				if (($current_table->childtable) != '') {
 					$code[] = "<a href='../../" . $current_table->childtable . "/create/" . $current_table->id . "' target='_blank'>Ajouter un sous-&eacute;l&eacute;ment...</a>";
 					$code[] = "<ul class='tablefield-list'>";
@@ -1187,8 +1188,7 @@ class Tables extends WSController {
 						case WST_HTML:
 							$code[] = generate_text_area( $field->title, "<abbr title='" . $field->title ."'>" . $field->name . '</abbr>', $record->{$field->title}, 10, 100, '');
 
-							$rich_editors[] = "CKEDITOR.replace('" . $field->title . "',{ height: 300, width: 725, customConfig: '/application/views/ckeditor/config.js'	});" 
-							               .  " $('#" . $field->title . "').parent().parent().css('height','500px');";
+							$rich_editors[] = "CKEDITOR.replace('" . $field->title . "',{ customConfig: '/application/views/ckeditor/config.js'	});" ;
 						break;
 						case WST_FILE:
 						case WST_IMAGE:

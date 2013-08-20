@@ -1,4 +1,15 @@
 <?php
+function getAttribute($attrib, $tag){
+  //get attribute from html tag
+  $re = '/'.$attrib.'=["\']?([^"\' ]*)["\' ]/is';
+  preg_match($re, $tag, $match);
+  if($match){
+    return urldecode($match[1]);
+  }else {
+    return false;
+  }
+}
+
 function number_pad($number,$n) {
 return str_pad((int) $number,$n,"0",STR_PAD_LEFT);
 }

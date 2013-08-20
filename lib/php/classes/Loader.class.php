@@ -187,6 +187,9 @@ class WSLoader {
 			case 'forms-advanced':
 				require_once( WS_SYSTEM_FOLDER . '/php/helpers/forms-advanced.helper.php');
 			break;
+			case 'forms-advanced-uikit':
+				require_once( WS_SYSTEM_FOLDER . '/php/helpers/forms-advanced-uikit.helper.php');
+			break;
 			case 'system':
 				require_once( WS_SYSTEM_FOLDER . '/php/helpers/system.helper.php');
 			break;
