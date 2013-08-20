@@ -1,7 +1,6 @@
 CKEDITOR.editorConfig = function( config )
 {
     config.language = 'fr';
-	config.uiColor = '#eee';
 	
 	config.forcePasteAsPlainText = true;
 	
@@ -37,13 +36,12 @@ CKEDITOR.editorConfig = function( config )
 
 	config.indentClasses = ['indent1', 'indent2', 'indent3', 'indent4'];
 
-	config.extraPlugins = 'video,paths';
+	config.extraPlugins = 'paths';
 	
 
 };
 
 CKEDITOR.plugins.addExternal('paths', '/lib/js/ckeditor_plugins/link/');
-CKEDITOR.plugins.addExternal('video', '/lib/js/ckeditor_plugins/video/');
 
 
 /* 'Paste','PasteFromWord'  'Styles',,'PageBreak'*/
