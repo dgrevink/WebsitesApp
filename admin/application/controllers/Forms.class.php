@@ -1,7 +1,7 @@
 <?php
 
 WSLoader::load_base('log');
-WSLoader::load_helper('forms-advanced');
+WSLoader::load_helper('forms-advanced-uikit');
 WSLoader::load_base('log');
 
 /**

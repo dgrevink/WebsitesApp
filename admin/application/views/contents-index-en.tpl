@@ -8,7 +8,7 @@
 
 <div class='uk-article'>
 	<h2 class='uk-article-title'>Pages</h2>
-	<div class='uk-alert'>Ce module va vous permettre de g&eacute;rer le contenu g&eacute;n&eacute;ral de vos pages.</div>
+	<div class='uk-alert'>This module is used to organise and edit your site pages.</div>
 	<div class='uk-float-right uk-margin-bottom'>
 		{$buttons_code}
 	</div>
@@ -61,16 +61,16 @@
 			{if ($WSR_CONTENTS_VERSIONS)}
 				<span id='history' class='uk-form uk-hidden-small'>&nbsp;</span>
 			{/if}
-			<a href='#' class='uk-button uk-button-primary' id='save-page'>Sauvegarder</a></li>
+			<a href='#' class='uk-button uk-button-primary' id='save-page'>Save</a></li>
 		</div>
 
 
 		<ul class="uk-tab" data-uk-tab="{literal}{connect:'#tabs'}{/literal}">
 			{if ($WSR_CONTENTS_CONTENT) }
-			<li class='uk-active'><a href="#tab1">Textes</a></li>
+			<li class='uk-active'><a href="#tab1">Texts</a></li>
 			{/if}
 			{if ($WSR_CONTENTS_ACCESS) }
-			<li><a href="#tab2">Acc&egrave;s</a></li>
+			<li><a href="#tab2">Access</a></li>
 			{/if}
 			{if $WSR_CONTENTS_LAYOUT}
 			<li><a href="#tab3">Layout</a></li>
@@ -83,30 +83,30 @@
 		<ul id="tabs" class="uk-switcher uk-margin">
 			<li>
 				{if ($WSR_CONTENTS_CONTENT) }
-					<h3>Texte 1 <a href='#' class='toggle-content-2'>+</a></h3>
+					<h3>Text 1 <a href='#' class='toggle-content-2'>+</a></h3>
 					<div id='editor1' style='width: 100%;'>
 						<textarea name='fckeditor1' id='fckeditor1' class='form_textarea'>{$content_1}</textarea><br/>
 					</div>
 					<div class='content-2-holder' style='display: none;'>
-						<h3>Texte 2 <a href='#' class='toggle-content-3'>+</a></h3>
+						<h3>Text 2 <a href='#' class='toggle-content-3'>+</a></h3>
 						<div id='editor2' style='width: 100%;'>
 							<textarea name='fckeditor2' id='fckeditor2' class='form_textarea'>{$content_2}</textarea><br/>
 						</div>
 					</div>
 					<div class='content-3-holder' style='display: none;'>
-						<h3>Texte 3 <a href='#' class='toggle-content-4'>+</a></h3>
+						<h3>Text 3 <a href='#' class='toggle-content-4'>+</a></h3>
 						<div id='editor3' style='width: 100%;'>
 							<textarea name='fckeditor3' id='fckeditor3' class='form_textarea'>{$content_3}</textarea><br/>
 						</div>
 					</div>
 					<div class='content-4-holder' style='display: none;'>
-						<h3>Texte 4 <a href='#' class='toggle-content-5'>+</a></h3>
+						<h3>Text 4 <a href='#' class='toggle-content-5'>+</a></h3>
 						<div id='editor4' style='width: 100%;'>
 							<textarea name='fckeditor4' id='fckeditor4' class='form_textarea'>{$content_4}</textarea><br/>
 						</div>
 					</div>
 					<div class='content-5-holder' style='display: none;'>
-						<h3>Texte 5</h3>
+						<h3>Text 5</h3>
 						<div id='editor5' style='width: 100%;'>
 							<textarea name='fckeditor5' id='fckeditor5' class='form_textarea'>{$content_5}</textarea><br/>
 						</div>
@@ -115,10 +115,10 @@
 			</li>
 			<li>
 				{if ($WSR_CONTENTS_ACCESS) }
-					<h3>Titres</h3>
+					<h3>Titles</h3>
 					{$title}
 					{$titleshort}
-					<h3>Chemin</h3>
+					<h3>Path</h3>
 					{$path}
 					<h3>Sitemap &amp; Menus</h3>
 					{$sitemap}
@@ -130,7 +130,7 @@
 					{$language_page_zh}
 					{$language_page_ko}
 					{$language_page_ja}
-					<h3>Avanc&eacute;</h3>
+					<h3>Advanced</h3>
 					{$params}
 					{$cached}
 					{$hidden}
@@ -153,15 +153,15 @@
 					{$seokeywords}
 			
 					{/if}
-					<h3>R&eacute;serv&eacute; Administrateur</h3>
+					<h3>Site Admin only</h3>
 					<div id='editor' style='width: 100%'>
 						<textarea name='fckeditor_comment' id='fckeditor_comment' class='form_textarea'>{$comment}</textarea>
 					</div>
 			
 					
 					<p class='page-infos'>
-						Cr&eacute;&eacute; par <strong>{$creator}</strong> le {$create_date}.<br/>
-						Derni&egrave;re date de modification: {$modify_date} par <strong>{$modifier}</strong>.
+						Created by <strong>{$creator}</strong> on {$create_date}.<br/>
+						Last modification date: {$modify_date} by <strong>{$modifier}</strong>.
 					</p>
 				{/if}
 			</li>

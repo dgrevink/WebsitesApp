@@ -9,6 +9,8 @@ WSLoader::load_helper('file');
 WSLoader::load_helper('forms-advanced-uikit');
 WSLoader::load_helper('system');
 
+$userlanguage = '';
+
 /**
  *  Content Manager
  *
@@ -21,12 +23,22 @@ class Content extends WSController {
 	public $module_version = '2.0';
 
 	private $page_status_select = array(
-		0 => 'Publi&eacute;',
-		2 => 'Cach&eacute;',
-		1 => 'Brouillon',
-		3 => 'Page 404 (Introuvable)',
-//		4 => 'Page de Login - Erreur',
-		5 => "Page de Login"
+		'fr' => array(
+			0 => 'Publi&eacute;',
+			2 => 'Cach&eacute;',
+			1 => 'Brouillon',
+			3 => 'Page 404 (Introuvable)',
+	//		4 => 'Page de Login - Erreur',
+			5 => "Page de Login"
+		),
+		'en' => array(
+			0 => 'Published',
+			2 => 'Hidden',
+			1 => 'Draft',
+			3 => '404 Page (Not found)',
+	//		4 => 'Page de Login - Erreur',
+			5 => "Login page"
+		)
 	);
 	
 	private $page_status_select_icons = array(
@@ -64,6 +76,8 @@ class Content extends WSController {
 			return false;
 		}
 
+		global $userlanguage;
+
 		$smarty_contents = new Template;
 
 		$smarty_contents->assign('current_language', $this->current_language);
@@ -100,7 +114,7 @@ class Content extends WSController {
 			$smarty_contents->assign('title', 			generate_input_text( 'title', WSDTranslations::getLabel('CONTENT_TITLE'), $item->title, "", false, WSDTranslations::getLabel('CONTENT_TITLE_DESCRIPTION') ));
 			$smarty_contents->assign('titleshort', 		generate_input_text( 'titleshort', WSDTranslations::getLabel('CONTENT_TITLESHORT'), $item->titleshort, "", false, WSDTranslations::getLabel('CONTENT_TITLESHORT_DESCRIPTION') ));
 			$smarty_contents->assign('path', 			generate_input_text( 'path', $this->_get_path($item->id, $this->current_language, true), $item->path, "", false, WSDTranslations::getLabel('CONTENT_PATH_DESCRIPTION') ));
-			$smarty_contents->assign('hidden', 			generate_select( 'hidden', WSDTranslations::getLabel('CONTENT_TYPE'), $this->page_status_select, $item->hidden, false, WSDTranslations::getLabel('CONTENT_TYPE_DESCRIPTION') ) );
+			$smarty_contents->assign('hidden', 			generate_select( 'hidden', WSDTranslations::getLabel('CONTENT_TYPE'), $this->page_status_select[$userlanguage], $item->hidden, false, WSDTranslations::getLabel('CONTENT_TYPE_DESCRIPTION') ) );
 			$smarty_contents->assign('cached', 			generate_input_checkbox( 'cached', WSDTranslations::getLabel('CONTENT_CACHED'), $item->cached, WSDTranslations::getLabel('CONTENT_CACHED_DESCRIPTION') ));
 
 
@@ -171,6 +185,7 @@ class Content extends WSController {
 	}
 	
 	function redrawlayout( $id = null ) {
+
 		$template = new Template();
 		$layouts = $template->getLayouts( $this->current_language );
 		
@@ -225,37 +240,37 @@ class Content extends WSController {
 			//$code[] = "<div id='placeholder_" . $i . "' class='placeholder'>";
 			$code[] = "<h4>#" . $i . "</h4>";
 			$code[] = "<select name='placeholder_" . $i . "_type' id='placeholder_" . $i . "_type' class='placeholder_selector' \">";
-			$code[] = "<option value='empty'>Rien</option>";
-			$code[] = "<optgroup label='Contenus principaux'>";
+			$code[] = "<option value='empty'>" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_NOTHING') . "</option>";
+			$code[] = "<optgroup label='" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_MAIN') . "'>";
 			$content_available = array( 1, 2, 3, 4, 5);
 			foreach($content_available as $content) {
-				$code[] = "<option value='content-{$content}'>Texte {$content}</option>";
+				$code[] = "<option value='content-{$content}'>" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_MAIN_TEXT') . " {$content}</option>";
 			}
 			$code[] = "</optgroup>";
 			
 			if (count($blocks) > 0) {
-				$code[] = "<optgroup label='Blocs'>";
+				$code[] = "<optgroup label='" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_BLOCKS') . "'>";
 				foreach($blocks as $record) {
 					$code[] = "<option value='block-" . $record->id . "'>" . $record->title . "</option>";
 				}
 				$code[] = "</optgroup>";
 			}
 			if (count($ads) > 0) {
-				$code[] = "<optgroup label='Banni&egrave;re'>";
+				$code[] = "<optgroup label='" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_BANNERS') . "'>";
 				foreach($ads as $record) {
 					$code[] = "<option value='ad-" . $record->id . "'>" . $record->title . "</option>";
 				}
 				$code[] = "</optgroup>";
 			}
 			if (count($forms) > 0) {
-				$code[] = "<optgroup label='Formulaires'>";
+				$code[] = "<optgroup label='" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_FORMS') . "'>";
 				foreach($forms as $record) {
 					$code[] = "<option value='form-" . $record->id . "'>" . $record->title . "</option>";
 				}
 				$code[] = "</optgroup>";
 			}
 			if (count($widgets) > 0) {
-				$code[] = "<optgroup label='Widgets'>";
+				$code[] = "<optgroup label='" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_WIDGETS') . "'>";
 				foreach($widgets as $record) {
 					if ($record['active']) {
 						$code[] = "<option value='widget-" . $record['id'] . "' title=\"" . $record['note'] . ' (' . $record['version'] . ')' .  "\">" . $record['rname'] . "</option>";
@@ -338,6 +353,8 @@ class Content extends WSController {
 	}
 
 	function getMenuItemsHTML($parent = 0) {
+		global $userlanguage;
+
 		$records = MyActiveRecord::FindAll('contents', "contents_id = " . (int) $parent . " and language ='" . $this->current_language . "'", 'porder asc');
 		$u = MyActiveRecord::FindAll('users');
 		
@@ -385,7 +402,7 @@ class Content extends WSController {
 			$tempinfo[]
 			            = "<div class='menu-info'>"
 				        . "<img src='/admin/application/lib/images/status/" . ($this->page_status_select_icons[$item->hidden])
-						. "' title='Statut: " . ($this->page_status_select[$item->hidden]) 
+						. "' title='Statut: " . ($this->page_status_select[$userlanguage][$item->hidden]) 
 						. "\nMenu(s): " . $item->menus 
 						. "\nSitemap: " . ($item->sitemap==1?'Oui':'Non') 
 						. "\nStatifi&eacute;: " . (file_exists(dirname(__FILE__) . '/../../../' . $path . '/index.html')?'Oui':'Non') 
@@ -781,8 +798,11 @@ class Content extends WSController {
 	}
 	
 	function _check_rights( $level ) {
+		global $userlanguage;
 		$user = MyActiveRecord::FindFirst('users', "username like '" . $this->auth->session['username'] . "'");
 		$user_group = $user->find_parent('groups');
+		$userlanguage = $user->language;
+
 		$modules 	= unserialize($user_group->rights);
 		$tables 	= unserialize($user_group->datarights);
 		if (!isset($modules[$level])) {
