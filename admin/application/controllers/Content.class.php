@@ -6,7 +6,7 @@ WSLoader::load_base('metadata');
 WSLoader::load_helper('encoding');
 WSLoader::load_base('templates');
 WSLoader::load_helper('file');
-WSLoader::load_helper('forms-advanced');
+WSLoader::load_helper('forms-advanced-uikit');
 WSLoader::load_helper('system');
 
 /**

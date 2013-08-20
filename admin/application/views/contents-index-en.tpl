@@ -48,16 +48,18 @@
 <div id='dialog-text' style='display: none;'>&nbsp;</div>
 {if $listing_type == 'detail'}
 	<div id='status'></div>
-	<form name='contentform' id='contentform' action='/admin/content/save/' method='post'>
+	<form name='contentform' id='contentform' action='/admin/content/save/' method='post' class='uk-form uk-form-horizontal'>
 	{$id}
 	{$language}
 
 <div class='uk-article'>
 	<h2 class='uk-article-title' id='sub-page-title'>{$titledisplay}</h2>
 
+	<div class='uk-alert'>Page creation or modification.</div>
+
 		<div class='uk-float-right'>
 			{if ($WSR_CONTENTS_VERSIONS)}
-				<span id='history' class='uk-form'>&nbsp;</span>
+				<span id='history' class='uk-form uk-hidden-small'>&nbsp;</span>
 			{/if}
 			<a href='#' class='uk-button uk-button-primary' id='save-page'>Sauvegarder</a></li>
 		</div>
@@ -83,30 +85,30 @@
 				{if ($WSR_CONTENTS_CONTENT) }
 					<h3>Texte 1 <a href='#' class='toggle-content-2'>+</a></h3>
 					<div id='editor1' style='width: 100%;'>
-						<textarea name='fckeditor1' id='fckeditor1' class='form_textarea'>{$content_1}</textarea>
+						<textarea name='fckeditor1' id='fckeditor1' class='form_textarea'>{$content_1}</textarea><br/>
 					</div>
 					<div class='content-2-holder' style='display: none;'>
 						<h3>Texte 2 <a href='#' class='toggle-content-3'>+</a></h3>
 						<div id='editor2' style='width: 100%;'>
-							<textarea name='fckeditor2' id='fckeditor2' class='form_textarea'>{$content_2}</textarea>
+							<textarea name='fckeditor2' id='fckeditor2' class='form_textarea'>{$content_2}</textarea><br/>
 						</div>
 					</div>
 					<div class='content-3-holder' style='display: none;'>
 						<h3>Texte 3 <a href='#' class='toggle-content-4'>+</a></h3>
 						<div id='editor3' style='width: 100%;'>
-							<textarea name='fckeditor3' id='fckeditor3' class='form_textarea'>{$content_3}</textarea>
+							<textarea name='fckeditor3' id='fckeditor3' class='form_textarea'>{$content_3}</textarea><br/>
 						</div>
 					</div>
 					<div class='content-4-holder' style='display: none;'>
 						<h3>Texte 4 <a href='#' class='toggle-content-5'>+</a></h3>
 						<div id='editor4' style='width: 100%;'>
-							<textarea name='fckeditor4' id='fckeditor4' class='form_textarea'>{$content_4}</textarea>
+							<textarea name='fckeditor4' id='fckeditor4' class='form_textarea'>{$content_4}</textarea><br/>
 						</div>
 					</div>
 					<div class='content-5-holder' style='display: none;'>
 						<h3>Texte 5</h3>
 						<div id='editor5' style='width: 100%;'>
-							<textarea name='fckeditor5' id='fckeditor5' class='form_textarea'>{$content_5}</textarea>
+							<textarea name='fckeditor5' id='fckeditor5' class='form_textarea'>{$content_5}</textarea><br/>
 						</div>
 					</div>
 				{/if}
