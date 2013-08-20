@@ -218,7 +218,7 @@ function generate_select( $name, $label, $items, $default, $error, $comment, $mu
 	// Control
 	$label = strip_tags($label);
 	$element[] = "<div class='uk-form-controls'>";
-	$element[] = "<select id='$name' name='" . $name . ($multiple?'[]':'') . "' class='$error_class form_select  uk-form-width-large" . ($multiple?'multiple':'') . "' " . ($multiple?'multiple':'') . ">";
+	$element[] = "<select id='$name' name='" . $name . ($multiple?'[]':'') . "' class='$error_class form_select  uk-form-width-large " . ($multiple?'multiple':'') . "' " . ($multiple?'multiple':'') . ">";
 	foreach ($items as $key => $value)
 	{
 		if (is_array($value)) {
