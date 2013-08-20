@@ -381,7 +381,7 @@
 
 	<div class='uk-alert'>Création/modification de formulaire.</div>
 
-		<div class='uk-float-right uk-margin-bottom'>
+		<div class='uk-float-right'>
 			<a class='uk-button uk-button-primary save-form' href='javascript:void(0)'>Sauvegarder</a>
 		</div>
 		
