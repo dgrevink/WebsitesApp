@@ -41,13 +41,6 @@ class WSDTranslations {
 			'CONTENT_SEODESCRIPTION_DESCRIPTION' => "Description de cette page (pour r&eacute;f&eacute;rencement).",
 			'CONTENT_SEOKEYWORDS'                => 'Mots-cl&eacute;s',
 			'CONTENT_SEOKEYWORDS_DESCRIPTION'    => "Mots-cl&eacute;s de cette page (pour r&eacute;f&eacute;rencement).",
-			'CONTENT_PLACEHOLDER_NOTHING'        => 'Rien',
-			'CONTENT_PLACEHOLDER_MAIN'           => 'Contenus principaux',
-			'CONTENT_PLACEHOLDER_MAIN_TEXT' => 'Texte',
-			'CONTENT_PLACEHOLDER_BLOCKS'         => 'Blocs',
-			'CONTENT_PLACEHOLDER_BANNERS'        => 'Banni&egrave;res',
-			'CONTENT_PLACEHOLDER_FORMS'          => 'Formulaires',
-			'CONTENT_PLACEHOLDER_WIDGETS'	=>"Widgets",
 			''=>''
 		),
 		'en' => array(
@@ -86,14 +79,6 @@ class WSDTranslations {
 			'CONTENT_SEODESCRIPTION_DESCRIPTION' => "Page description (meta tag for SEO).",
 			'CONTENT_SEOKEYWORDS'                => 'Keywords',
 			'CONTENT_SEOKEYWORDS_DESCRIPTION'    => "Page keywords (meta tag for SEO).",
-			'CONTENT_PLACEHOLDER_NOTHING'        => 'Nothing',
-			'CONTENT_PLACEHOLDER_MAIN'           => 'Main content',
-			'CONTENT_PLACEHOLDER_MAIN_TEXT' => 'Text',
-			'CONTENT_PLACEHOLDER_BLOCKS'         => 'Blocks',
-			'CONTENT_PLACEHOLDER_BANNERS'        => 'Banners',
-			'CONTENT_PLACEHOLDER_FORMS'          => 'Forms',
-			'CONTENT_PLACEHOLDER_WIDGETS'	=>"Widgets",
-
 			''=>''
 		)
 	);

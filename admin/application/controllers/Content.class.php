@@ -98,7 +98,21 @@ class Content extends WSController {
 		if (!isset($this->params[2]) || (!is_numeric($this->params[2]))) {
 			$smarty_contents->assign('listing_type', 'list');
 			$smarty_contents->assign('menu_code', $this->getmenu());
-			$smarty_contents->assign('buttons_code', $this->getmenubuttons());
+
+
+		$code = '';
+		if ($this->_check_rights(WSR_CONTENTS_ADD)) {
+			$code .= "<a href='#' class='uk-button uk-button-primary disposable' onclick='javascript:addMenu(0); return false;'>Nouvelle page...</a> ";
+		}
+		if ($this->_check_rights(WSR_CONTENTS_ORDER)) {
+			$code .= "<a href='#' class='uk-button uk-hidden-small menu-orderer'>Ordonner</a> ";
+			$code .= "<a href='#' style='display: none;' class='uk-button menu-orderer-saver'>Sauver ordre</a> ";
+			$code .= "<a href='#' style='display: none;' class='uk-button menu-orderer-cancel'>Annuler</a>";
+		}
+		return $code;
+
+
+					$smarty_contents->assign('buttons_code', $this->getmenubuttons());
 			$smarty_contents->assign('page_total', MyActiveRecord::Count('contents', "language = '" . $this->current_language . "'"));
 		}
 		else {
@@ -222,18 +236,6 @@ class Content extends WSController {
 	}
 	
 
-	function getmenubuttons() {
-		$code = '';
-		if ($this->_check_rights(WSR_CONTENTS_ADD)) {
-			$code .= "<a href='#' class='uk-button uk-button-primary disposable' onclick='javascript:addMenu(0); return false;'>Nouvelle page...</a> ";
-		}
-		if ($this->_check_rights(WSR_CONTENTS_ORDER)) {
-			$code .= "<a href='#' class='uk-button uk-hidden-small menu-orderer'>Ordonner</a> ";
-			$code .= "<a href='#' style='display: none;' class='uk-button menu-orderer-saver'>Sauver ordre</a> ";
-			$code .= "<a href='#' style='display: none;' class='uk-button menu-orderer-cancel'>Annuler</a>";
-		}
-		return $code;
-	}
 	function getmenu() {
 		$this->groups  = MyActiveRecord::FindAll('groups');
 

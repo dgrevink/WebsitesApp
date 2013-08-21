@@ -21,7 +21,7 @@
 	<!--[if lt IE 8]><style type="text/css" media="all">@import url("{$html_app}/lib/css/ie.css");</style><![endif]-->
 	<!--[if IE]><script type="text/javascript" src="{$html_app}/lib/js/excanvas.js"></script><![endif]-->
 
-	{$js}
+	{if isset($js)}{$js}{/if}
 
 	<script type="text/javascript" src="/lib/js/jquery/jquery-1.8.2.js"></script>
 	<script type="text/javascript" src="{$html_app}/lib/js/uikit.min.js"></script>
@@ -36,13 +36,15 @@
 		<div class="uk-panel uk-panel-box uk-panel-box-secondary uk-panel-header uk-margin-top">
 			<div class="uk-panel-badge uk-badge"><a href="/">retour au site</a></div>
 			<h3 class="uk-panel-title">{$company} - CMS</h3>
-			{if (!$db_ok == '0')}
-				<div class="uk-alert-danger"><p>Le système n'est pas connecté à une base de données. Vérifiez les paramètres de connection.</p></div>
+			{if isset($db_ok)}
+				{if (!$db_ok == '0')}
+					<div class="uk-alert-danger"><p>Le système n'est pas connecté à une base de données. Vérifiez les paramètres de connection.</p></div>
+				{/if}
 			{/if}
-			{if $status}
+			{if isset($status)}
 				<div class="uk-alert uk-alert-warning" data-uk-alert><a href="" class="uk-alert-close uk-close"></a><p>{$status}</p></div>
 			{else}
-			<div class="uk-alert" data-uk-alert><a href="" class="uk-alert-close uk-close"></a><p>Veuillez donner votre courriel<br/> ainsi que votre mot de passe pour vous connecter.</p></div>
+				<div class="uk-alert" data-uk-alert><a href="" class="uk-alert-close uk-close"></a><p>Veuillez donner votre courriel<br/> ainsi que votre mot de passe pour vous connecter.</p></div>
 			{/if}
 			
 			<form name='login_form' id='login_form' method='post' accept-charset="UTF-8" class='uk-form uk-form-horizontal' {if $smarty.server.REQUEST_URI == '/admin/site/logout/fr/'}action='/admin/'{/if}{if $smarty.server.REQUEST_URI == '/admin/site/logout/fr/timeout/'}action='/admin/'{/if}>
