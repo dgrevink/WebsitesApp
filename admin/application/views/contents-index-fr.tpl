@@ -123,13 +123,13 @@
 					<h3>Sitemap &amp; Menus</h3>
 					{$sitemap}
 					{$menus}
-					{$language_page_fr}
-					{$language_page_en}
-					{$language_page_es}
-					{$language_page_nl}
-					{$language_page_zh}
-					{$language_page_ko}
-					{$language_page_ja}
+					{if isset($language_page_fr)}{$language_page_fr}{/if}
+					{if isset($language_page_en)}{$language_page_en}{/if}
+					{if isset($language_page_es)}{$language_page_es}{/if}
+					{if isset($language_page_nl)}{$language_page_nl}{/if}
+					{if isset($language_page_zh)}{$language_page_zh}{/if}
+					{if isset($language_page_ko)}{$language_page_ko}{/if}
+					{if isset($language_page_ja)}{$language_page_ja}{/if}
 					<h3>Avanc&eacute;</h3>
 					{$params}
 					{$cached}

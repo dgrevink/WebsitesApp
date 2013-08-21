@@ -123,13 +123,13 @@
 					<h3>Sitemap &amp; Menus</h3>
 					{$sitemap}
 					{$menus}
-					{$language_page_fr}
-					{$language_page_en}
-					{$language_page_es}
-					{$language_page_nl}
-					{$language_page_zh}
-					{$language_page_ko}
-					{$language_page_ja}
+					{if isset($language_page_fr)}{$language_page_fr}{/if}
+					{if isset($language_page_en)}{$language_page_en}{/if}
+					{if isset($language_page_es)}{$language_page_es}{/if}
+					{if isset($language_page_nl)}{$language_page_nl}{/if}
+					{if isset($language_page_zh)}{$language_page_zh}{/if}
+					{if isset($language_page_ko)}{$language_page_ko}{/if}
+					{if isset($language_page_ja)}{$language_page_ja}{/if}
 					<h3>Advanced</h3>
 					{$params}
 					{$cached}
@@ -141,6 +141,63 @@
 				{if ($WSR_CONTENTS_LAYOUT) }
 					<h3>Layout</h3>
 					<div id='layout'>
+						<ul id='layout-selector'>
+							{foreach name=layouts item=item from=$layouts}
+							<li>
+								<label for='{$item.id}'><img src='{$item.imagename}' alt='{$item.id}' title='{$item.id}' /></label>
+								<input id='{$item.id}' name='layout' type='radio' class='layout-selector' {if $current_page_layout == $item.id}checked='checked'{/if} value='{$item.id}' title='{$item.id}'  />
+							</li>
+							{/foreach}
+						</ul>
+						<h3>Contenants</h3>
+
+						{for $i=1 to 9}
+							<div id='placeholder_{$i}' class='placeholder' >
+								<h4>{$i}</h4>
+								<select name='placeholder_" . $i . "_type' id='placeholder_" . $i . "_type' class='placeholder_selector' \">
+								<option value='empty'>" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_NOTHING') . "</option>
+								<optgroup label='" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_MAIN') . "'>
+								$content_available = array( 1, 2, 3, 4, 5);
+								foreach($content_available as $content) {
+									<option value='content-{$content}'>" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_MAIN_TEXT') . " {$content}</option>
+								}
+								</optgroup>
+								
+								if (count($blocks) > 0) {
+									<optgroup label='" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_BLOCKS') . "'>
+									foreach($blocks as $record) {
+										<option value='block-" . $record->id . "'>" . $record->title . "</option>
+									}
+									</optgroup>
+								}
+								if (count($ads) > 0) {
+									<optgroup label='" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_BANNERS') . "'>
+									foreach($ads as $record) {
+										<option value='ad-" . $record->id . "'>" . $record->title . "</option>
+									}
+									</optgroup>
+								}
+								if (count($forms) > 0) {
+									<optgroup label='" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_FORMS') . "'>
+									foreach($forms as $record) {
+										<option value='form-" . $record->id . "'>" . $record->title . "</option>
+									}
+									</optgroup>
+								}
+								if (count($widgets) > 0) {
+									<optgroup label='" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_WIDGETS') . "'>
+									foreach($widgets as $record) {
+										if ($record['active']) {
+											<option value='widget-" . $record['id'] . "' title=\"" . $record['note'] . ' (' . $record['version'] . ')' .  "\">" . $record['rname'] . "</option>
+										}
+									}
+									</optgroup>
+								}
+								</select>&nbsp;&rang;&nbsp;
+								<span id='placeholder_" . $i . "_div'>&nbsp</span>
+							</div>
+						{/for}
+
 					{$layout}
 					</div>
 				{/if}

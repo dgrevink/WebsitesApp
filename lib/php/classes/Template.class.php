@@ -9,6 +9,8 @@ class Template extends Smarty {
 
 	public $base_dir = '';
 
+	public $config;
+
 	function Template() {
 		// Class Constructor. 
 		// These automatically get set with each new instance. 
@@ -18,14 +20,18 @@ class Template extends Smarty {
 
 		if (!defined('WS_ADMIN')) {
 			$this->base_dir = WS_HTML_LAYOUT_FOLDER;
-			$this->register_prefilter(array($this,'path_replace'));
+			$this->registerFilter('pre',array($this,'path_replace'));
 		}
 
+		$this->setTemplateDir(WS_APPLICATION_FOLDER . "/views/");
+		$this->setCompileDir(WS_ROOT . "lib/cache/templates_c/");
+		$this->setCacheDir(WS_ROOT . "lib/cache/configs/");
+		$this->setConfigDir(WS_ROOT . "lib/cache/cache/");
 
-		$this->template_dir = WS_APPLICATION_FOLDER . "/views/"; 
-		$this->compile_dir	= WS_APPLICATION_FOLDER . "/cache/templates_c/"; 
-		$this->config_dir	= WS_APPLICATION_FOLDER . "/cache/configs/"; 
-		$this->cache_dir	= WS_APPLICATION_FOLDER . "/cache/cache/"; 
+		// $this->template_dir = WS_APPLICATION_FOLDER . "/views/"; 
+		// $this->compile_dir	= WS_APPLICATION_FOLDER . "/cache/templates_c/"; 
+		// $this->config_dir	= WS_APPLICATION_FOLDER . "/cache/configs/"; 
+		// $this->cache_dir	= WS_APPLICATION_FOLDER . "/cache/cache/"; 
 		
 		$this->config = new WSConfig();
 		$this->config->load();

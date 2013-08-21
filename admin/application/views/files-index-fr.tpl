@@ -28,7 +28,7 @@
 	<div id='comment'>
 		<div class='uk-alert'>{$comment}&nbsp;
 			<div class='uk-float-right uk-hidden-small'>
-				{if $WSR_FILES_COMMENT_DIR}
+				{if isset($WSR_FILES_COMMENT_DIR)}
 					<a href='#' title='Commenter...' class='uk-button uk-button-primary uk-button-mini' onclick="commentDir( '{$wdir}' ); return false;"><i class="uk-icon-comment"></i><span style="margin-left: -4px;">&nbsp;</span></a>
 					<a href='#' title='Effacer le commentaire...' class='uk-button uk-button-primary uk-button-mini' onclick="removeCommentDir( '{$wdir}' ); return false;"><i class="uk-icon-remove"></i><span style="margin-left: -4px;">&nbsp;</span></a>
 				{/if}
@@ -36,16 +36,16 @@
 		</div>
 	</div>
 
-	{if $RIGHTS_WARNING}
+	{if isset($RIGHTS_WARNING)}
 	<div class='uk-alert uk-alert-warning'>
 		<p>{$RIGHTS_WARNING}</p>
 	</div>
 	{/if}
 
 	<div class='uk-float-right uk-margin-bottom uk-hidden-small'>
-			{if $WSR_FILES_NORMALIZE}<a href='#' class='uk-button' onclick="normDir( '{$wdir}' ); return false;">Normaliser...</a>{/if}
-			{if $WSR_FILES_CREATE_DIR}<a href='#'  class='uk-button' onclick="createDir( '{$wdir}' ); return false;">Cr&eacute;er un r&eacute;pertoire...</a>{/if}
-			{if $WSR_FILES_UPLOAD}<a href='#'  class='uk-button uk-button-primary' onclick="">Ajouter...</a>{/if}
+			{if isset($WSR_FILES_NORMALIZE)}<a href='#' class='uk-button' onclick="normDir( '{$wdir}' ); return false;">Normaliser...</a>{/if}
+			{if isset($WSR_FILES_CREATE_DIR)}<a href='#'  class='uk-button' onclick="createDir( '{$wdir}' ); return false;">Cr&eacute;er un r&eacute;pertoire...</a>{/if}
+			{if isset($WSR_FILES_UPLOAD)}<a href='#'  class='uk-button uk-button-primary' onclick="">Ajouter...</a>{/if}
 	</div>
 
 		<div id='tables'>

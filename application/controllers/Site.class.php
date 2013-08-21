@@ -80,7 +80,7 @@ class Site extends WSController {
 		}
 
 		// If the current page is NOT cached, process contents
-		if (!$this->template->is_cached(WS_APPLICATION_FOLDER . '/views/layouts/' . $layout['filename'], $this->cacheKey)) {
+		if (!$this->template->isCached(WS_APPLICATION_FOLDER . '/views/layouts/' . $layout['filename'], $this->cacheKey)) {
 
 			// Set language cookie if not set
 			if (!isset($_COOKIE['websites_language'])) {

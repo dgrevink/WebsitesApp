@@ -114,6 +114,7 @@ class Site extends WSController {
 			'name' => WSDTranslations::getLabel('SYSTEM_MENU_DASHBOARD'),
 			'icon' => "icon-dashboard",
 			'state' => $state,
+			'system' => 0,
 			'children' => array()
 			);
 
@@ -126,11 +127,13 @@ class Site extends WSController {
 				'name' => WSDTranslations::getLabel('SYSTEM_MENU_CONTENT'),
 				'icon' => "icon-th",
 				'state' => ($page == 'content')?'uk-active':'none',
+				'system' => 0,
 				'children' => array(
 					array(
 						'path' => $this->config->get(DEPLOYMENT, 'config', 'html_root') . '/' . $this->current_language . '/content',
 						'name' => "Pages",
 						'state' => ($page == 'content')?'uk-active':'none',
+						'system' => 0
 					)
 				)
 			);
@@ -141,21 +144,25 @@ class Site extends WSController {
 				'name' => WSDTranslations::getLabel('SYSTEM_MENU_MEDIA'),
 				'icon' => "icon-folder-close-alt",
 				'state' => ($page == 'files')?'uk-active':'none',
+				'system' => 0,
 				'children' => array(
 					array(
 						'path' => $this->config->get(DEPLOYMENT, 'config', 'html_root') . '/' . $this->current_language . '/files/files/',
 						'name' => "Files",
-						'state' => ($subpage == 'files')?'uk-active':'none'
+						'state' => ($subpage == 'files')?'uk-active':'none',
+						'system' => 0
 					),
 					array(
 						'path' => $this->config->get(DEPLOYMENT, 'config', 'html_root') . '/' . $this->current_language . '/files/images/',
 						'name' => "Images",
-						'state' => ($subpage == 'images')?'uk-active':'none'
+						'state' => ($subpage == 'images')?'uk-active':'none',
+						'system' => 0
 					),
 					array(
 						'path' => $this->config->get(DEPLOYMENT, 'config', 'html_root') . '/' . $this->current_language . '/files/media/',
 						'name' => "Media",
-						'state' => ($subpage == 'media')?'uk-active':'none'
+						'state' => ($subpage == 'media')?'uk-active':'none',
+						'system' => 0
 					)
 				),
 			);
@@ -166,13 +173,15 @@ class Site extends WSController {
 			$forms[] = array(
 				'path' => $this->config->get(DEPLOYMENT, 'config', 'html_root') . '/' . $this->current_language . '/forms/',
 				'name' => WSDTranslations::getLabel('SYSTEM_MENU_FORMS_HANDLE'),
-				'state' => ($page == "forms" && $subpage == '')?'uk-active':'none'
+				'state' => ($page == "forms" && $subpage == '')?'uk-active':'none',
+				'system' => 0
 			);
 			foreach($formsd as $form) {
 				$forms[] = array(
 					'path' => $this->config->get(DEPLOYMENT, 'config', 'html_root') . '/' . $this->current_language . '/forms/' . $form->id,
 					'name' => $form->title,
-					'state' => ($subpage == "{$form->id}")?'uk-active':'none'
+					'state' => ($subpage == "{$form->id}")?'uk-active':'none',
+					'system' => 0
 				);
 			}
 			$menu[] = array(
@@ -180,6 +189,7 @@ class Site extends WSController {
 				'name' => WSDTranslations::getLabel('SYSTEM_MENU_FORMS'),
 				'icon' => "icon-check",
 				'state' => ($page == 'forms')?'uk-active':'none',
+				'system' => 0,
 				'children' => $forms
 			);
 		}
@@ -189,10 +199,12 @@ class Site extends WSController {
 				'name' => WSDTranslations::getLabel('SYSTEM_MENU_NEWSLETTERS'),
 				'icon' => "icon-envelope-alt",
 				'state' => ($page == 'newsletters')?'uk-active':'none',
+				'system' => 0,
 				'children' => array(
 					array(
 						'path' => $this->config->get(DEPLOYMENT, 'config', 'html_root') . '/' . $this->current_language . '/newsletters',
 						'name' => WSDTranslations::getLabel('SYSTEM_MENU_NEWSLETTERS_HANDLE'),
+						'system' => 0,
 						'state' => ($page == 'newsletters')?'uk-active':'none',
 					)
 				)
@@ -215,6 +227,7 @@ class Site extends WSController {
 											'path' => $this->config->get(DEPLOYMENT, 'config', 'html_root') . '/' . ($module->monolanguage=='1'?$module->default_language:$this->current_language) . '/tables/' . $module->name,
 											'name' => $module->title,
 											'state' => $state,
+											'system' => 0,
 											'system' => ($module->system == 1)
 										);
 									}
@@ -225,6 +238,7 @@ class Site extends WSController {
 										'name' => $module->{'menu_' . $userlanguage},
 										'state' => 'none',
 										'icon' => 'icon-archive',
+										'system' => 0,
 										'children' => array(
 											array(
 												'path' => $this->config->get(DEPLOYMENT, 'config', 'html_root') . '/' . ($module->monolanguage=='1'?$module->default_language:$this->current_language) . '/tables/' . $module->name,
@@ -246,6 +260,7 @@ class Site extends WSController {
 			'name' => "",
 			'icon' => "",
 			'state' => '',
+			'system' => 0,
 			'children' => array()
 		);
 	

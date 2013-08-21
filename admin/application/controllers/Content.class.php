@@ -178,37 +178,24 @@ class Content extends WSController {
 			$smarty_contents->assign('WSR_CONTENTS_METADATA',	($this->_check_rights(WSR_CONTENTS_METADATA)) );
 			$smarty_contents->assign('WSR_CONTENTS_VERSIONS',  ($this->_check_rights(WSR_CONTENTS_VERSIONS)) );
 
-			$smarty_contents->assign('layout', $this->redrawlayout( $id ));
+//			$smarty_contents->assign('layout', $this->redrawlayout( $id ));
+
+			// Get layouts for layout selector
+			$current_page = MyActiveRecord::FindById('contents', $id);
+			$template = new Template();
+			$layouts = $template->getLayouts( $this->current_language );
+			$smarty_contents->assign('layouts', $layouts);
+			$smarty_contents->assign('current_page_layout', $current_page->layout);
+
+			// list blocks
+			$blocks = MyActiveRecord::FindAllMD('blocks', 'id, language, title', "language = '" . $this->current_language . "'", 'title asc');
+			$smarty_contents->assign('blocks', activerecord2smartyarray($blocks));
 		}
 		
 		return $smarty_contents->fetch( 'contents-index-' . $this->language . '.tpl' );
 	}
 	
 	function redrawlayout( $id = null ) {
-
-		$template = new Template();
-		$layouts = $template->getLayouts( $this->current_language );
-		
-		$key = 0;
-		if ($id) {
-			$key = $id;
-		}
-		
-		$current_page = MyActiveRecord::FindById('contents', $key);
-		
-		$code = array();
-
-		$code[] = "<ul id='layout-selector'>";
-		foreach($layouts as $layout) {
-			$code[] = "<li>";
-			$code[] = "<label for='" . $layout['id'] . "'><img src='" . $layout['imagename'] . "' alt='" . $layout['id'] . "' title='" . $layout['id'] . "' /></label>";
-			$code[] = "<input id='" . $layout['id'] . "' name='layout' type='radio' class='layout-selector'" . (($current_page->layout == $layout['id']) ? "checked='checked'": '') . " value='" . $layout['id'] . "' title='" . $layout['id'] . "'  />";
-			$code[] = "</li>";
-		}
-		$code[] = "</ul>";
-		
-
-		$code[] = "<h3>Contenants</h3>";
 
 		// list blocks
 		$blocks = MyActiveRecord::FindAllMD('blocks', 'id, language, title', "language = '" . $this->current_language . "'", 'title asc');

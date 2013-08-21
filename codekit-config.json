@@ -33,15 +33,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/lib\/js\/jquery\/jcrop\/index.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/jcrop\/index.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/lib\/js\/jquery\/anythingslider\/css\/theme-metallic.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -50,6 +41,15 @@
       "inputAbbreviatedPath" : "\/lib\/js\/jquery\/anythingslider\/css\/theme-metallic.css",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
+    },
+    "\/lib\/js\/jquery\/jcrop\/index.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/jcrop\/index.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/admin\/application\/lib\/images\/sdd.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -167,17 +167,6 @@
       "initialSize" : 4604,
       "fileType" : 8192
     },
-    "\/lib\/js\/jquery\/fancybox\/fancybox\/jquery.mousewheel-3.0.4.pack.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/fancybox\/jquery.mousewheel-3.0.4.pack.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/fancybox\/jquery.mousewheel-3.0.4.pack-ck.js",
-      "fileType" : 64
-    },
     "\/lib\/js\/jquery\/jquery-1.4.2.min.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -187,6 +176,17 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/lib\/js\/jquery\/jquery-1.4.2.min-ck.js",
+      "fileType" : 64
+    },
+    "\/lib\/js\/jquery\/fancybox\/fancybox\/jquery.mousewheel-3.0.4.pack.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/fancybox\/jquery.mousewheel-3.0.4.pack.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/fancybox\/jquery.mousewheel-3.0.4.pack-ck.js",
       "fileType" : 64
     },
     "\/lib\/js\/jquery\/anythingslider\/demos\/colorbox\/jquery.colorbox.js" : {
@@ -313,15 +313,6 @@
       "initialSize" : 324,
       "fileType" : 8192
     },
-    "\/application\/views\/layouts\/stylesheets\/css\/main.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/application\/views\/layouts\/stylesheets\/css\/main.css",
-      "outputAbbreviatedPath" : "\/No Output Path",
-      "fileType" : 16
-    },
     "\/lib\/js\/jquery\/colorpicker\/images\/colorpicker_rgb_g.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -332,6 +323,15 @@
       "outputAbbreviatedPath" : "\/lib\/js\/jquery\/colorpicker\/images\/colorpicker_rgb_g.png",
       "initialSize" : 905,
       "fileType" : 8192
+    },
+    "\/application\/views\/layouts\/stylesheets\/css\/main.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/application\/views\/layouts\/stylesheets\/css\/main.css",
+      "outputAbbreviatedPath" : "\/No Output Path",
+      "fileType" : 16
     },
     "\/lib\/js\/jquery\/datatables\/css\/demo_table.css" : {
       "ignoreWasSetByUser" : 0,
@@ -450,17 +450,6 @@
       "initialSize" : 44577,
       "fileType" : 4096
     },
-    "\/lib\/js\/jquery\/datatables\/images\/sort_asc.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/datatables\/images\/sort_asc.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/datatables\/images\/sort_asc.png",
-      "initialSize" : 261,
-      "fileType" : 8192
-    },
     "\/lib\/js\/jquery\/jquery.ba-throttle-debounce.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -471,6 +460,17 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/lib\/js\/jquery\/jquery.ba-throttle-debounce-ck.js",
       "fileType" : 64
+    },
+    "\/lib\/js\/jquery\/datatables\/images\/sort_asc.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/datatables\/images\/sort_asc.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/datatables\/images\/sort_asc.png",
+      "initialSize" : 261,
+      "fileType" : 8192
     },
     "\/lib\/js\/jquery\/fancybox\/fancybox\/fancy_nav_left.png" : {
       "ignoreWasSetByUser" : 0,
@@ -558,15 +558,6 @@
       "initialSize" : 602,
       "fileType" : 8192
     },
-    "\/lib\/js\/jquery\/uploadifive\/uploadifive.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/uploadifive\/uploadifive.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
     "\/lib\/js\/jquery\/colorpicker\/images\/select2.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -578,6 +569,15 @@
       "initialSize" : 376,
       "fileType" : 8192
     },
+    "\/lib\/js\/jquery\/uploadifive\/uploadifive.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/uploadifive\/uploadifive.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
     "\/lib\/js\/support\/form-support.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -588,6 +588,17 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/lib\/js\/support\/form-support-ck.js",
       "fileType" : 64
+    },
+    "\/lib\/js\/jquery\/ui\/css\/aristo\/images\/slider_handles.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/ui\/css\/aristo\/images\/slider_handles.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/ui\/css\/aristo\/images\/slider_handles.png",
+      "initialSize" : 4101,
+      "fileType" : 8192
     },
     "\/admin\/application\/lib\/css\/websitesapp.css" : {
       "ignoreWasSetByUser" : 0,
@@ -607,17 +618,6 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/lib\/js\/jquery\/colorpicker\/images\/custom_background.png",
       "initialSize" : 1915,
-      "fileType" : 8192
-    },
-    "\/lib\/js\/jquery\/ui\/css\/aristo\/images\/slider_handles.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/ui\/css\/aristo\/images\/slider_handles.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/ui\/css\/aristo\/images\/slider_handles.png",
-      "initialSize" : 4101,
       "fileType" : 8192
     },
     "\/lib\/js\/jquery\/chosen\/chosen.jquery.js" : {
@@ -684,15 +684,6 @@
       "outputAbbreviatedPath" : "\/admin\/application\/lib\/js\/site-ck-ck.js",
       "fileType" : 64
     },
-    "\/lib\/js\/jquery\/anythingslider\/index.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/anythingslider\/index.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/application\/views\/layouts\/stylesheets\/scss\/slides.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -704,6 +695,15 @@
       "outputAbbreviatedPath" : "\/application\/views\/layouts\/stylesheets\/css\/slides.css",
       "fileType" : 4,
       "debugStyle" : 0
+    },
+    "\/lib\/js\/jquery\/anythingslider\/index.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/anythingslider\/index.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/lib\/js\/jquery\/jquery.ba-throttle-debounce.min.js" : {
       "ignoreWasSetByUser" : 0,
@@ -802,17 +802,6 @@
       "outputAbbreviatedPath" : "\/lib\/js\/jquery\/anythingslider\/demos\/prettify\/prettify-ck.js",
       "fileType" : 64
     },
-    "\/lib\/js\/jquery\/datatables\/images\/forward_disabled.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/datatables\/images\/forward_disabled.jpg",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/datatables\/images\/forward_disabled.jpg",
-      "initialSize" : 617,
-      "fileType" : 4096
-    },
     "\/admin\/application\/lib\/images\/bg.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -822,6 +811,17 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/admin\/application\/lib\/images\/bg.jpg",
       "initialSize" : 9611,
+      "fileType" : 4096
+    },
+    "\/lib\/js\/jquery\/datatables\/images\/forward_disabled.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/datatables\/images\/forward_disabled.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/datatables\/images\/forward_disabled.jpg",
+      "initialSize" : 617,
       "fileType" : 4096
     },
     "\/admin\/application\/lib\/css\/uikit.min.css" : {
@@ -977,17 +977,6 @@
       "initialSize" : 613,
       "fileType" : 8192
     },
-    "\/lib\/js\/jquery\/datepicker\/date_fr.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/datepicker\/date_fr.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/datepicker\/date_fr-ck.js",
-      "fileType" : 64
-    },
     "\/application\/views\/layouts\/images\/background-opacity-0.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -998,6 +987,17 @@
       "outputAbbreviatedPath" : "\/application\/views\/layouts\/images\/background-opacity-0.png",
       "initialSize" : 100,
       "fileType" : 8192
+    },
+    "\/lib\/js\/jquery\/datepicker\/date_fr.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/datepicker\/date_fr.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/datepicker\/date_fr-ck.js",
+      "fileType" : 64
     },
     "\/lib\/js\/jquery\/fancybox\/fancybox\/fancy_shadow_w.png" : {
       "ignoreWasSetByUser" : 0,
@@ -1287,6 +1287,17 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
+    "\/public\/images\/guardians.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/images\/guardians.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/public\/images\/guardians.jpg",
+      "initialSize" : 93901,
+      "fileType" : 4096
+    },
     "\/lib\/js\/jquery\/jquery-1.5.1.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1397,16 +1408,14 @@
       "outputAbbreviatedPath" : "\/admin\/application\/lib\/js\/files_dir-ck.js",
       "fileType" : 64
     },
-    "\/lib\/php\/support\/phpthumb\/examples\/test.jpg" : {
+    "\/admin\/application\/lib\/css\/ie.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/php\/support\/phpthumb\/examples\/test.jpg",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/lib\/php\/support\/phpthumb\/examples\/test.jpg",
-      "initialSize" : 207048,
-      "fileType" : 4096
+      "inputAbbreviatedPath" : "\/admin\/application\/lib\/css\/ie.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/lib\/js\/jquery\/chardin\/example\/js\/jquery-1.9.1.min.js" : {
       "ignoreWasSetByUser" : 0,
@@ -1419,15 +1428,6 @@
       "outputAbbreviatedPath" : "\/lib\/js\/jquery\/chardin\/example\/js\/jquery-1.9.1.min-ck.js",
       "fileType" : 64
     },
-    "\/admin\/application\/lib\/css\/ie.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/admin\/application\/lib\/css\/ie.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
     "\/lib\/js\/jquery\/ui\/css\/ui-lightness\/images\/ui-bg_highlight-soft_75_ffe45c_1x100.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1438,6 +1438,17 @@
       "outputAbbreviatedPath" : "\/lib\/js\/jquery\/ui\/css\/ui-lightness\/images\/ui-bg_highlight-soft_75_ffe45c_1x100.png",
       "initialSize" : 128,
       "fileType" : 8192
+    },
+    "\/lib\/php\/support\/phpthumb\/examples\/test.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/php\/support\/phpthumb\/examples\/test.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/lib\/php\/support\/phpthumb\/examples\/test.jpg",
+      "initialSize" : 207048,
+      "fileType" : 4096
     },
     "\/admin\/application\/lib\/js\/site.js" : {
       "ignoreWasSetByUser" : 0,
@@ -1472,17 +1483,6 @@
       "initialSize" : 39931,
       "fileType" : 4096
     },
-    "\/admin\/application\/lib\/images\/actions\/upload.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/admin\/application\/lib\/images\/actions\/upload.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/admin\/application\/lib\/images\/actions\/upload.png",
-      "initialSize" : 2067,
-      "fileType" : 8192
-    },
     "\/lib\/js\/jquery\/jquery-1.8.2.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -1493,6 +1493,17 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/lib\/js\/jquery\/jquery-1.8.2-ck.js",
       "fileType" : 64
+    },
+    "\/admin\/application\/lib\/images\/actions\/upload.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/admin\/application\/lib\/images\/actions\/upload.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/admin\/application\/lib\/images\/actions\/upload.png",
+      "initialSize" : 2067,
+      "fileType" : 8192
     },
     "\/lib\/js\/jquery\/ui\/css\/ui-lightness\/images\/ui-bg_glass_100_fdf5ce_1x400.png" : {
       "ignoreWasSetByUser" : 0,
@@ -1614,16 +1625,16 @@
       "initialSize" : 989,
       "fileType" : 8192
     },
-    "\/lib\/js\/jquery\/slides\/img\/pagination.png" : {
+    "\/lib\/js\/jquery\/fancybox\/example\/6_b.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/slides\/img\/pagination.png",
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/example\/6_b.jpg",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/slides\/img\/pagination.png",
-      "initialSize" : 708,
-      "fileType" : 8192
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/example\/6_b.jpg",
+      "initialSize" : 52935,
+      "fileType" : 4096
     },
     "\/lib\/js\/jquery\/jquery.hashchange.min.js" : {
       "ignoreWasSetByUser" : 0,
@@ -1636,16 +1647,16 @@
       "outputAbbreviatedPath" : "\/lib\/js\/jquery\/jquery.hashchange.min-ck.js",
       "fileType" : 64
     },
-    "\/lib\/js\/jquery\/fancybox\/example\/6_b.jpg" : {
+    "\/lib\/js\/jquery\/slides\/img\/pagination.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/example\/6_b.jpg",
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/slides\/img\/pagination.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/example\/6_b.jpg",
-      "initialSize" : 52935,
-      "fileType" : 4096
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/slides\/img\/pagination.png",
+      "initialSize" : 708,
+      "fileType" : 8192
     },
     "\/admin\/application\/lib\/images\/dropdown.png" : {
       "ignoreWasSetByUser" : 0,
@@ -1680,17 +1691,6 @@
       "initialSize" : 407,
       "fileType" : 8192
     },
-    "\/lib\/js\/jquery\/fancybox\/fancybox\/fancy_title_right.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/fancybox\/fancy_title_right.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/fancybox\/fancy_title_right.png",
-      "initialSize" : 506,
-      "fileType" : 8192
-    },
     "\/application\/views\/layouts\/images\/99.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1702,15 +1702,15 @@
       "initialSize" : 1109,
       "fileType" : 8192
     },
-    "\/lib\/js\/jquery\/ui\/css\/aristo\/images\/ui-icons_ffffff_256x240.png" : {
+    "\/lib\/js\/jquery\/fancybox\/fancybox\/fancy_title_right.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/ui\/css\/aristo\/images\/ui-icons_ffffff_256x240.png",
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/fancybox\/fancy_title_right.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/ui\/css\/aristo\/images\/ui-icons_ffffff_256x240.png",
-      "initialSize" : 4194,
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/fancybox\/fancy_title_right.png",
+      "initialSize" : 506,
       "fileType" : 8192
     },
     "\/lib\/js\/jquery\/slides\/js\/slides.min.jquery.js" : {
@@ -1723,6 +1723,17 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/lib\/js\/jquery\/slides\/js\/slides.min.jquery-ck.js",
       "fileType" : 64
+    },
+    "\/lib\/js\/jquery\/ui\/css\/aristo\/images\/ui-icons_ffffff_256x240.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/ui\/css\/aristo\/images\/ui-icons_ffffff_256x240.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/ui\/css\/aristo\/images\/ui-icons_ffffff_256x240.png",
+      "initialSize" : 4194,
+      "fileType" : 8192
     },
     "\/lib\/js\/jquery\/datepicker\/date.js" : {
       "ignoreWasSetByUser" : 0,
@@ -2216,17 +2227,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/lib\/js\/jquery\/anythingslider\/demos\/images\/th-slide-env-1.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/anythingslider\/demos\/images\/th-slide-env-1.jpg",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/anythingslider\/demos\/images\/th-slide-env-1.jpg",
-      "initialSize" : 531,
-      "fileType" : 4096
-    },
     "\/lib\/js\/jquery\/colorpicker\/images\/colorpicker_background.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -2237,6 +2237,17 @@
       "outputAbbreviatedPath" : "\/lib\/js\/jquery\/colorpicker\/images\/colorpicker_background.png",
       "initialSize" : 1877,
       "fileType" : 8192
+    },
+    "\/lib\/js\/jquery\/anythingslider\/demos\/images\/th-slide-env-1.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/anythingslider\/demos\/images\/th-slide-env-1.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/anythingslider\/demos\/images\/th-slide-env-1.jpg",
+      "initialSize" : 531,
+      "fileType" : 4096
     },
     "\/lib\/js\/jquery\/slides\/img\/slide-7.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -2492,17 +2503,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/application\/views\/layouts\/images\/background-white-10.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/application\/views\/layouts\/images\/background-white-10.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/application\/views\/layouts\/images\/background-white-10.png",
-      "initialSize" : 1067,
-      "fileType" : 8192
-    },
     "\/admin\/application\/lib\/images\/actions\/docs_16x16.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -2512,6 +2512,17 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/admin\/application\/lib\/images\/actions\/docs_16x16.png",
       "initialSize" : 681,
+      "fileType" : 8192
+    },
+    "\/application\/views\/layouts\/images\/background-white-10.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/application\/views\/layouts\/images\/background-white-10.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/application\/views\/layouts\/images\/background-white-10.png",
+      "initialSize" : 1067,
       "fileType" : 8192
     },
     "\/lib\/js\/jquery\/colorpicker\/js\/layout.js" : {
@@ -2569,15 +2580,6 @@
       "initialSize" : 166,
       "fileType" : 8192
     },
-    "\/lib\/views\/css\/reset.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/views\/css\/reset.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
     "\/lib\/js\/jquery\/colorpicker\/images\/custom_hex.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -2599,6 +2601,15 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/admin\/application\/lib\/js\/uikit-ck.js",
       "fileType" : 64
+    },
+    "\/lib\/views\/css\/reset.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/views\/css\/reset.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/lib\/js\/jquery\/nestedsortables\/compressed\/widget\/jquery.nestedsortablewidget.js" : {
       "ignoreWasSetByUser" : 0,
@@ -2943,15 +2954,6 @@
       "initialSize" : 40441,
       "fileType" : 4096
     },
-    "\/application\/views\/layouts\/index-home-fr.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/application\/views\/layouts\/index-home-fr.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/admin\/application\/lib\/images\/bl.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -2962,6 +2964,15 @@
       "outputAbbreviatedPath" : "\/admin\/application\/lib\/images\/bl.png",
       "initialSize" : 124,
       "fileType" : 8192
+    },
+    "\/application\/views\/layouts\/index-home-fr.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/application\/views\/layouts\/index-home-fr.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/lib\/js\/jquery\/ui\/css\/aristo\/images\/ui-icons_228ef1_256x240.png" : {
       "ignoreWasSetByUser" : 0,
@@ -3168,17 +3179,6 @@
       "initialSize" : 6073,
       "fileType" : 8192
     },
-    "\/lib\/js\/jquery\/jquery.cookie.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/jquery.cookie.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/jquery.cookie-ck.js",
-      "fileType" : 64
-    },
     "\/lib\/js\/jquery\/fancybox\/fancybox\/fancy_title_main.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -3189,6 +3189,17 @@
       "outputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/fancybox\/fancy_title_main.png",
       "initialSize" : 96,
       "fileType" : 8192
+    },
+    "\/lib\/js\/jquery\/jquery.cookie.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/jquery.cookie.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/jquery.cookie-ck.js",
+      "fileType" : 64
     },
     "\/lib\/js\/jquery\/ui\/css\/aristo\/images\/button_bg.png" : {
       "ignoreWasSetByUser" : 0,
@@ -3609,6 +3620,15 @@
       "initialSize" : 2532,
       "fileType" : 4096
     },
+    "\/application\/views\/layouts\/index-content-fr.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/application\/views\/layouts\/index-content-fr.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/lib\/js\/jquery\/chardin\/chardinjs.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -4010,17 +4030,6 @@
       "outputStyle" : 0,
       "fileType" : 32
     },
-    "\/lib\/js\/jquery\/fancybox\/example\/6_s.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/example\/6_s.jpg",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/example\/6_s.jpg",
-      "initialSize" : 3533,
-      "fileType" : 4096
-    },
     "\/lib\/js\/jquery\/jcrop\/js\/jquery.Jcrop.min.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -4031,6 +4040,17 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/lib\/js\/jquery\/jcrop\/js\/jquery.Jcrop.min-ck.js",
       "fileType" : 64
+    },
+    "\/lib\/js\/jquery\/fancybox\/example\/6_s.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/example\/6_s.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/example\/6_s.jpg",
+      "initialSize" : 3533,
+      "fileType" : 4096
     },
     "\/lib\/js\/jquery\/jquery.dimensions.js" : {
       "ignoreWasSetByUser" : 0,
@@ -4160,17 +4180,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/admin\/application\/lib\/js\/content_list-ck.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/admin\/application\/lib\/js\/content_list-ck.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/admin\/application\/lib\/js\/content_list-ck-ck.js",
-      "fileType" : 64
-    },
     "\/lib\/js\/jquery\/ui\/css\/ui-lightness\/images\/ui-bg_gloss-wave_35_f6a828_500x100.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -4181,6 +4190,17 @@
       "outputAbbreviatedPath" : "\/lib\/js\/jquery\/ui\/css\/ui-lightness\/images\/ui-bg_gloss-wave_35_f6a828_500x100.png",
       "initialSize" : 2629,
       "fileType" : 8192
+    },
+    "\/admin\/application\/lib\/js\/content_list-ck.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/admin\/application\/lib\/js\/content_list-ck.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/admin\/application\/lib\/js\/content_list-ck-ck.js",
+      "fileType" : 64
     },
     "\/lib\/js\/jquery\/anythingslider\/demos\/css\/page.css" : {
       "ignoreWasSetByUser" : 0,
@@ -4400,15 +4420,6 @@
       "initialSize" : 15380,
       "fileType" : 8192
     },
-    "\/lib\/js\/jquery\/fullcalendar\/fullcalendar.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/fullcalendar\/fullcalendar.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
     "\/lib\/js\/jquery\/datatables\/images\/sort_desc.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -4419,6 +4430,15 @@
       "outputAbbreviatedPath" : "\/lib\/js\/jquery\/datatables\/images\/sort_desc.png",
       "initialSize" : 257,
       "fileType" : 8192
+    },
+    "\/lib\/js\/jquery\/fullcalendar\/fullcalendar.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/fullcalendar\/fullcalendar.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/lib\/js\/jquery\/nestedsortables\/src\/widget\/images\/fade-butt.png" : {
       "ignoreWasSetByUser" : 0,
@@ -4442,17 +4462,6 @@
       "initialSize" : 203,
       "fileType" : 8192
     },
-    "\/lib\/js\/jquery\/colorpicker\/js\/colorpicker.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/colorpicker\/js\/colorpicker.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/colorpicker\/js\/colorpicker-ck.js",
-      "fileType" : 64
-    },
     "\/admin\/application\/lib\/images\/actions\/dir.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -4463,6 +4472,17 @@
       "outputAbbreviatedPath" : "\/admin\/application\/lib\/images\/actions\/dir.png",
       "initialSize" : 1562,
       "fileType" : 8192
+    },
+    "\/lib\/js\/jquery\/colorpicker\/js\/colorpicker.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/colorpicker\/js\/colorpicker.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/colorpicker\/js\/colorpicker-ck.js",
+      "fileType" : 64
     },
     "\/application\/views\/layouts\/images\/background-opacity-10.png" : {
       "ignoreWasSetByUser" : 0,
@@ -4603,16 +4623,25 @@
       "initialSize" : 84,
       "fileType" : 8192
     },
-    "\/lib\/js\/jquery\/ui\/css\/ui-lightness\/images\/ui-bg_glass_100_f6f6f6_1x400.png" : {
+    "\/lib\/js\/jquery\/colorpicker\/images\/custom_hsb_s.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/ui\/css\/ui-lightness\/images\/ui-bg_glass_100_f6f6f6_1x400.png",
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/colorpicker\/images\/custom_hsb_s.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/ui\/css\/ui-lightness\/images\/ui-bg_glass_100_f6f6f6_1x400.png",
-      "initialSize" : 104,
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/colorpicker\/images\/custom_hsb_s.png",
+      "initialSize" : 1008,
       "fileType" : 8192
+    },
+    "\/lib\/js\/jquery\/nivoslider\/nivo-slider.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/nivoslider\/nivo-slider.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/lib\/js\/jquery\/fancybox\/example\/7_s.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -4625,24 +4654,15 @@
       "initialSize" : 3625,
       "fileType" : 4096
     },
-    "\/lib\/js\/jquery\/nivoslider\/nivo-slider.css" : {
+    "\/lib\/js\/jquery\/ui\/css\/ui-lightness\/images\/ui-bg_glass_100_f6f6f6_1x400.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/nivoslider\/nivo-slider.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
-    "\/lib\/js\/jquery\/colorpicker\/images\/custom_hsb_s.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/colorpicker\/images\/custom_hsb_s.png",
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/ui\/css\/ui-lightness\/images\/ui-bg_glass_100_f6f6f6_1x400.png",
       "processed" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/colorpicker\/images\/custom_hsb_s.png",
-      "initialSize" : 1008,
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/ui\/css\/ui-lightness\/images\/ui-bg_glass_100_f6f6f6_1x400.png",
+      "initialSize" : 104,
       "fileType" : 8192
     },
     "\/lib\/js\/jquery\/anythingslider\/demos\/colorbox\/ie6\/borderBottomRight.png" : {
@@ -4700,16 +4720,16 @@
       "outputAbbreviatedPath" : "\/admin\/application\/lib\/js\/files_image-ck.js",
       "fileType" : 64
     },
-    "\/lib\/js\/jquery\/jquery.ecrypt.js" : {
+    "\/lib\/js\/jquery\/fancybox\/fancybox\/fancy_close.png" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/jquery.ecrypt.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/jquery.ecrypt-ck.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/fancybox\/fancy_close.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/fancybox\/fancy_close.png",
+      "initialSize" : 1517,
+      "fileType" : 8192
     },
     "\/application\/views\/layouts\/images\/main-background.png" : {
       "ignoreWasSetByUser" : 0,
@@ -4733,16 +4753,16 @@
       "initialSize" : 36725,
       "fileType" : 4096
     },
-    "\/lib\/js\/jquery\/fancybox\/fancybox\/fancy_close.png" : {
+    "\/lib\/js\/jquery\/jquery.ecrypt.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/fancybox\/fancy_close.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/fancybox\/fancybox\/fancy_close.png",
-      "initialSize" : 1517,
-      "fileType" : 8192
+      "inputAbbreviatedPath" : "\/lib\/js\/jquery\/jquery.ecrypt.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/lib\/js\/jquery\/jquery.ecrypt-ck.js",
+      "fileType" : 64
     },
     "\/lib\/js\/jquery\/anythingslider\/css3.html" : {
       "ignoreWasSetByUser" : 0,

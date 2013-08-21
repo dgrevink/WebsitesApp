@@ -32,8 +32,8 @@
 	</div>
 
 	<div class='uk-float-right uk-margin-bottom'>
-		{if $showcreatebutton}<a href='create/0' class='uk-button uk-button-primary'>Ajouter...</a>{/if}
-		{if $showexportbutton}<a href='export' class='uk-button'>Exporter...</a>{/if}
+		{if isset($showcreatebutton)}<a href='create/0' class='uk-button uk-button-primary'>Ajouter...</a>{/if}
+		{if isset($showexportbutton)}<a href='export' class='uk-button'>Exporter...</a>{/if}
 	</div>
 
 	<div id='tables'>
@@ -50,7 +50,7 @@
 <script>
 	var current_language = '{$current_language}';
 	var current_table    = '{$current_table}';
-	{if $fieldcondition != ''}
+	{if isset($fieldcondition)}
 	var fieldcondition = '/' + '{$field}' + '/' + {$fieldcondition};
 	{else}
 	var fieldcondition = '';
