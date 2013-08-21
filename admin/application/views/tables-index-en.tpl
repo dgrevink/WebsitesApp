@@ -190,6 +190,7 @@
 </div>
 {/if}
 
+<br/><br/>
 <form name='contentform' id='contentform' class='uk-form uk-form-horizontal' action='../' method='post' enctype='utf-8'>
 {$code}
 <script>

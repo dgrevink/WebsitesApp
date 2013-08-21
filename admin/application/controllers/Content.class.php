@@ -178,142 +178,49 @@ class Content extends WSController {
 			$smarty_contents->assign('WSR_CONTENTS_METADATA',	($this->_check_rights(WSR_CONTENTS_METADATA)) );
 			$smarty_contents->assign('WSR_CONTENTS_VERSIONS',  ($this->_check_rights(WSR_CONTENTS_VERSIONS)) );
 
-//			$smarty_contents->assign('layout', $this->redrawlayout( $id ));
-
 			// Get layouts for layout selector
 			$current_page = MyActiveRecord::FindById('contents', $id);
 			$template = new Template();
 			$layouts = $template->getLayouts( $this->current_language );
 			$smarty_contents->assign('layouts', $layouts);
-			$smarty_contents->assign('current_page_layout', $current_page->layout);
+
+			$smarty_contents->assign('current_page', $current_page);
 
 			// list blocks
 			$blocks = MyActiveRecord::FindAllMD('blocks', 'id, language, title', "language = '" . $this->current_language . "'", 'title asc');
 			$smarty_contents->assign('blocks', activerecord2smartyarray($blocks));
+
+			// ads
+			$ads = MyActiveRecord::FindAllMD('banners', 'id, language, title', "language = '" . $this->current_language . "'", 'title asc');
+			$smarty_contents->assign('ads', activerecord2smartyarray($ads));
+		
+			// forms
+			$forms = MyActiveRecord::FindAllMD('formsdefinitions', 'id, language, title', "language = '" . $this->current_language . "'", 'title asc');
+			$smarty_contents->assign('forms', activerecord2smartyarray($forms));
+
+			// list widgets
+			$widgets_temp = glob(WS_ADMINISTERED_APPLICATION_FOLDER . "/controllers/W*.class.php");
+			$widgets = array();
+			foreach ($widgets_temp as $w) {
+				$content = file_get_contents($w);
+				if (widget_get_element('ACTIVE', $content) != 'YES') continue;
+				$widgets[] = array(
+					'id'		=> basename($w),
+					'rname'		=> widget_get_element('RNAME', $content),
+					'name'		=> widget_get_element('NAME', $content),
+					'path'		=> widget_get_element('PATH', $content),
+					'note'		=> widget_get_element('NOTE', $content),
+					'version'	=> widget_get_element('VERSION', $content),
+					'active'	=> (widget_get_element('ACTIVE', $content) != 'YES')?false:true
+				);
+			}
+			$smarty_contents->assign('widgets', $widgets);
+
 		}
 		
 		return $smarty_contents->fetch( 'contents-index-' . $this->language . '.tpl' );
 	}
 	
-	function redrawlayout( $id = null ) {
-
-		// list blocks
-		$blocks = MyActiveRecord::FindAllMD('blocks', 'id, language, title', "language = '" . $this->current_language . "'", 'title asc');
-		
-		// list widgets
-		$widgets_temp = glob(WS_ADMINISTERED_APPLICATION_FOLDER . "/controllers/W*.class.php");
-		$widgets = array();
-		foreach ($widgets_temp as $w) {
-			$content = file_get_contents($w);
-			$widgets[] = array(
-				'id'		=> basename($w),
-				'rname'		=> widget_get_element('RNAME', $content),
-				'name'		=> widget_get_element('NAME', $content),
-				'path'		=> widget_get_element('PATH', $content),
-				'note'		=> widget_get_element('NOTE', $content),
-				'version'	=> widget_get_element('VERSION', $content),
-				'active'	=> (widget_get_element('ACTIVE', $content) != 'YES')?false:true
-			);
-		}
-		
-		// ads
-		$ads = MyActiveRecord::FindAllMD('banners', 'id, language, title', "language = '" . $this->current_language . "'", 'title asc');
-		
-		// forms
-		$forms = MyActiveRecord::FindAllMD('formsdefinitions', 'id, language, title', "language = '" . $this->current_language . "'", 'title asc');
-		
-		for ($i=1;$i<=9;$i++) {
-			$code[] = "<div id='placeholder_" . $i . "' class='placeholder' >";
-			//$code[] = "<div id='placeholder_" . $i . "' class='placeholder'>";
-			$code[] = "<h4>#" . $i . "</h4>";
-			$code[] = "<select name='placeholder_" . $i . "_type' id='placeholder_" . $i . "_type' class='placeholder_selector' \">";
-			$code[] = "<option value='empty'>" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_NOTHING') . "</option>";
-			$code[] = "<optgroup label='" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_MAIN') . "'>";
-			$content_available = array( 1, 2, 3, 4, 5);
-			foreach($content_available as $content) {
-				$code[] = "<option value='content-{$content}'>" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_MAIN_TEXT') . " {$content}</option>";
-			}
-			$code[] = "</optgroup>";
-			
-			if (count($blocks) > 0) {
-				$code[] = "<optgroup label='" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_BLOCKS') . "'>";
-				foreach($blocks as $record) {
-					$code[] = "<option value='block-" . $record->id . "'>" . $record->title . "</option>";
-				}
-				$code[] = "</optgroup>";
-			}
-			if (count($ads) > 0) {
-				$code[] = "<optgroup label='" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_BANNERS') . "'>";
-				foreach($ads as $record) {
-					$code[] = "<option value='ad-" . $record->id . "'>" . $record->title . "</option>";
-				}
-				$code[] = "</optgroup>";
-			}
-			if (count($forms) > 0) {
-				$code[] = "<optgroup label='" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_FORMS') . "'>";
-				foreach($forms as $record) {
-					$code[] = "<option value='form-" . $record->id . "'>" . $record->title . "</option>";
-				}
-				$code[] = "</optgroup>";
-			}
-			if (count($widgets) > 0) {
-				$code[] = "<optgroup label='" . WSDTranslations::getLabel('CONTENT_PLACEHOLDER_WIDGETS') . "'>";
-				foreach($widgets as $record) {
-					if ($record['active']) {
-						$code[] = "<option value='widget-" . $record['id'] . "' title=\"" . $record['note'] . ' (' . $record['version'] . ')' .  "\">" . $record['rname'] . "</option>";
-					}
-				}
-				$code[] = "</optgroup>";
-			}
-			$code[] = "</select>&nbsp;&rang;&nbsp;";
-			$code[] = "<span id='placeholder_" . $i . "_div'>&nbsp</span>";
-			$code[] = "</div>";
-		}
-		
-		$code[] = "<script>";
-		$code[] = "var phlist = [];";
-		$counter = 0;
-		foreach($layouts as $layout) {
-			$placeholders = array();
-			foreach($layout['placeholders'] as $key => $value) {
-				$placeholders[] = $key;
-			}
-			$code[] = "phlist[\"" . $layout['id'] . "\"] = [ " . implode(',' , $placeholders) . " ];";
-		}
-		$code[] = "var phoptions = [];";
-		for($i=1; $i<= 9; $i++) {
-			$index = "placeholder_" . $i;
-			$code[] = "phoptions[\"placeholder_" . $i . "_type\"] = '" . $current_page->$index . "';";
-		}
-//		$code[] = "var phvalues = [];";
-//		for($i=1; $i<= 9; $i++) {
-//			$index = "placeholder_" . $i . "_value";
-//			$code[] = "phvalues[\"placeholder_" . $i . "_type\"] = '" . $current_page->$index . "';";
-//		}
-		$code[] = "var phparams = [];";
-		for($i=1; $i<= 9; $i++) {
-			$index = "placeholder_" . $i . "_param";
-			$code[] = "phparams[\"placeholder_" . $i . "_param\"] = '" . $current_page->$index . "';";
-		}
-
-		$code[] = "function create_empty(el, name) { el.html('Vide.'); };";
-		$code[] = "function create_content(el, name) { el.html('Texte principal.'); };";
-		$code[] = "function create_widget(el, name) { el.html(\"Widget. Param&egrave;tre: <input type='text' id='\" + name + \"_param' name='\" + name + \"_param' /><span class='widgets-lister-detail'>&nbsp;</span>\");}";
-		$code[] = "function create_block(el, name) { el.html('Bloc de texte.'); };";
-		$code[] = "function create_ad(el, name) { el.html('Banni&egrave;re.'); };";
-//		$code[] = "function create_form(el, id) { val = $('#placeholder_' + id + '_type').val(); val=val.split('-'); value=val[1]; el.html('Formulaire. <a href=\'/admin/fr/forms/'+value+'\'>Modifier</a>'); };";
-		$code[] = "function create_form(el, id) { el.html('Formulaire.'); };";
-
-
-		$code[] = "</script>";
-		
-		if ($id) {
-			return implode("\n", $code);
-		}
-		else {
-			echo implode("\n", $code);
-		}
-	}
 
 	function getmenubuttons() {
 		$code = '';

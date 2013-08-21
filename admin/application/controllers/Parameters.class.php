@@ -3,7 +3,7 @@
 WSLoader::load_base('log');
 
 WSLoader::load_helper('system');
-WSLoader::load_helper('forms-advanced');
+WSLoader::load_helper('forms-advanced-uikit');
 
 class Parameters extends WSController {
 
