@@ -62,7 +62,8 @@ class Files extends WSController {
 		natcasesort($glob);
 		$files = array();
 		$wdir = '';
-		
+		$counter = 0;
+
 		foreach ($glob as $file) {
 			$bs = basename($file);
 			if (
@@ -103,7 +104,9 @@ class Files extends WSController {
 				$nodelete = false;
 				if ($dir == 'public/') $nodelete = true;
 				if ($ft != 'wscomment') {
+					$counter++;
 					$files[] = array(
+					'id' => $counter,
 					'name' => ($ft=='dir')?basename($file).'/':basename($file),
 					'wdir' => $dir,
 					'size' => $size,
@@ -183,9 +186,12 @@ class Files extends WSController {
 		$smarty_contents->assign('upload_max_filesize', ini_get('upload_max_filesize'));
 		$smarty_contents->assign('ZIP_SUPPORTED', class_exists('ZipArchive'));
 
+		$dir_size = 0;
+		$dcount = 0;
+		$fcount = 0;
 		if (filetype($name) != 'file') {
 			$size = get_dir_size($name);
-			$info = 'Total: ' . formatbytes($size['size']);
+			$dir_size = formatbytes($size['size']);
 			$fcount = 0;
 			$dcount = 0;
 			foreach ($glob as $file) {
@@ -199,21 +205,16 @@ class Files extends WSController {
 					}
 				}
 			}
-			if ($dcount != 0) {
-				$info = $info . " en $dcount répertoires";
-				if ($fcount != 0) {	$info .= " et $fcount fichiers."; }
-			}
-			else {
-				if ($fcount != 0) {	$info .= " en $fcount fichiers."; }
-			}
-			$smarty_contents->assign('directory_info', $info);
 		}
+		$smarty_contents->assign('dir_size', $dir_size);
+		$smarty_contents->assign('file_count', $fcount);
+		$smarty_contents->assign('dir_count', $dcount);
 
 		$app_config = new WSConfig;
 		$app_config->load(WS_ADMINISTERED_APPLICATION_FOLDER . '/config/');
 
 		if ( ($app_config->get('deployment') != 'local') && sprintf("%o",fileperms($name)) != '40777') {
-			$smarty_contents->assign('RIGHTS_WARNING', "Attention, vous n'avez pas le droit d'&eacute;crire dans ce r&eacute;pertoire. Vous ne pourrez donc pas y mettre de fichiers ou encore les modifier. Consultez votre h&eacute;bergeur pour r&eacute;soudre ce probl&egrave;me.");
+			$smarty_contents->assign('RIGHTS_WARNING', true);
 		}
 
 		return $smarty_contents->fetch( 'files-index-' . $this->language . '.tpl' );

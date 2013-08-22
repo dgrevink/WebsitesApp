@@ -140,21 +140,98 @@ body, h1, h2, h3, h4, h5, h6,
 
 
 
+/* @group Tables */
 
-/* @group Stats */
-/*
-.pages-stats                            { float: left; margin: 2em; font-size: 12px; border: 2px solid #6ad; padding: 0 0px 10px 0px; -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px; }
-.pages-stats h2                         { font-size: 14px; font-weight: bold; background-color: #6ad; padding: 5px 10px 10px 5px; color: black; }
-.pages-stats h3                         { font-weight: normal; padding: 10px 10px 5px 10px; }
-.pages-stats ul                         { padding: 00px 20px 10px 20px }
-.pages-stats b                          { display: inline-block; width: 200px; }
-.pages-stats ul li b                    { font-weight: normal }
-.pages-stats h3 b                       { width: 210px }
-.pages-stats em                         { display: inline-block; width: 40px; text-align: right; }
-.pages-stats a                          { color: black }
-*/
+table#table-main thead th {
+	border-bottom: 1px solid #ccc;
+}
+table#table-main.display tr.odd td {
+	background-color: #fbfbfb;
+}
+table#table-main.display tr.even td {
+	background-color: white;
+}
+
+
+table#table-main                        { border-collapse: collapse }
+table#table-main tr:hover td            { background-color: #222 !important; color: white; }
+table#table-main tr td a          		{ color: #288ae7 !important }
+table#table-main tr:hover td a          { color: white !important }
+table#table-main tr:hover div.row-controls
+                                        { display: block }
+table#table-main tr td div.row-controls { display: none; position: absolute; right: 0px; padding: 2px 10px 10px 10px; background-color: #222; width: 150px; z-index: 100; }
+table#table-main { position: relative; }
+table#table-main tr td div.row-controls ul
+                                        { padding: 0; margin: 0; }
+table#table-main tr td div.row-controls ul li
+                                        { margin: 3px 0 3px 0; background: none; padding: 0; }
+table#table-main tr td div.row-controls a
+                                        { color: #ccc !important; text-decoration: none; padding: 8px;}
+table#table-main tr td div.row-controls a:hover
+                                        { color: #fff !important; }
+
+table#table-main tr th   { position: relative; }
+table#table-main tr th a { position: absolute; border: 1px solid white; display: none; }
+table#table-main tr th:hover a { display: inline; }
+table#table-main tr th:hover a:hover { border: 1px solid orange; }
+
+
+
+
+.dataTables_paginate {
+	font-size: 10px;
+	font-weight: bold;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	border-top: 1px solid #eee !important;
+	}
+
+.dataTables_paginate.right {
+	float: right;
+	text-align: right;
+	padding-top: 1px;
+	border: 0;
+	width: 500px;
+	overflow: hidden;
+	}
+
+.dataTables_paginate .paginate_button {
+	border: 1px solid #ccc !important;
+	-webkit-border-radius: 3px  !important;
+	-moz-border-radius: 3px !important;
+	border-radius: 3px !important;
+	padding: 3px 6px !important;
+	margin: 0 1px !important;
+	}
+
+.dataTables_paginate span.paginate_active {
+	background: #39a3e6 !important;
+	border: 1px solid #0082d5 !important;
+	color: #fff !important;
+	}
+
+.dataTables_paginate .paginate_button:hover {
+	color: #fff !important;
+	background: #ec8526 !important;
+	border: 1px solid #d77011 !important;
+	}
+
+
+img.table-thumb {
+}
+.table-thumb-holder {
+	background: white url(../images/ajax-loader.gif) center center no-repeat;
+}
 
 /* @end */
+
+
+
+
+
+
+
+
 
 /* @group Contents */
 
@@ -241,95 +318,6 @@ ul.widget-list li .clear                { clear: both; height: 0; overflow: none
 
 
 
-
-/* @group Tables */
-
-table#table-main thead th {
-	border-bottom: 1px solid #ccc;
-}
-table#table-main.display tr.odd td {
-	background-color: #fbfbfb;
-}
-table#table-main.display tr.even td {
-	background-color: white;
-}
-
-
-table#table-main                        { border-collapse: collapse }
-table#table-main tr:hover td            { background-color: #222 !important; color: white; }
-table#table-main tr td a          		{ color: #288ae7 !important }
-table#table-main tr:hover td a          { color: white !important }
-table#table-main tr:hover div.row-controls
-                                        { display: block }
-table#table-main tr td div.row-controls { display: none; position: absolute; right: 0px; padding: 2px 10px 10px 10px; background-color: #222; width: 100px; z-index: 100; border: 1px solid #222; -webkit-border-bottom-right-radius: 5px; -webkit-border-bottom-left-radius: 5px; -moz-border-radius-bottomright: 5px; -moz-border-radius-bottomleft: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; }
-table#table-main { position: relative; }
-table#table-main tr td div.row-controls ul
-                                        { padding: 0; margin: 0; }
-table#table-main tr td div.row-controls ul li
-                                        { margin: 3px 0 3px 0; background: none; padding: 0; border-radius: 0 !important; }
-table#table-main tr td div.row-controls a
-                                        { color: #ccc !important; text-decoration: none; }
-table#table-main tr td div.row-controls a:hover
-                                        { color: #fff !important; }
-
-table#table-main tr th   { position: relative; }
-table#table-main tr th a { position: absolute; border: 1px solid white; display: none; }
-table#table-main tr th:hover a { display: inline; }
-table#table-main tr th:hover a:hover { border: 1px solid orange; }
-
-
-
-
-.dataTables_paginate {
-	font-size: 10px;
-	font-weight: bold;
-	padding-bottom: 15px;
-	padding-top: 15px;
-	border-top: 1px solid #eee !important;
-	}
-
-.dataTables_paginate.right {
-	float: right;
-	text-align: right;
-	padding-top: 1px;
-	border: 0;
-	width: 500px;
-	overflow: hidden;
-	}
-
-.dataTables_paginate .paginate_button {
-	border: 1px solid #ccc !important;
-	-webkit-border-radius: 3px  !important;
-	-moz-border-radius: 3px !important;
-	border-radius: 3px !important;
-	padding: 3px 6px !important;
-	margin: 0 1px !important;
-	}
-
-.dataTables_paginate span.paginate_active {
-	background: #39a3e6 !important;
-	border: 1px solid #0082d5 !important;
-	color: #fff !important;
-	}
-
-.dataTables_paginate .paginate_button:hover {
-	color: #fff !important;
-	background: #ec8526 !important;
-	border: 1px solid #d77011 !important;
-	}
-
-
-img.table-thumb {
-	border: 1px solid #ccc;
-	padding: 1px;
-	vertical-align: middle;
-	background-color: white;
-}
-.table-thumb-holder {
-	background: white url(../images/ajax-loader.gif) center center no-repeat;
-}
-
-/* @end */
 
 
 /* @group Newsletters

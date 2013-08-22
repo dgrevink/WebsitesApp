@@ -1,5 +1,7 @@
+l = new Translations(sCurrentLanguage);
+
 	function renameFile( dir, file ) {
-		$('#dialog-text').html("<p>Entrez le nouveau nom:</p><input id='ws-input-text-data' type='text' value='" + file + "'/>");
+		$('#dialog-text').html("<p>" + l.get('FILES_RENAME_NEWNAME') + "</p><input id='ws-input-text-data' type='text' value='" + file + "'/>");
 		$("#dialog-text").dialog({
 			resizable: false,
 			width: 440,
@@ -38,7 +40,7 @@
 	}
 	
 	function createFile( dir ) {
-		nfile = prompt('Entrez le nom de votre fichier:');
+		nfile = prompt(l.get('FILES_FILE_CREATE'));
 		if (nfile != null) {
 			$.ajax({
 				type: "POST",
@@ -55,7 +57,7 @@
 	}
 	
 	function createDir( dir ) {
-		$('#dialog-text').html("<p>Entrez le nom de votre répertoire:</p><input id='ws-input-text-data' type='text' value='Nouveau repertoire'/>");
+		$('#dialog-text').html("<p>" + l.get('FILES_DIR_CREATE') + "</p><input id='ws-input-text-data' type='text'/>");
 		$("#dialog-text").dialog({
 			resizable: false,
 			width: 440,
@@ -94,7 +96,7 @@
 	}
 	
 	function removeCommentDir( dir ) {
-		$('#dialog-text').html("Vraiment enlever ce commentaire ?");
+		$('#dialog-text').html(l.get('FILES_COMMENT_DELETE'));
 		$("#dialog-text").dialog({
 			resizable: false,
 			width: 440,
@@ -126,7 +128,7 @@
 			url: "/admin/files/getcommentdir/",
 			data: "dir=" + dir,
 			success: function(msg){
-				$('#dialog-text').html("<p>Commentaire:</p><input id='ws-input-text-data' type='text' value='" + msg + "'/>");
+				$('#dialog-text').html("<p>" + l.get('FILES_COMMENT_NEW') + "</p><input id='ws-input-text-data' type='text' value='" + msg + "'/>");
 				$("#dialog-text").dialog({
 					resizable: false,
 					width: 440,
@@ -172,7 +174,7 @@ function commentFile( dir ) {
 		url: "/admin/files/getcommentfile/",
 		data: "dir=" + dir,
 		success: function(msg){
-			$('#dialog-text').html("<p>Commentaire:</p><input id='ws-input-text-data' type='text' value='" + msg + "'/>");
+			$('#dialog-text').html("<p>" + l.get('FILES_COMMENT_NEW') + "</p><input id='ws-input-text-data' type='text' value='" + msg + "'/>");
 			$("#dialog-text").dialog({
 				resizable: false,
 				width: 440,
@@ -212,7 +214,7 @@ function commentFile( dir ) {
 
 	
 	function normFile( dir, file, key ) {
-		$('#dialog-text').html("Ceci va normaliser le nom de cet &eacute;l&eacute;ment. Attention !!! Si cet &eacute;l&eacute;ment est utilis&eacute; dans vos pages, il faudra veiller &agrave; y changer la r&eacute;f&eacute;rence. &Ecirc;tes-vous certain ?");
+		$('#dialog-text').html(l.get('FILES_NORMALIZE_ITEM'));
 		$("#dialog-text").dialog({
 			resizable: false,
 			width: 440,
@@ -254,7 +256,7 @@ function commentFile( dir ) {
 	}
 	
 	function delFile( dir, file ) {
-		$('#dialog-text').html("Ceci va effacer cet element. Attention, il ne sera pas possible d'annuler cette operation. &Ecirc;tes-vous certain ?");
+		$('#dialog-text').html(l.get('FILES_DELETE_ITEM'));
 		$("#dialog-text").dialog({
 			resizable: false,
 			width: 440,
@@ -282,7 +284,7 @@ function commentFile( dir ) {
 	}
 
 	function normDir( dir ) {
-		$('#dialog-text').html("Ceci va normaliser les noms de tous les fichier de ce repertoire. Si les fichiers sont utilises dans vos pages, il faudra veiller a y changer leurs references. Etes-vous certain ?");
+		$('#dialog-text').html(l.get('FILES_NORMALIZE_DIR'));
 		$("#dialog-text").dialog({
 			resizable: false,
 			width: 440,
@@ -323,18 +325,18 @@ $(document).ready(function(){
 				"bInfo": true,
 				"bJQueryUI": false,
 				"oLanguage": {
-					"sProcessing": "Chargement...",
-					"sLengthMenu": "Afficher _MENU_ fichiers par page",
-					"sZeroRecords": "Aucune donn&eacute;es.",
-					"sInfo": "Donn&eacute;es _START_ &agrave; _END_ affich&eacute;es sur _TOTAL_ enregistements. | <label><input type='checkbox' id='file-toggle-all' /> Tout sélectionner </label><span id='file-action-controls' style='display:none;'> | <select id='file-action'><option value='nothing'>Choisissez une action...</option><option value='move'>Déplacer...</option><option value='delete'>Effacer...</option></select></span>",
-					"sInfoEmpty": "Pas de donn&eacute;es.",
-					"sInfoFiltered": "(Pour un total de _MAX_ enregistrements)",
+					"sProcessing": l.get('FILES_TABLE_LOAD'),
+					"sLengthMenu": l.get('FILES_TABLE_LENGTH_MENU'),
+					"sZeroRecords": l.get('FILES_TABLE_ZERO_RECORDS'),
+					"sInfo": l.get('FILES_TABLE_INFO'), // careful a little HTML code in translations.js
+					"sInfoEmpty": l.get('FILES_TABLE_NO_DATA'),
+					"sInfoFiltered": l.get('FILES_TABLE_INFO_FILTERED'),
 					"sSearch": "",
 					"oPaginate": {
-						"sFirst":    "Premier",
-						"sPrevious": "Pr&eacute;c&eacute;dent",
-						"sNext":     "Suivant",
-						"sLast":     "Dernier"
+						"sFirst":    l.get('FILES_TABLE_FIRST'),
+						"sPrevious": l.get('FILES_TABLE_PREVIOUS'),
+						"sNext":     l.get('FILES_TABLE_NEXT'),
+						"sLast":     l.get('FILES_TABLE_LAST')
 					}
 				}
 			} );
@@ -365,7 +367,7 @@ $(document).ready(function(){
 			$('#file-action').change(function(){
 				action = $(this).val();
 				if (action == 'delete') {
-					$('#dialog-text').html("Ceci va effacer tous ces elements. Attention, il ne sera pas possible d'annuler cette operation. &Ecirc;tes-vous certain ?");
+					$('#dialog-text').html(l.get('FILES_DELETE_ITEMS'));
 					$("#dialog-text").dialog({
 						resizable: false,
 						width: 440,
@@ -405,7 +407,7 @@ $(document).ready(function(){
 							dirselect = dirselect + "<option value='" + dirs[i] + "'>" + dirs[i] + "</option>";
 						}
 						dirselect = "<br/>&nbsp;<select id='destination-dir'>" + dirselect + "</select><br/>";
-						$('#dialog-text').html("Sélectionnez un répertoire de destination: " + dirselect + "<br/>Attention !<br/>Ceci va deplacer tous ces elements et cela risque d'écraser des fichiers existants en destination. Il ne sera pas possible d'annuler cette operation. &Ecirc;tes-vous certain ?");
+						$('#dialog-text').html(l.get('FILES_MOVE_ITEMS_PART1') + dirselect + l.get('FILES_MOVE_ITEMS_PART2'));
 						$("#dialog-text").dialog({
 							resizable: false,
 							width: 440,

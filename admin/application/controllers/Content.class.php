@@ -100,7 +100,6 @@ class Content extends WSController {
 			$smarty_contents->assign('menu_code', $this->getmenu());
 			if ($this->_check_rights(WSR_CONTENTS_ADD)) { $smarty_contents->assign('WSR_CONTENTS_ADD', true); }
 			if ($this->_check_rights(WSR_CONTENTS_ORDER)) { $smarty_contents->assign('WSR_CONTENTS_ORDER', true); }
-			}
 			$smarty_contents->assign('page_total', MyActiveRecord::Count('contents', "language = '" . $this->current_language . "'"));
 		}
 		else {
