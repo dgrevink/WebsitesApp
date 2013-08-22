@@ -4,7 +4,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-	<meta http-equiv="refresh" content="{$timeout_sessions}; url=/admin/site/logout/fr/timeout/">
+	<meta http-equiv="refresh" content="{$timeout_sessions}; url=/admin/site/logout/en/timeout/">
 	<meta name="author" content="{$author}" />
 	<meta name="version" content="{$version} {$release}" />
 	<meta name="author" content="{$author}" />
@@ -42,6 +42,7 @@
 
 
 	<link rel="stylesheet" href="{$html_app}/lib/css/websitesapp.css" type="text/css">
+	<script type="text/javascript" src="{$html_app}/lib/js/translations.js"></script>
 	<script type="text/javascript" src="{$html_app}/lib/js/site.js"></script>
 
 	<script>

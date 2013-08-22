@@ -19,7 +19,6 @@
 <script type="text/javascript" src="/lib/js/jquery/fancybox/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <link rel="stylesheet" type="text/css" href="/lib/js/jquery/fancybox/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 
-<script type="text/javascript" src="/admin/application/lib/js/translations.js"></script>
 <script type="text/javascript" src="/admin/application/lib/js/files_dir.js"></script>
 
 <div class='uk-article'>

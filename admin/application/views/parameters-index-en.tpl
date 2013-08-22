@@ -1,15 +1,20 @@
+<script>
+	var sCurrentLanguage = 'en';
+	l = new Translations(sCurrentLanguage);
+</script>
+
 <div class='uk-article'>
-	<h2 class='uk-article-title'>Paramètres</h2>
+	<h2 class='uk-article-title'>Parameters</h2>
 
 		<span class='uk-float-right'>
-			<a href='#' onclick="jQuerySubmit('#params_base'); return false;" class='uk-button uk-button-primary'>Sauvegarder</a>
+			<a href='#' onclick="jQuerySubmit('#params_base'); return false;" class='uk-button uk-button-primary'>Save</a>
 		</span>
 		
 		<ul class="uk-tab" data-uk-tab="{literal}{connect:'#tabs'}{/literal}">
-			<li class='uk-active'><a href="#params-tab">Paramètres</a></li>
+			<li class='uk-active'><a href="#params-tab">Parameters</a></li>
 			<li><a href="#widgets-tab"><span>Widgets</span></a></li>
-			<li><a href="#tools-tab"><span>Outils</span></a></li>
-			<li><a href="#tools-advanced-tab"><span>Outils avanc&eacute;s</span></a></li>
+			<li><a href="#tools-tab"><span>Tools</span></a></li>
+			<li><a href="#tools-advanced-tab"><span>Advanced</span></a></li>
 			<li><a href="#logs-tab"><span>Logs</span></a></li>
 		</ul>
 	
@@ -17,23 +22,23 @@
 	<ul id="tabs" class="uk-switcher uk-margin">
 		<li>
 			<form name='params_base' id='params_base' class='uk-form uk-form-horizontal' action='/admin/parameters/save_site/' method='post'>
-				<h3>Information de contact</h3>
+				<h3>Contact information</h3>
 				{$company}
 				{$author}
 				{$contactmail}
 	
-				<h3>Version du site</h3>
+				<h3>Site versions</h3>
 				{$version}
 				{$release}
 	
 				<h3>SEO</h3>
 				{$uacct}
 	
-				<h3>Langues du Site</h3>
+				<h3>Site languages</h3>
 				{$default_language}
 				{$languages}
 				
-				<h3>Contenu</h3>
+				<h3>Content</h3>
 				{$maintenance}
 				{$maintenance_text}
 				{$menu_name_1}
@@ -42,7 +47,7 @@
 				{$menu_name_4}
 				{$template_page_id}
 	
-				<h3>Headers META</h3>
+				<h3>META</h3>
 				{$headers}
 				
 				<h3>Recaptcha</h3>
@@ -58,7 +63,7 @@
 				{$caching}
 				{$cache_lifetime}
 	
-				<h3>S&eacute;curit&eacute;</h3>
+				<h3>Security</h3>
 				{$security}
 				{$security_session}
 				{$security_table}
@@ -75,7 +80,7 @@
 			</form>
 		</li>
 		<li>
-				<div class='uk-alert uk-alert-danger' >Attention ! Si vous &ecirc;tes programmeur, cet &eacute;cran va modifier les fichier source de vos widgets pour les activer/d&eacute;sactiver. Veillez &agrave; bien tout sauvegarder avant d'activer un widget !</div><br/>
+				<div class='uk-alert uk-alert-danger' >Careful ! This tool will modify the widget source files in order to activate/deactivate them. Please make sure you saved everything before activating/deactivating !</div><br/>
 
 				{section name=widgets loop=$widget_list}
 					<div class='uk-grid'>
@@ -106,7 +111,7 @@
 					});
 				});
 				$('a.init-widget').click(function(){
-					if (confirm("Cette opération ne peut pas être annulée. Toutes les données associées à ce widget vont être détruites. Voulez-vous continuer ?"))  {
+					if (confirm(l.get('PARAMETERS_INIT_WIDGET')))  {
 						$.ajax({
 							url: '/admin/Parameters/init_widget/',
 							context: document.body,
@@ -120,7 +125,7 @@
 					return false;
 				});
 				$('a.clean-widget').click(function(){
-					if (confirm("Cette opération ne peut pas être annulée. Toutes les données associées à ce widget vont être détruites. Voulez-vous continuer ?")) {
+					if (confirm(l.get('PARAMETERS_CLEAN_WIDGET'))) {
 						$.ajax({
 							url: '/admin/Parameters/init_widget/',
 							context: document.body,
@@ -137,31 +142,31 @@
 			</script>
 	</li>
 	<li>
-		<a class='uk-button uk-button-success' href='javascript:tools_erasecache();'>Effacer Cache</a>
-		<a class='uk-button' href='javascript:tools_erasestats();'>Effacer Statistiques</a>
-		<a class='uk-button' href='javascript:tools_erasehistory();'>Effacer Historique</a>
+		<a class='uk-button uk-button-success' href='javascript:tools_erasecache();'>Delete Cache</a>
+		<a class='uk-button' href='javascript:tools_erasestats();'>Delete Stats</a>
+		<a class='uk-button' href='javascript:tools_erasehistory();'>Delete History</a>
 		<a class='uk-button uk-button-danger' href='javascript:tools_phpminiadmin();'>Database Manager</a>
 		<a class='uk-button uk-button-success' href='javascript:tools_phpinfo();'>PHPINFO</a>
 			
 		<iframe id='tools-display' style='width: 100%; height: 600px; margin-top: 10px;'>
-				Upgradez votre navigateur.
+				Upgrade your browser.
 		</iframe>
 	</li>
 	<li>
 		<!--<a class='uk-button' href='javascript:tools_dumpdatabase();'>Database Dump</a>-->
-		<a class='uk-button uk-button-danger' href='javascript:tools_statify();'>Statifier le site</a>
-		<a class='uk-button uk-button-danger' href='javascript:tools_cleanstatify();'>D&eacute;statifier le site</a>
+		<a class='uk-button uk-button-danger' href='javascript:tools_statify();'>Statify site</a>
+		<a class='uk-button uk-button-danger' href='javascript:tools_cleanstatify();'>Destatify site</a>
 		<a class='uk-button uk-button-danger' href='javascript:tools_import_db();'>Database Import</a>
-		<a class='uk-button uk-button-danger' href='javascript:tools_duplicatecontent_fr_en();'>Dupliquer contenu</a>
-		<a class='uk-button uk-button-danger' href='javascript:tools_duplicatetabledata();'>Dupliquer table</a>
+		<a class='uk-button uk-button-danger' href='javascript:tools_duplicatecontent_fr_en();'>Content duplication</a>
+		<a class='uk-button uk-button-danger' href='javascript:tools_duplicatetabledata();'>Duplicate table</a>
 		<a class='uk-button uk-button-danger' href='javascript:tools_resetsite();'>Reset Site (DANGER)</a>
 			
 		<iframe id='tools-display2' style='width: 100%; height: 600px; margin-top: 10px;'>
-				Upgradez votre navigateur.
+				Upgrade your browser.
 		</iframe>
 	</li>
 	<li>
-		<a class='uk-button' href='javascript:logs_admin();'>Admin - Securit&eacute;</a>
+		<a class='uk-button' href='javascript:logs_admin();'>Admin - Security</a>
 		<a class='uk-button' href='javascript:logs_site();'>Site - Debug Log</a>
 		<a class='uk-button' href='javascript:logs_database();'>Database - Debug Log</a>
 
@@ -189,25 +194,25 @@
 	}
 	
 	function tools_erasecache() {
-		if (confirm('Etes-vous certain ?')) {
+		if (confirm(l.get('PARAMETERS_CONFIRMATION_TOOLS'))) {
 			$('#tools-display').attr('src', '/admin/tools/erasecache/');
 		}
 	}
 	
 	function tools_erasehistory() {
-		if (confirm('Etes-vous certain ?')) {
+		if (confirm(l.get('PARAMETERS_CONFIRMATION_TOOLS'))) {
 			$('#tools-display').attr('src', '/admin/tools/erasehistory/');
 		}
 	}
 	
 	function tools_statify() {
-		if (confirm("Etes-vous certain ? Une statification va grandement accélérer votre site, mais les changements faits dans le CMS ne seront pris en compte qu'après une restatification, ou une déstatification. La statification va créer/écraser le fichier /index.html et créer une arborescence dans les répertoires de langues de votre site (/en/, /fr/, ...).")) {
+		if (confirm(l.get('PARAMETERS_CONFIRMATION_TOOLS_STATIFY'))) {
 			$('#tools-display2').attr('src', '/admin/tools/statify/');
 		}
 	}
 	
 	function tools_cleanstatify() {
-		if (confirm('Etes-vous certain ? Cette action va détruire TOUT ce qui se trouve dans les répertoires de langues de votre site !!! (/en/, /fr/, ...) ainsi que le fichier /index.html !!!!!!!')) {
+		if (confirm(l.get('PARAMETERS_CONFIRMATION_TOOLS_STATIFY_CLEAN'))) {
 			$('#tools-display2').attr('src', '/admin/tools/destatify/');
 		}
 	}
@@ -217,7 +222,7 @@
 	}
 
 	function tools_duplicatecontent_fr_en() {
-		if (confirm('Etes-vous certain ? Ceci va remplacer tous les menus EN par une copie de FR')) {
+		if (confirm(l.get('PARAMETERS_CONFIRMATION_DUPLICATECONTENT_FR_EN'))) {
 			$('#tools-display2').attr('src', '/admin/tools/duplicatecontent_fr_en/');
 		}
 	}
@@ -227,7 +232,7 @@
 	}
 
 	function tools_erasestats() {
-		if (confirm('Etes-vous certain ?')) {
+		if (confirm(l.get('PARAMETERS_CONFIRMATION_TOOLS'))) {
 			$('#tools-display').attr('src', '/admin/tools/erasestats/');
 		}
 	}
@@ -241,7 +246,7 @@
 	}
 
 	function tools_resetsite() {
-		if (confirm('Etes-vous diablement certain ?')) {
+		if (confirm(l.get('PARAMETERS_CONFIRMATION_TOOLS'))) {
 			if (confirm('Absolument ? Cela va TOUT detruire sur le site !')) {
 				$('#tools-display2').attr('src', '/admin/tools/resetsite/');
 			}

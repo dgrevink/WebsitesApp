@@ -26,7 +26,14 @@ function Translations(language) {
 			'FILES_TABLE_ZERO_RECORDS' : "No data.",
 			'FILES_TABLE_INFO' : "Showing _START_ to _END_ entries of _TOTAL_ entries. | <label><input type='checkbox' id='file-toggle-all' /> Select all </label><span id='file-action-controls' style='display:none;'> | <select id='file-action'><option value='nothing'>Choose an action...</option><option value='move'>Move...</option><option value='delete'>Delete...</option></select></span>",
 			'FILES_CANCEL' : "Cancel",
-			'FILES_OK' : "Cancel"
+			'FILES_OK' : "Cancel",
+			'PARAMETERS_INIT_WIDGET' : "This operation cannot be undone. All data associated with this widget will be destroyed. Are you sure ?",
+			'PARAMETERS_CLEAN_WIDGET' : "This operation cannot be undone. The widget will be cleaned. Are you sure ?",
+			'PARAMETERS_CONFIRMATION_TOOLS' : 'Are you sure ?',
+			'PARAMETERS_CONFIRMATION_TOOLS_STATIFY' : "Etes-vous certain ? Une statification va grandement accélérer votre site, mais les changements faits dans le CMS ne seront pris en compte qu'après une restatification, ou une déstatification. La statification va créer/écraser le fichier /index.html et créer une arborescence dans les répertoires de langues de votre site (/en/, /fr/, ...).",
+			'PARAMETERS_CONFIRMATION_TOOLS_STATIFY_CLEAN' : 'Etes-vous certain ? Cette action va détruire TOUT ce qui se trouve dans les répertoires de langues de votre site !!! (/en/, /fr/, ...) ainsi que le fichier /index.html !!!!!!!',
+			'PARAMETERS_CONFIRMATION_DUPLICATECONTENT_FR_EN' : 'Etes-vous certain ? Ceci va remplacer tous les menus EN par une copie de FR',
+			'':''
 		}
 		,
 		'fr' : {
@@ -52,7 +59,14 @@ function Translations(language) {
 			'FILES_TABLE_NO_DATA' : "Pas de donn&eacute;es.",
 			'FILES_TABLE_INFO' : "Donn&eacute;es _START_ &agrave; _END_ affich&eacute;es sur _TOTAL_ enregistements. | <label><input type='checkbox' id='file-toggle-all' /> Tout sélectionner </label><span id='file-action-controls' style='display:none;'> | <select id='file-action'><option value='nothing'>Choisissez une action...</option><option value='move'>Déplacer...</option><option value='delete'>Effacer...</option></select></span>",
 			'FILES_CANCEL' : "Annuler",
-			'FILES_OK' : "Cancel"
+			'FILES_OK' : "Cancel",
+			'PARAMETERS_INIT_WIDGET' : "Cette opération ne peut pas être annulée. Toutes les données associées à ce widget vont être détruites. Voulez-vous continuer ?",
+			'PARAMETERS_CLEAN_WIDGET' : "Cette opération ne peut pas être annulée. Le widget sera nettoyé. Voulez-vous continuer ?",
+			'PARAMETERS_CONFIRMATION_TOOLS' : 'Etes-vous certain ?',
+			'PARAMETERS_CONFIRMATION_TOOLS_STATIFY' : "Etes-vous certain ? Une statification va grandement accélérer votre site, mais les changements faits dans le CMS ne seront pris en compte qu'après une restatification, ou une déstatification. La statification va créer/écraser le fichier /index.html et créer une arborescence dans les répertoires de langues de votre site (/en/, /fr/, ...).",
+			'PARAMETERS_CONFIRMATION_TOOLS_STATIFY_CLEAN' : 'Etes-vous certain ? Cette action va détruire TOUT ce qui se trouve dans les répertoires de langues de votre site !!! (/en/, /fr/, ...) ainsi que le fichier /index.html !!!!!!!',
+			'PARAMETERS_CONFIRMATION_DUPLICATECONTENT_FR_EN' : 'Etes-vous certain ? Ceci va remplacer tous les menus EN par une copie de FR',
+			'':''
 		}
 	}
 }

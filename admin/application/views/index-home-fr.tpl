@@ -42,6 +42,7 @@
 
 
 	<link rel="stylesheet" href="{$html_app}/lib/css/websitesapp.css" type="text/css">
+	<script type="text/javascript" src="{$html_app}/lib/js/translations.js"></script>
 	<script type="text/javascript" src="{$html_app}/lib/js/site.js"></script>
 
 	<script>

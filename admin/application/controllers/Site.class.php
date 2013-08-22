@@ -436,6 +436,20 @@ class Site extends WSController {
 		if ($reason == 'timeout') {
 			$this->auth_status = -1;
 		}
+
+		$language = end($this->params);
+		// if language is false, try to get system language
+		if (!$language) {
+			$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+			switch ($lang) {
+				case 'fr':
+					$this->language = 'fr';
+					break;
+				default:
+					$this->language = 'en';
+					break;
+			}
+		}
 		$app_config = new WSConfig;
 		$app_config->load(WS_ADMINISTERED_APPLICATION_FOLDER . '/config/');
 

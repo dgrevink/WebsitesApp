@@ -68,18 +68,18 @@
 				"bInfo": true,
 				"bJQueryUI": false,
 				"oLanguage": {
-					"sProcessing": "Chargement...",
-					"sLengthMenu": "Afficher _MENU_ enregistrements par page " + record_links,
-					"sZeroRecords": "Aucune donn&eacute;es.",
-					"sInfo": "Donn&eacute;es _START_ &agrave; _END_ affich&eacute;es sur _TOTAL_ enregistements.",
-					"sInfoEmpty": "Pas de donn&eacute;es.",
-					"sInfoFiltered": "(Pour un total de _MAX_ enregistrements)",
+					"sProcessing": "Loading...",
+					"sLengthMenu": "Display _MENU_ records per page " + record_links,
+					"sZeroRecords": "No records found.",
+					"sInfo": "Data _START_ to _END_ displayed on a total of _TOTAL_ records.",
+					"sInfoEmpty": "No data.",
+					"sInfoFiltered": "(For a total of _MAX_ records)",
 					"sSearch": "",
 					"oPaginate": {
-						"sFirst":    "Premier",
-						"sPrevious": "Pr&eacute;c&eacute;dent",
-						"sNext":     "Suivant",
-						"sLast":     "Dernier"
+						"sFirst":    "First",
+						"sPrevious": "Previous",
+						"sNext":     "Next",
+						"sLast":     "Last"
 					}
 				},
 				"bProcessing": true,
