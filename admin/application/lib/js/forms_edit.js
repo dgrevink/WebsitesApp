@@ -96,16 +96,15 @@ function saveForm() {
     	mailadmin:		fckMailAdmin,
     	contesterror:	fckContestError,
 
-    	emailsender:	$('#emailsender').attr('checked'),
-    	emailadmin:		$('#emailadmin').attr('checked'),
-    	userquestions:	$('#userquestions').attr('checked'),
-    	usecaptcha:		$('#usecaptcha').attr('checked'),
+    	emailsender:	$('#emailsender').prop('checked'),
+    	emailadmin:		$('#emailadmin').prop('checked'),
+    	userquestions:	$('#userquestions').prop('checked'),
+    	usecaptcha:		$('#usecaptcha').prop('checked'),
     	emailextra:		$('#emailextra').val(),
     	tabledefinitions_id:			$("select[name='tabledefinitions_id']").val(),
-    	locked:		$("#locked").attr('checked'),
+    	locked:		$("#locked").prop('checked'),
     	max_questions:	$("select[name='max_questions']").val()
     };
-
     
     totalquestions = $('#questions ul li').length;
     questions = new Array( totalquestions );

@@ -30,9 +30,10 @@ function Translations(language) {
 			'PARAMETERS_INIT_WIDGET' : "This operation cannot be undone. All data associated with this widget will be destroyed. Are you sure ?",
 			'PARAMETERS_CLEAN_WIDGET' : "This operation cannot be undone. The widget will be cleaned. Are you sure ?",
 			'PARAMETERS_CONFIRMATION_TOOLS' : 'Are you sure ?',
-			'PARAMETERS_CONFIRMATION_TOOLS_STATIFY' : "Etes-vous certain ? Une statification va grandement accélérer votre site, mais les changements faits dans le CMS ne seront pris en compte qu'après une restatification, ou une déstatification. La statification va créer/écraser le fichier /index.html et créer une arborescence dans les répertoires de langues de votre site (/en/, /fr/, ...).",
-			'PARAMETERS_CONFIRMATION_TOOLS_STATIFY_CLEAN' : 'Etes-vous certain ? Cette action va détruire TOUT ce qui se trouve dans les répertoires de langues de votre site !!! (/en/, /fr/, ...) ainsi que le fichier /index.html !!!!!!!',
-			'PARAMETERS_CONFIRMATION_DUPLICATECONTENT_FR_EN' : 'Etes-vous certain ? Ceci va remplacer tous les menus EN par une copie de FR',
+			'PARAMETERS_CONFIRMATION_TOOLS_STATIFY' : "Are you sure ? Statification will try to autogenerate all the pages in the site and create html files. This will greatly accelerate the website, but any changes made in the CMS will not be live, unless a subsequent statification is made. Statification will create the /index.html file and create subdirectories for each site language (/en/, /fr/, ...).",
+			'PARAMETERS_CONFIRMATION_TOOLS_STATIFY_CLEAN' : 'Are you sure ? This will create all the site language subdirectories (/en/, /fr/, ...) and /index.html !',
+			'PARAMETERS_CONFIRMATION_DUPLICATECONTENT_FR_EN' : 'Are you sure ? This will replace all the pages EN with a copy of FR',
+			'CONTENT_VERSION_CONFIRMATION' : "Do you really want to get to this version ?",
 			'':''
 		}
 		,
@@ -66,6 +67,7 @@ function Translations(language) {
 			'PARAMETERS_CONFIRMATION_TOOLS_STATIFY' : "Etes-vous certain ? Une statification va grandement accélérer votre site, mais les changements faits dans le CMS ne seront pris en compte qu'après une restatification, ou une déstatification. La statification va créer/écraser le fichier /index.html et créer une arborescence dans les répertoires de langues de votre site (/en/, /fr/, ...).",
 			'PARAMETERS_CONFIRMATION_TOOLS_STATIFY_CLEAN' : 'Etes-vous certain ? Cette action va détruire TOUT ce qui se trouve dans les répertoires de langues de votre site !!! (/en/, /fr/, ...) ainsi que le fichier /index.html !!!!!!!',
 			'PARAMETERS_CONFIRMATION_DUPLICATECONTENT_FR_EN' : 'Etes-vous certain ? Ceci va remplacer tous les menus EN par une copie de FR',
+			'CONTENT_VERSION_CONFIRMATION' : "Voulez-vous vraiment revenir a cette versions ?",
 			'':''
 		}
 	}

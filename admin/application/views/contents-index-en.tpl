@@ -1,3 +1,7 @@
+<script>
+	var sCurrentLanguage = 'en';
+</script>
+
 <!-- ============== BEGIN list ============== -->
 {if $listing_type == 'list'}
 
@@ -10,7 +14,6 @@
 	<h2 class='uk-article-title'>Pages</h2>
 	<div class='uk-alert'>This module is used to organise and edit your site pages.</div>
 	<div class='uk-float-right uk-margin-bottom'>
-
 		{if isset($WSR_CONTENTS_ADD)}
 			<a href='#' class='uk-button uk-button-primary disposable' onclick='javascript:addMenu(0); return false;'>Create...</a>
 		{/if}
@@ -157,7 +160,7 @@
 							</li>
 							{/foreach}
 						</ul>
-						<h3>Contenants</h3>
+						<h3>Placeholders</h3>
 
 						{for $i=1 to 9}
 							<div id='placeholder_{$i}' class='placeholder' >

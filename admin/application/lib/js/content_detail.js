@@ -1,5 +1,7 @@
+l = new Translations(sCurrentLanguage);
+
 function restorehistory( id ) {
-	$('#dialog-text').html("Voulez-vous vraiment revenir a cette version ?");
+	$('#dialog-text').html(l.get('CONTENT_VERSION_CONFIRMATION'));
 	$("#dialog-text").dialog({
 		resizable: false,
 		width: 440,
@@ -21,28 +23,16 @@ function restorehistory( id ) {
 function jQuerySubmit(id) {
     $.blockUI({ 
         theme:     false, 
-        message: '<h3 style="padding: 10px 20px;">Sauvegarde en cours, veuillez patienter SVP.</h3>'
+        message: "<h3 style='padding: 10px 20px;'>Sauvegarde en cours, veuillez patienter SVP.</h3>"
     });
 	el = $(id);
 
-	if ($('#fckeditor1')) {
-		$('#fckeditor1').val(CKEDITOR.instances.fckeditor1.getData());
-	}
-	if ($('#fckeditor2')) {
-		$('#fckeditor2').val(CKEDITOR.instances.fckeditor2.getData());
-	}
-	if ($('#fckeditor3')) {
-		$('#fckeditor3').val(CKEDITOR.instances.fckeditor3.getData());
-	}
-	if ($('#fckeditor4')) {
-		$('#fckeditor4').val(CKEDITOR.instances.fckeditor4.getData());
-	}
-	if ($('#fckeditor5')) {
-		$('#fckeditor5').val(CKEDITOR.instances.fckeditor5.getData());
-	}
-	if ($('#fckeditor_comment')) {
-		$('#fckeditor_comment').val(CKEDITOR.instances.fckeditor_comment.getData());
-	}
+	if ($('#fckeditor1')) { $('#fckeditor1').val(CKEDITOR.instances.fckeditor1.getData()); }
+	if ($('#fckeditor2')) { $('#fckeditor2').val(CKEDITOR.instances.fckeditor2.getData()); }
+	if ($('#fckeditor3')) { $('#fckeditor3').val(CKEDITOR.instances.fckeditor3.getData()); }
+	if ($('#fckeditor4')) { $('#fckeditor4').val(CKEDITOR.instances.fckeditor4.getData()); }
+	if ($('#fckeditor5')) { $('#fckeditor5').val(CKEDITOR.instances.fckeditor5.getData()); }
+	if ($('#fckeditor_comment')) { $('#fckeditor_comment').val(CKEDITOR.instances.fckeditor_comment.getData()); }
 	el.ajaxSubmit(function(data) {
 		$.unblockUI();
 		showNotify(data);

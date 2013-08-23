@@ -1,3 +1,7 @@
+<script>
+	var sCurrentLanguage = 'fr';
+</script>
+
 <!-- ============== BEGIN list ============== -->
 {if $listing_type == 'list'}
 
