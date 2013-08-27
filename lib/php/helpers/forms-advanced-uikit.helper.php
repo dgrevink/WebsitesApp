@@ -72,7 +72,7 @@ function generate_input_password( $name, $label, $description='Enter some text h
 	$element[] = "<div class='uk-form-row' id='{$name}_container'>";
 	$element[] = "<label class='uk-form-label' for='${name}_CONFIRM'>$confirmation_text</label>";
 	$element[] = "<div class='uk-form-controls'>";
-	$element[] = "<input type='password' name='$name' id='${name}_CONFIRM'  class='$class uk-form-width-large $error_class ws-password-confirmation' />";
+	$element[] = "<input type='password' name='$name' id='${name}_CONFIRM'  class='uk-form-width-large $error_class ws-password-confirmation' />";
 	$element[] = " <span class='uk-form-help-inline'><span class='password_strength'>&nbsp;</span>&nbsp;<span style='display: none;' class='ws-password-warning' id='${name}_warning'>$warning_text</span></span>";
 	$element[] = "</div>";
 
