@@ -1,5 +1,6 @@
 <?php
 
+// Slider example
 $slides = MyActiveRecord::FindAll('slider', "language = '{$this->language}'", 'porder asc');
 $code = '';
 foreach($slides as $slide) {
