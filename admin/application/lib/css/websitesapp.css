@@ -119,6 +119,39 @@ h6,
 .cke_skin_kama span {
   outline: none !important;
 }
+/* File Uploader */
+.uploadifive-queue {
+  font-size: 10px;
+}
+.uploadifive-queue .uploadifive-queue-item {
+  background-color: #F5F5F5;
+  border-bottom: 1px dotted #D5D5D5;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font: 12px Arial, Helvetica, Sans-serif;
+  margin-top: 3px;
+  padding: 15px;
+}
+.uploadifive-queue .uploadifive-queue-item .close {
+  background: url('uploadifive-cancel.png') 0 0 no-repeat;
+  display: block;
+  float: right;
+  height: 16px;
+  text-indent: -9999px;
+  width: 16px;
+}
+.uploadifive-queue .uploadifive-queue-item .progress {
+  border: 1px solid #D0D0D0;
+  height: 3px;
+  margin-top: 5px;
+  width: 100%;
+}
+.uploadifive-queue .uploadifive-queue-item .progress .progress-bar {
+  background-color: #0072BC;
+  height: 3px;
+  width: 0;
+}
 /* @group Media - Crop Tool
    ================================================== */
 #c-controls {
@@ -412,6 +445,22 @@ ul.widget-list li .clear {
 }
 /* @end
    ================================================== */
+/* Password change controls */
+.password_strength_1 {
+  color: #fcb6b1;
+}
+.password_strength_2 {
+  color: #fccab1;
+}
+.password_strength_3 {
+  color: #fcfbb1;
+}
+.password_strength_4 {
+  color: #dafcb1;
+}
+.password_strength_5 {
+  color: #bcfcb1;
+}
 /* @group Form Editor */
 #questions ul li {
   width: 100%;

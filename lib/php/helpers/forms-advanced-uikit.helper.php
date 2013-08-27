@@ -53,33 +53,29 @@ function generate_input_text( $name, $label, $default, $description='Enter some 
 function generate_input_password( $name, $label, $description='Enter some text here.', $error=false, $comment=false, $confirmation_text='Confirmation', $warning_text='Les mots de passe ne correspondent pas.' )
 {
 	$element = array();
+	$error_class = '';
+	if ($error) $error_class = 'uk-form-danger';
 
 	// Open	
-	$element[] = "<span class='websites-forms-input-text' id='{$name}_container'>";
+	$element[] = "<div class='uk-form-row' id='{$name}_container'>";
 
 	// Label
-	$element[] = "<span class='label' id='{$name}_label'>";
-	$element[] = "<label for='$name'>$label </label><br/>";
-	$element[] = "</span>";
+	$element[] = "<label class='uk-form-label' for='$name'>$label</label>";
 
-	// Error
-	if ($error) {
-		$element .= "<span class='form-error'>$error<span class='pointer'>&nbsp;</span></span>";
-	}
-	
 	// Control
-	$element[] = "<span class='control'>";
-	$element[] = "<input type='password' name='$name' id='$name' class='ws-password-original'/>";
-	$element[] = "$confirmation_text : ";
-	$element[] = "<input type='password' name='$name' id='${name}_CONFIRM'  class='ws-password-confirmation' /><span class='hint'>$description<span class='hint-pointer'>&nbsp;</span></span>";
-	$element[] = "<br/><span class='password_strength'>&nbsp;</span><span style='display: none;' class='ws-password-warning' id='${name}_warning'>$warning_text</span>";
-	$element[] = "</span>";
+	$label = strip_tags($label);
+	$element[] = "<div class='uk-form-controls'>";
+	$element[] = "<input type='password' name='$name' id='$name' class='uk-form-width-large $error_class ws-password-original'/>";
+	$element[] = " <span class='uk-form-help-inline'>$comment" . ($error?$error:'') . "</span>";
+	$element[] = "</div>";
+	$element[] = "</div>";
+	$element[] = "<div class='uk-form-row' id='{$name}_container'>";
+	$element[] = "<label class='uk-form-label' for='${name}_CONFIRM'>$confirmation_text</label>";
+	$element[] = "<div class='uk-form-controls'>";
+	$element[] = "<input type='password' name='$name' id='${name}_CONFIRM'  class='$class uk-form-width-large $error_class ws-password-confirmation' />";
+	$element[] = " <span class='uk-form-help-inline'><span class='password_strength'>&nbsp;</span>&nbsp;<span style='display: none;' class='ws-password-warning' id='${name}_warning'>$warning_text</span></span>";
+	$element[] = "</div>";
 
-	// Comment
-	if ($comment) {
-		$element[] = "<span class='comment'><p>$comment</p></span>";
-	}
-	
 	// Validation code
 	// if both fields are empty, do nothing
 	// if something is in both AND equal, show save button
@@ -95,12 +91,20 @@ function generate_input_password( $name, $label, $description='Enter some text h
 				$('a.button').show();
 				$('#ws-profile-submit').show();
 				$('#' +id + '_warning').hide();
+				$('#' + id).removeClass('uk-form-danger');
+				$('#' + id + '_CONFIRM').removeClass('uk-form-danger');
+				$('#' + id).addClass('uk-form-success');
+				$('#' + id + '_CONFIRM').addClass('uk-form-success');
 			}
 			else {
 				$('a.websites-button').hide();
 				$('a.button').hide();
 				$('#ws-profile-submit').hide();
 				$('#' +id + '_warning').show();
+				$('#' + id).addClass('uk-form-danger');
+				$('#' + id + '_CONFIRM').addClass('uk-form-danger');
+				$('#' + id).removeClass('uk-form-success');
+				$('#' + id + '_CONFIRM').removeClass('uk-form-success');
 			}
 	}
 	$('#" . $name . "').keyup(function(){check_pass('" . $name . "');});
@@ -111,7 +115,7 @@ function generate_input_password( $name, $label, $description='Enter some text h
 	";
 	
 	// Close
-	$element[] = "</span>";
+	$element[] = "</div>";
 		
 	return implode('', $element);
 }

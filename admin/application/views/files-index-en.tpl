@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="/lib/js/jquery/datatables/css/demo_page.css" type="text/css">
 <link rel="stylesheet" href="/lib/js/jquery/datatables/css/demo_table.css" type="text/css">
 
-<link rel="stylesheet" type="text/css" href="/lib/js/jquery/uploadifive/uploadifive.css">
 <script src="/lib/js/jquery/uploadifive/jquery.uploadifive.js" type="text/javascript"></script>
 	
 
@@ -44,7 +43,7 @@
 	<div class='uk-float-right uk-margin-bottom uk-hidden-small'>
 			{if isset($WSR_FILES_NORMALIZE)}<a href='#' class='uk-button' onclick="normDir( '{$wdir}' ); return false;">Normalize file names...</a>{/if}
 			{if isset($WSR_FILES_CREATE_DIR)}<a href='#'  class='uk-button' onclick="createDir( '{$wdir}' ); return false;">Create a directory...</a>{/if}
-			{if isset($WSR_FILES_UPLOAD)}<a href='#'  class='uk-button uk-button-primary' onclick="">Add...</a>{/if}
+			{if isset($WSR_FILES_UPLOAD)}<input id="file_upload" type="file" name="file_upload" />{/if}
 	</div>
 
 		<div id='tables'>
@@ -116,7 +115,6 @@
 			<br/>
 			<br/>
 			<br/>
-			<input id="file_upload" type="file" name="file_upload" />
 			<br/>
 			<br/>
 			<br/>
@@ -138,7 +136,7 @@
 				else {
 					$("#file_upload").uploadifive({
 						'buttonText': 'Upload...',
-						'width': '200',
+						'buttonClass' : 'uk-button uk-button-primary',
 						'uploadScript': '/admin/Files/send/',
 						'multi':true,
 						'auto':true,

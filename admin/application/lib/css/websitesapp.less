@@ -127,6 +127,46 @@ body, h1, h2, h3, h4, h5, h6,
 
 
 
+/* File Uploader */
+
+.uploadifive-queue {
+	font-size: 10px;
+	.uploadifive-queue-item {
+		background-color: #F5F5F5;
+		border-bottom: 1px dotted #D5D5D5;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		font: 12px Arial, Helvetica, Sans-serif;
+		margin-top: 3px;
+		padding: 15px;
+		.close {
+			background: url('uploadifive-cancel.png') 0 0 no-repeat;
+			display: block;
+			float: right;
+			height: 16px;
+			text-indent: -9999px;
+			width: 16px;
+		}
+		div {
+			.filename {}
+			.fileinfo {}
+		}
+		.progress {
+			border: 1px solid #D0D0D0;
+			height: 3px;
+			margin-top: 5px;
+			width: 100%;
+			.progress-bar {
+				background-color: #0072BC;
+				height: 3px;
+				width: 0;
+			}
+		}
+
+	}
+}
+
 
 /* @group Media - Crop Tool
    ================================================== */
@@ -331,6 +371,12 @@ ul.widget-list li .clear                { clear: both; height: 0; overflow: none
    
 
 
+/* Password change controls */
+.password_strength_1 { color: #fcb6b1; }
+.password_strength_2 { color: #fccab1; }
+.password_strength_3 { color: #fcfbb1; }
+.password_strength_4 { color: #dafcb1; }
+.password_strength_5 { color: #bcfcb1; }
 
 
 
