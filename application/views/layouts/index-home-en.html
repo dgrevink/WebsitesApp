@@ -1,6 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
 <head>
+	<meta charset="UTF-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="description" content="{$ws_description}" />
 	<meta name="keywords" content="{$ws_keywords}" />
@@ -13,54 +15,73 @@
 
 	{$ws_headers}
 
-	<link rel="stylesheet" type="text/css" href="../../../lib/css/websites.css" />
-	<link rel="stylesheet" type="text/css" href="../../../lib/js/jquery/fancybox/fancybox/jquery.fancybox-1.3.4.css" />
 	<link rel="stylesheet" type="text/css" href="stylesheets/css/main.css" media="all"/>
 	<link rel="stylesheet" type="text/css" href="stylesheets/css/mobile.css" media="screen"  />
-	<link rel="stylesheet" type="text/css" href="stylesheets/css/slides.css" media="screen"  />
-	<link rel="stylesheet" type="text/css" href="stylesheets/css/print.css" media="print"/>
-
 	<script type="text/javascript" src="js/site-ck.js"></script>
+
 </head>
-<body id="{$ws_cpath}" class="{$ws_cparent}">
-	<div id="header-wrapper">
-		<div id="header">
-			<h1 id="logo"><a href="/en/"><span>{$ws_company}</span></a></h1>
-			<div id='top-menu'>
-				{foreach name=topmenu item=item from=$ws_menu_2}
-					<span><a href="{$item.path}/" class="{$item.state}" title="{$item.label}">{$item.slabel}</a></span>{if !$smarty.foreach.topmenu.last} &nbsp;|&nbsp; {/if}
-				{/foreach}
+<body>
+	<div id="header">
+		<div>
+			<div class="logo">
+				<a href="index.html">Zero Type</a>
 			</div>
-			<div id='main-menu'>
+			<ul id="navigation">
 				{foreach name=mainmenu item=item from=$ws_menu_1}
-					<span><a href="{$item.path}/" class="{$item.state}" title="{$item.label}">{$item.label}<div class='dot dot-{$item.id}'></div></a></span>{if !$smarty.foreach.mainmenu.last}&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;{/if}
+					<li class="{$item.state}"><a href="{$item.path}/" title="{$item.label}">{$item.label}</a></li>
 				{/foreach}
+			</ul>
+		</div>
+	</div>
+	<div id="adbox">
+		<div class="clearfix">
+			<img src="images/box.png" alt="Img" height="342" width="368">
+			<div>
+				<h1>Ideas?</h1>
+				<h2>That's what we live for.</h2>
+				<p>
+					Wix is an online website builder with a simple drag & drop interface, meaning you do the work online and instantly publish to the web. <span><a href="index.html" class="btn">Try It Now!</a><b>Don’t worry it’s for free</b></span>
+				</p>
 			</div>
 		</div>
-	</div><!-- #header-wrapper -->
-
-	<div id="content-wrapper">
-		<div id='content'>
-			<div class='inner'>
-				<ul id='slider'>
-					{$slider}
-				</ul>
-				<div class='col col-1'>{$placeholder_1}</div>
-				<div class='col col-2'>{$placeholder_2}</div>
-				<div class='col col-3'>{$placeholder_3}</div>
-				<div class='clear'>&nbsp;</div>
+	</div>
+	<div id="contents">
+		<div id="tagline" class="clearfix">
+			<h1>Design With Simplicity.</h1>
+			<div>
+				<p>
+					You can replace all this text with your own text. Want an easier solution for a Free Website?
+				</p>
+				<p>
+					Head straight to Wix and immediately start customizing your website!
+				</p>
+				<p>
+					Wix is an online website builder with a simple drag & drop interface, meaning you do the work online and instantly publish to the web.
+				</p>
 			</div>
-		</div><!-- #content -->
-		<div class='clear'>&nbsp;</div>
-	</div><!-- #content-wrapper -->
-
-	<div id='footer-wrapper'>
-		<div class='footer'>
-			<div class='footer-left'>{$placeholder_4}</div>
-			<div class='footer-right'>{$placeholder_5}</div>
-			<div class='clear'>&nbsp;</div>
+			<div>
+				<p>
+					You can replace all this text with your own text. Want an easier solution for a Free Website?
+				</p>
+				<p>
+					Head straight to Wix and immediately start customizing your website!
+				</p>
+				<p>
+					Wix is an online website builder with a simple drag & drop interface, meaning you do the work online and instantly publish to the web.
+				</p>
+			</div>
 		</div>
-	</div><!-- /footer-wrapper -->
+	</div>
+	<div id="footer">
+		<div class="clearfix">
+			<div id="connect">
+				<a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a><a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a><a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a><a href="http://www.freewebsitetemplates.com/misc/contact/" target="_blank" class="tumbler"></a>
+			</div>
+			<p>
+				© 2023 Zerotype. All Rights Reserved.
+			</p>
+		</div>
+	</div>
 	{$ws_beta}
 	{$ws_analytics}
 </body>
