@@ -57,7 +57,6 @@
 	{/if}
 	record_links = '';
 {literal}
-	sCurrentLanguage = '{/literal}{$current_language}{literal}';
 	$(document).ready(function(){
 
 			oTableMain = $('#table-main').dataTable( {

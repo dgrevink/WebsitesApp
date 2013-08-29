@@ -47,6 +47,9 @@
 
 	<script>
 		var site_menus = {$site_menus};
+		var sUserLanguage = '{$user_language}';
+		var sCurrentLanguage = '{$current_language}';
+		var l = new Translations(sUserLanguage);
 	</script>
 
 </head>

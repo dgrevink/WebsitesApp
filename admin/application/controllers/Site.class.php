@@ -82,8 +82,10 @@ class Site extends WSController {
 			default:
 		}
 
+		// Language handling: current edited language ( = current_language ) and current user language ( user_language )
 		// Get the current language
 		$this->current_language = (!isset($this->params[0]))?$this->app_config->get('default_language'):$this->params[0];
+		$this->template->assign('current_language', $this->current_language);
 
 		# Set available languages	
 		$languages = array();
@@ -100,8 +102,8 @@ class Site extends WSController {
 		// Set the session timeout
 		$this->template->assign('timeout_sessions', $this->config->get('timeout_sessions', 'system'));
 
-
-
+		// Set the current user language fot UI
+		$this->template->assign('user_language', $user->language);
 
 		# Menu - Fill in menu
 		$menu = array();

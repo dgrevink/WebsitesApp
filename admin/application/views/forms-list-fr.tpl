@@ -56,7 +56,6 @@
 
 <script>
 {literal}
-var sCurrentLanguage = 'fr';
 
 $(document).ready(function(){
 

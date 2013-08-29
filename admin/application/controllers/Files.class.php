@@ -37,11 +37,6 @@ class Files extends WSController {
 			return false;
 		}
 		
-//		$thumb_size = "16x16";
-//		if (isset($_COOKIE['websites-thumb-size'])) {
-//			$thumb_size = $_COOKIE['websites-thumb-size'];
-//		}
-		
 		$dir = 'public/';
 		if (count($this->params) > 2) {
 			$dir .= implode('/', array_slice($this->params, 2, count($this->params) -1 )) . '/';
@@ -50,14 +45,6 @@ class Files extends WSController {
 		$smarty_contents->assign('current_page_title', $this->_dir_to_url($dir));
 		$smarty_contents->assign('current_short_page_title', $dir);
 		
-//		$smarty_contents->assign('thumb_size', $thumb_size);
-//		list($thumb_size_width, $thumb_size_height) = explode('x', $thumb_size);
-//		$smarty_contents->assign('thumb_width', $thumb_size_width);
-//		$smarty_contents->assign('thumb_height', $thumb_size_height);
-//		$smarty_contents->assign('thumb_width', 128);
-//		$smarty_contents->assign('thumb_height', 64);
-		
-
 		$glob = glob(WS_ROOT . $dir . '{,.}*', GLOB_BRACE);
 		natcasesort($glob);
 		$files = array();
@@ -138,7 +125,7 @@ class Files extends WSController {
 		
 		$name = WS_ROOT . 'public/' . implode('/', array_slice($this->params, 2, count($this->params) -1 ));
 		
-		$listing_type = 'dir';
+		$current_template = 'index';
 		if (file_exists($name)) {
 			if (filetype($name) == 'file') {
 				$ext = file_extension(WS_ROOT . 'public/' . implode('/', array_slice($this->params, 2, count($this->params) -1 )));
@@ -147,17 +134,39 @@ class Files extends WSController {
 					case 'gif':
 					case 'png':
 					case 'bmp':
-						$listing_type = 'image';
+						$current_template = 'image';
 						list($width, $height, $type, $attr) = getimagesize($name);
 						$smarty_contents->assign('fileinfo', $width . 'x' . $height . ' ');
 						break;
 					case 'pdf':
 					case 'flv':
 					case 'fla':
-						$listing_type = 'media';
+						$current_template = 'media';
 						break;
 					default:
-						$listing_type = 'file';
+						$current_template = 'file';
+						switch($ext) {
+							case 'php':
+								$smarty_contents->assign('mode', 'php');
+							break;
+							case 'css':
+								$smarty_contents->assign('mode', 'css');
+							break;
+							case 'js':
+								$smarty_contents->assign('mode', 'javascript');
+							break;
+							case 'html':
+							case 'htm':
+								$smarty_contents->assign('mode', 'html');
+							break;
+							case 'php':
+								$smarty_contents->assign('mode', 'php');
+							break;
+							default:
+								$smarty_contents->assign('mode', 'plain_text');
+							break;
+						}
+						$smarty_contents->assign('fileinfo', $this->_dir_to_url('public/' . implode('/', array_slice($this->params, 2, count($this->params) -1 ))) . '/' . basename($name));
 						$smarty_contents->assign('wfilecontent', file_get_contents($name));
 						break;
 				}
@@ -173,7 +182,6 @@ class Files extends WSController {
 		$smarty_contents->assign('files', $files);
 		$smarty_contents->assign('wdir', $dir);
 		$smarty_contents->assign('key', md5($this->auth->session['username']));
-		$smarty_contents->assign('listing_type', $listing_type);
 		$smarty_contents->assign('WSR_FILES_NORMALIZE', $this->_check_rights(WSR_FILES_NORMALIZE));
 		$smarty_contents->assign('WSR_FILES_CREATE_FILE', $this->_check_rights(WSR_FILES_CREATE_FILE));
 		$smarty_contents->assign('WSR_FILES_CREATE_DIR', $this->_check_rights(WSR_FILES_CREATE_DIR));
@@ -217,7 +225,7 @@ class Files extends WSController {
 			$smarty_contents->assign('RIGHTS_WARNING', true);
 		}
 
-		return $smarty_contents->fetch( 'files-index-' . $this->language . '.tpl' );
+		return $smarty_contents->fetch( "files-{$current_template}-{$this->language}.tpl" );
 	}
 	
 	function _dir_to_url($dir) {
@@ -758,11 +766,6 @@ class Files extends WSController {
 		$this->username = $username;
 		return $username;
 	}
-
-	
-//	function getextendthumb() {
-//		return $this->params;
-//	}
 
 	function zip() {
 		if (count($this->params) < 2) die();

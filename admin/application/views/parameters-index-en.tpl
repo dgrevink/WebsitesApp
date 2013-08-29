@@ -1,8 +1,3 @@
-<script>
-	var sCurrentLanguage = 'en';
-	l = new Translations(sCurrentLanguage);
-</script>
-
 <div class='uk-article'>
 	<h2 class='uk-article-title'>Parameters</h2>
 

@@ -1,6 +1,3 @@
-var sCurrentLanguage = 'fr';
-
-
 $(document).ready(function(){
 
 	$('#add-newsletter').click( addNews );

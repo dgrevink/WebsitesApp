@@ -79,6 +79,7 @@ class Content extends WSController {
 		global $userlanguage;
 
 		$smarty_contents = new Template;
+		$current_template = '';
 
 		$smarty_contents->assign('current_language', $this->current_language);
 
@@ -96,14 +97,14 @@ class Content extends WSController {
 		$this->languages = $languages;
 		
 		if (!isset($this->params[2]) || (!is_numeric($this->params[2]))) {
-			$smarty_contents->assign('listing_type', 'list');
+			$current_template = 'index';
 			$smarty_contents->assign('menu_code', $this->getmenu());
 			if ($this->_check_rights(WSR_CONTENTS_ADD)) { $smarty_contents->assign('WSR_CONTENTS_ADD', true); }
 			if ($this->_check_rights(WSR_CONTENTS_ORDER)) { $smarty_contents->assign('WSR_CONTENTS_ORDER', true); }
 			$smarty_contents->assign('page_total', MyActiveRecord::Count('contents', "language = '" . $this->current_language . "'"));
 		}
 		else {
-			$smarty_contents->assign('listing_type', 'detail');
+			$current_template = 'detail';
 			$id = $this->params[2];
 			$item = MyActiveRecord::FindById('contents', $id);
 			
@@ -219,7 +220,7 @@ class Content extends WSController {
 
 		}
 		
-		return $smarty_contents->fetch( 'contents-index-' . $this->language . '.tpl' );
+		return $smarty_contents->fetch( "contents-{$current_template}-{$this->language}.tpl" );
 	}
 	
 
