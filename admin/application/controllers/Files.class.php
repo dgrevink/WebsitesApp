@@ -3,7 +3,6 @@
 WSLoader::load_helper('file');
 WSLoader::load_helper('misc');
 WSLoader::load_base('log');
-
 WSLoader::load_support('phpthumb');
 WSLoader::load_support('phpthumb-filters');
 

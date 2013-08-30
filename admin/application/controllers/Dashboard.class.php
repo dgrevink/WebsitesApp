@@ -1,9 +1,5 @@
 <?php
 
-# Home Module
-# Loads and displays the accueil-index-[language].html file from the views directory.
-#
-
 WSLoader::load_dictionary('languages');
 WSLoader::load_helper('misc');
 
