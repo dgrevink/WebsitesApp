@@ -59,7 +59,7 @@
 	<div class="ws-navbar uk-navbar uk-navbar-attached uk-grid">
 		<div class='uk-width-large-2-10 uk-width-medium-1-6 uk-width-2-3'>
 			<a href="#tm-offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
-			<a href="/" target='_blank' class='uk-navbar-brand'>{$company}</a>
+			<a href="/" target='_blank' class='uk-navbar-brand'><img src='/admin/application/lib/images/logo.png' style='height: 50px;' />{$company}</a>
 		</div>
 		<div class='uk-width-large-8-10 uk-width-medium-5-6 uk-width-1-3' style='line-height: 40px; text-align: right;'>
 

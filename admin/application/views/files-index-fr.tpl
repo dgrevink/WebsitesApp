@@ -106,12 +106,6 @@
 		</div>
 			{if $WSR_FILES_UPLOAD}
 			<!--<div id='uploadify'>&nbsp;</div>&nbsp;-->
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
 			{literal}
 			<script language="javascript">
 				if ($.browser.msie) {
