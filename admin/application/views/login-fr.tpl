@@ -11,11 +11,9 @@
 
 	<title>{$company} - {$current_page_title}</title>
 
-    <style type="text/css" media="all">
-		@import url("{$html_app}/lib/css/uikit.min.css");
-		@import url("{$html_app}/lib/css/uikit.almost-flat.min.css");
-		@import url("{$html_app}/lib/css/websitesapp.css");
-    </style>
+	<link 	rel="stylesheet" 		href="/lib/css/uikit/css/uikit.almost-flat.min.css" type="text/css">
+	<script type="text/javascript"	src="/lib/css/uikit/js/uikit.min.js"></script>
+	<link rel="stylesheet" href="{$html_app}/lib/css/websitesapp.css" type="text/css">
 	
 	<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=7" /><![endif]-->
 	<!--[if lt IE 8]><style type="text/css" media="all">@import url("{$html_app}/lib/css/ie.css");</style><![endif]-->

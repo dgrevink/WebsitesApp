@@ -15,30 +15,30 @@
 	<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=7" /><![endif]-->
 	<!--[if lt IE 8]><style type="text/css" media="all">@import url("{$html_app}/lib/css/ie.css");</style><![endif]-->
 
-	<script type="text/javascript" src="/lib/js/jquery/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript"	src="/lib/js/jquery/jquery-1.8.2.min.js"></script>
 
-	<script type="text/javascript" src="/lib/js/jquery/jquery.form.js"></script>
+	<script type="text/javascript"	src="/lib/js/jquery/jquery.form.js"></script>
 
-	<script type="text/javascript" src="/lib/js/jquery/jquery.blockui.js"></script>
+	<script type="text/javascript"	src="/lib/js/jquery/jquery.blockui.js"></script>
 
-	<script type="text/javascript" src="/lib/js/jquery/ui/jquery-ui-1.8.1.min.js"></script>
-	<script type="text/javascript" src="/lib/js/jquery/ui/jquery-ui-i18n.js"></script>
-	<link rel="stylesheet" type="text/css" href="{$html_lib}/js/jquery/ui/css/aristo/jquery-ui-1.8.1.custom.css"/>
+	<script type="text/javascript"	src="/lib/js/jquery/ui/jquery-ui-1.8.1.min.js"></script>
+	<script type="text/javascript"	src="/lib/js/jquery/ui/jquery-ui-i18n.js"></script>
+	<link	rel="stylesheet"		type="text/css" href="{$html_lib}/js/jquery/ui/css/aristo/jquery-ui-1.8.1.custom.css"/>
 
-	<link rel="stylesheet" href="/lib/js/jquery/jgrowl/jquery.jgrowl.css" type="text/css">
-	<script type="text/javascript" src="/lib/js/jquery/jgrowl/jquery.jgrowl_minimized.js"></script>
+	<link	rel="stylesheet"		href="/lib/js/jquery/jgrowl/jquery.jgrowl.css" type="text/css">
+	<script type="text/javascript"	src="/lib/js/jquery/jgrowl/jquery.jgrowl_minimized.js"></script>
 
-	<script type="text/javascript" src="/lib/js/jquery/nestedsortable-1.2.1/jquery.ui.nestedSortable.js"></script>
+	<script type="text/javascript"	src="/lib/js/jquery/nestedsortable-1.2.1/jquery.ui.nestedSortable.js"></script>
 
-	<script type="text/javascript" src="/lib/js/jquery/chosen/chosen.jquery.js"></script>
-	<link rel="stylesheet"        href="/lib/js/jquery/chosen/chosen.css" type="text/css">
+	<script type="text/javascript"	src="/lib/js/jquery/chosen/chosen.jquery.js"></script>
+	<link	rel="stylesheet"       	href="/lib/js/jquery/chosen/chosen.css" type="text/css">
 
 
-	<script type="text/javascript" src="/lib/js/ckeditor/ckeditor.js"></script>
-	<script type="text/javascript" src="/lib/js/ckfinder/ckfinder.js"></script>
+	<script type="text/javascript"	src="/lib/js/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript"	src="/lib/js/ckfinder/ckfinder.js"></script>
 
-	<link rel="stylesheet" href="{$html_app}/lib/css/uikit.almost-flat.min.css" type="text/css">
-	<script type="text/javascript" src="{$html_app}/lib/js/uikit.min.js"></script>
+	<link 	rel="stylesheet" 		href="/lib/css/uikit/css/uikit.almost-flat.min.css" type="text/css">
+	<script type="text/javascript"	src="/lib/css/uikit/js/uikit.min.js"></script>
 
 
 	<link rel="stylesheet" href="{$html_app}/lib/css/websitesapp.css" type="text/css">
