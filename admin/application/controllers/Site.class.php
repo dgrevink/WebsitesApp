@@ -225,9 +225,13 @@ class Site extends WSController {
 								foreach ($menu as $kmi => $mi) {
 									if ($mi['name'] == $module->{'menu_' . $userlanguage}) {
 										$found = true;
+										$title = $module->title;
+										if ($this->language == 'en') {
+											$title = $module->title_en;
+										}
 										$menu[$kmi]['children'][] = array(
 											'path' => $this->config->get(DEPLOYMENT, 'config', 'html_root') . '/' . ($module->monolanguage=='1'?$module->default_language:$this->current_language) . '/tables/' . $module->name,
-											'name' => $module->title,
+											'name' => $title,
 											'state' => $state,
 											'system' => 0,
 											'system' => ($module->system == 1)
@@ -235,6 +239,11 @@ class Site extends WSController {
 									}
 								}
 								if (!$found) {
+									$title = $module->title;
+									if ($this->language == 'en') {
+										$title = $module->title_en;
+									}
+
 									$menu[] = array(
 										'path' => '#',
 										'name' => $module->{'menu_' . $userlanguage},
@@ -244,7 +253,7 @@ class Site extends WSController {
 										'children' => array(
 											array(
 												'path' => $this->config->get(DEPLOYMENT, 'config', 'html_root') . '/' . ($module->monolanguage=='1'?$module->default_language:$this->current_language) . '/tables/' . $module->name,
-												'name' => $module->title,
+												'name' => $title,
 												'state' => $state,
 												'system' => ($module->system == 1)
 											)

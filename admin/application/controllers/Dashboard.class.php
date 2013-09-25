@@ -89,7 +89,7 @@ class Home extends WSController {
 					$stats[$page->language]['pages_hits']+= $page->hits;
 					if ($counter <= 10) {
 						if ($hits != 0) {
-							$stats[$page->language]['graph'] .= "<li><a href='" . $page->fullpath . "' target='_blank'>" . shorten_text($page->title, 30) . "</a> <a href='/admin/" . $page->language . "/content/" . $page->id . "'><img src='/admin/application/lib/images/status/editing.png' /></a><span class='bar' style='width: " . round($page->hits / $hits * 100) . "px;'>&nbsp;</span></li>";
+							$stats[$page->language]['graph'] .= "<li><a href='" . $page->fullpath . "' target='_blank'>" . shorten_text($page->title, 30) . "</a> <a href='/admin/" . $page->language . "/content/" . $page->id . "'><i class='uk-icon-cog' style='padding:1px;'></i></a><span class='bar' style='width: " . round($page->hits / $hits * 100) . "px;'>&nbsp;</span></li>";
 							$counter++;
 						}
 					}
@@ -147,7 +147,12 @@ class Home extends WSController {
 						if ( ($t->monolanguage) && ($t->default_language != $language) ) continue;
 						$stats[$language]['tables'] .= "<li>";
 						$stats[$language]['tables'] .= "<a href='/admin/" . $language . "/tables/" . $t->name . "/'>";
-						$stats[$language]['tables'] .= $t->title;
+						if ($this->language == 'fr') {
+							$stats[$language]['tables'] .= $t->title;
+						}
+						else {
+							$stats[$language]['tables'] .= $t->title_en;
+						}
 						$stats[$language]['tables'] .= "</a>";
 						$stats[$language]['tables'] .= "<br/><span>" . nl2br($t->{'description_' . $userlanguage}) . "</span>";
 						$stats[$language]['tables'] .= "</li>";

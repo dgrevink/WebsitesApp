@@ -107,7 +107,7 @@ class Tables extends WSController {
 					
 					$edit_code = '';
 					if ($can_edit_structure) {
-						$edit_code = " <a href=\"../../tablefields/edit/" . $field->id . "\"><img src=\"/admin/application/lib/images/icons/icon-duplicate.gif\"/></a>";
+						$edit_code = " <a href=\"../../tablefields/edit/" . $field->id . "\"><i class='uk-icon-edit' style='padding: 1px;'></i></a>";
 					}
 
 					if (!$field->showedit) {
@@ -550,7 +550,7 @@ class Tables extends WSController {
 						$thead .= "<th width='" . $field->width . "'>";
 						$thead .= $field->name;
 						if ($this->_check_data_rights('tablefields', 'modify')) {
-							$thead .= " <a href='../tablefields/edit/" . $field->id . "'><img src='/admin/application/lib/images/icons/icon-duplicate.gif' /></a>";
+							$thead .= " &nbsp;<a href='../tablefields/edit/" . $field->id . "'><i class='uk-icon-edit'></i></a>";
 						}
 						$thead .= "</th>\n";
 						$tfoot .= "<th>" . $field->name . "</th>\n";
@@ -850,11 +850,10 @@ class Tables extends WSController {
 									if (!isset($this->params[1])) {
 										$controls .= "<div class='row-controls'>";
 										$controls .= "<ul>";
-										$controls .= "<li><a href='create/0'><img class='button-duplicate-record-item' title='Ajouter...' src='/admin/application/lib/images/icons/icon-plus.gif' /> Ajouter</a></li>";
-										$controls .= "<li><a href='edit/" . $record->id . "'><img class='button-duplicate-record-item' title='Modifier...' src='/admin/application/lib/images/icons/icon-norm.gif' /> Modifier</a></li>";
-										//$controls .= "<li><a href='#' onclick=\"createrecord('" .  $this->current_language . "', '" . $current_table->name . "', 'create', 0, '" .  $current_table->name . "'," . $record->id . ");\"><img title='Ajouter...' src='/admin/application/lib/images/icons/icon-plus.gif' /> Ajouter (Advanced)</a></li>";
-										$controls .= "<li><a href='#' onclick=\"duplicaterecord('" .  $current_table->name . "'," . $record->id . ");\"><img title='Dupliquer...' src='/admin/application/lib/images/icons/icon-duplicate.gif' /> Dupliquer</a></li>";
-										$controls .= "<li><a href='#' onclick=\"deleterecord('" .  $current_table->name . "'," . $record->id . ");\"><img title='Effacer...' src='/admin/application/lib/images/icons/icon-remove.gif' /> Effacer</a></li>";
+										$controls .= "<li><a href='create/0'><i class='uk-icon-plus'></i> Ajouter</a></li>";
+										$controls .= "<li><a href='edit/" . $record->id . "'><i class='uk-icon-edit'></i> Modifier</a></li>";
+										$controls .= "<li><a href='#' onclick=\"duplicaterecord('" .  $current_table->name . "'," . $record->id . ");\"><i class='uk-icon-copy'></i> Dupliquer</a></li>";
+										$controls .= "<li><a href='#' onclick=\"deleterecord('" .  $current_table->name . "'," . $record->id . ");\"><i class='uk-icon-eraser'></i> Effacer</a></li>";
 										$controls .= "</ul>";
 										$controls .= "</div>";
 									}
@@ -1052,7 +1051,7 @@ class Tables extends WSController {
 		$caller_table = $this->params[4];
 		$caller_id = $this->params[5];
 		
-		d($this->params);
+//		d($this->params);
 
 		$current_table = MyActiveRecord::FindFirst('tabledefinitions', "name like '" . $table . "'");
 		
@@ -1081,9 +1080,9 @@ class Tables extends WSController {
 				$can_edit_structure = ($this->_check_data_rights('tablefields', 'modify'));
 				foreach($table_fields as $field) {
 					$edit_code = '';
-					if ($can_edit_structure) {
-						$edit_code = " <a href=\"../../tablefields/edit/" . $field->id . "\"><img src=\"/admin/application/lib/images/icons/icon-duplicate.gif\" style='vertical-align: middle;'/></a>";
-					}
+					// if ($can_edit_structure) {
+					// 	$edit_code = " <a href=\"../../tablefields/edit/" . $field->id . "\"><img src=\"/admin/application/lib/images/icons/icon-duplicate.gif\" style='vertical-align: middle;'/>XXXXXX</a>";
+					// }
 
 					if (!$field->showedit) {
 						$field->type = WST_HIDDEN; // Overload type to hidden

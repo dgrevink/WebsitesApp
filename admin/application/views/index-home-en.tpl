@@ -73,9 +73,9 @@
 			</span>
 
 			<span class='uk-hidden-large uk-hidden-medium'>
-				<a href='/admin/fr/tables/users/edit/{$username_id}' class='uk-button'><i class='uk-icon-home'></i><span style='margin-left: -4px;'>&nbsp;</span></a>
+				<a href='/admin/fr/tables/users/edit/{$username_id}' class='uk-button'><i class='uk-icon-home' style='padding:1px;'></i></a>
 			</span>
-			<a href='/admin/site/logout/{$language}/' class='uk-button'><i class='uk-icon-off'></i><span style='margin-left: -4px;'>&nbsp;</span></a>&nbsp;
+			<a href='/admin/site/logout/{$language}/' class='uk-button'><i class='uk-icon-off' style='padding:1px;'></i></a>&nbsp;
 
 		</div>
 

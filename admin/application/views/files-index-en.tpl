@@ -21,8 +21,8 @@
 		<div class='uk-alert'>{if isset($comment)}{$comment}{/if}&nbsp;
 			<div class='uk-float-right uk-hidden-small'>
 				{if isset($WSR_FILES_COMMENT_DIR)}
-					<a href='#' title='Add comment...' class='uk-button uk-button-primary uk-button-mini' onclick="commentDir( '{$wdir}' ); return false;"><i class="uk-icon-comment"></i><span style="margin-left: -4px;">&nbsp;</span></a>
-					<a href='#' title='Remove comment...' class='uk-button uk-button-primary uk-button-mini' onclick="removeCommentDir( '{$wdir}' ); return false;"><i class="uk-icon-remove"></i><span style="margin-left: -4px;">&nbsp;</span></a>
+					<a href='#' title='Add comment...' class='uk-button uk-button-primary uk-button-mini' onclick="commentDir( '{$wdir}' ); return false;"><i class="uk-icon-comment" style='padding:1px;'></i></a>
+					<a href='#' title='Remove comment...' class='uk-button uk-button-primary uk-button-mini' onclick="removeCommentDir( '{$wdir}' ); return false;"><i class="uk-icon-remove" style='padding:1px;'></i></a>
 				{/if}
 			</div>
 		</div>
@@ -97,11 +97,11 @@
 			{if $files[files].type != 'dir'}<li><a title="Download..." href='/{$files[files].wdir}{$files[files].name}' target='_blank'><i class="uk-icon-cloud-download"></i> Download...</a></li>{/if}
 			{if $files[files].type == 'dir'}{if isset($ZIP_SUPPORTED)}<li><a title="T&eacute;l&eacute;charger un zip de ce r&eacute;pertoire..." href='/admin/Files/zip/{$files[files].wdir}{$files[files].name}'><i class="uk-icon-truck"></i>&nbsp; T&eacute;l&eacute;charger un ZIP...</a></li>{/if}{/if}
 		{/if}
-		{if $WSR_FILES_RENAME}<li><a title="Commenter..." href='#' onclick="commentFile( '{$files[files].wdir}' + '{$files[files].name}' ); return false;"><i class="uk-icon-comment"></i>&nbsp;Comment...</a></li>{/if}
-		{if $WSR_FILES_RENAME}<li><a title="Renommer..." href='#' onclick="renameFile( '{$files[files].wdir}', '{$files[files].name}' ); return false;"><i class="uk-icon-edit"></i>&nbsp; Rename...</a></li>{/if}
-		{if $WSR_FILES_NORMALIZE}<li><a title="Normaliser..." href='#' onclick="normFile( '{$files[files].wdir}', '{$files[files].name}', '{$key}' ); return false;"><i class="uk-icon-magic"></i>&nbsp; Normalize...</a></li>{/if}
-		{if $WSR_FILES_DUPLICATE}<li><a title="Dupliquer..." href='#' onclick="duplFile( '{$files[files].wdir}', '{$files[files].name}' ); return false;"><i class="uk-icon-copy"></i>&nbsp; Duplicate...</a></li>{/if}
-		{if $WSR_FILES_DELETE}<li><a title="Effacer..." href='#' onclick="delFile( '{$files[files].wdir}', '{$files[files].name}' ); return false;"><i class="uk-icon-eraser"></i>&nbsp; Delete...</a></li>{/if}
+		{if $WSR_FILES_RENAME}<li><a title="Comment..." href='#' onclick="commentFile( '{$files[files].wdir}' + '{$files[files].name}' ); return false;"><i class="uk-icon-comment"></i>&nbsp;Comment...</a></li>{/if}
+		{if $WSR_FILES_RENAME}<li><a title="Rename..." href='#' onclick="renameFile( '{$files[files].wdir}', '{$files[files].name}' ); return false;"><i class="uk-icon-edit"></i>&nbsp;Rename...</a></li>{/if}
+		{if $WSR_FILES_NORMALIZE}<li><a title="Normalize..." href='#' onclick="normFile( '{$files[files].wdir}', '{$files[files].name}', '{$key}' ); return false;"><i class="uk-icon-magic"></i>&nbsp;Normalize...</a></li>{/if}
+		{if $WSR_FILES_DUPLICATE}<li><a title="Duplicate..." href='#' onclick="duplFile( '{$files[files].wdir}', '{$files[files].name}' ); return false;"><i class="uk-icon-copy"></i>&nbsp;Duplicate...</a></li>{/if}
+		{if $WSR_FILES_DELETE}<li><a title="Erase..." href='#' onclick="delFile( '{$files[files].wdir}', '{$files[files].name}' ); return false;"><i class="uk-icon-eraser"></i>&nbsp;Delete...</a></li>{/if}
 							</ul>
 						</div>
 						</td>

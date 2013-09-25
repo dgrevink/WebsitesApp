@@ -25,7 +25,7 @@
 		<div class='uk-alert'>{$current_table_description}&nbsp;
 			{if $current_table_id}
 				<div class='uk-float-right  uk-hidden-small'>
-					<a class='uk-button uk-button-primary uk-button-mini' href='/admin/fr/tables/tabledefinitions/edit/{$current_table_id}' title='Commenter...' target='_blank'><i class="uk-icon-comment"></i><span style="margin-left: -4px;">&nbsp;</span></a>
+					<a class='uk-button uk-button-primary uk-button-mini' href='/admin/fr/tables/tabledefinitions/edit/{$current_table_id}' title='Commenter...' target='_blank'><i class="uk-icon-comment" style='padding:1px;'></i></a>
 				</div>
 			{/if}
 		</div>
