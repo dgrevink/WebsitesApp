@@ -16,7 +16,7 @@
 
 	<ul id="tabs" class="uk-switcher uk-margin">
 		<li>
-			<form name='params_base' id='params_base' class='uk-form uk-form-horizontal' action='/admin/parameters/save_site/' method='post'>
+			<form name='params_base' id='params_base' class='uk-form uk-form-horizontal' action="/admin/parameters/save_site/" method='post' enctype="multipart/form-data;charset=UTF-8">
 				<h3>Information de contact</h3>
 				{$company}
 				{$author}

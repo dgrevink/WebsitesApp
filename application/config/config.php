@@ -65,7 +65,7 @@ $config['menu_name_2'] = "Menu haut droit";
 $config['menu_name_3'] = "Inactif";
 $config['menu_name_4'] = "Inactif";
 
-$config['template_page_id_fr'] = '1';$config['template_page_id_en'] = '1';
+$config['template_page_id_fr'] = '1';$config['template_page_id_en'] = '2';
 
 /*
 *--------------------------------------------------------------------------
@@ -110,3 +110,4 @@ $config['production'] = array(
     'db_password' => "",
     'db_name' => ""
 );
+

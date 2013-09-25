@@ -85,3 +85,4 @@ $system['reasonable_languages'] = array('fr', 'en', 'es', 'zh', 'ja', 'ko');
 *
 */
 $system['dictionaries'] = array( 'Languages' ); 
+

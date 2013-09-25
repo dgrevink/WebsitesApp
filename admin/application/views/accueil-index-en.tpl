@@ -3,10 +3,10 @@
 	{foreach item=stat from=$stats key=lang}
 		<div class="uk-width-medium-1-2">
 		<div class=" uk-panel uk-panel-box">
-		{if $WSR_CONTENTS || $WSR_BLOCS || $WSR_FORMS || $WSR_NEWSLETTERS || $WSR_DATA || $admin}
+		{if isset($WSR_CONTENTS) || isset($WSR_BLOCS) || isset($WSR_FORMS) || isset($WSR_NEWSLETTERS) || isset($WSR_DATA) || isset($admin)}
 				<h3 class="uk-panel-title">{$stat.language}</h3>
 
-					{if $WSR_CONTENTS}
+					{if isset($WSR_CONTENTS)}
 					<p><b>Page totals</b></p>
 					<ul>
 						<li><b>Published: </b><em>{$stat.pages_total}</em></li>
@@ -17,17 +17,17 @@
 					<p><b>Popular pages</b></p>
 					{$stat.graph}
 					{/if}
-					{if $WSR_BLOCKS}
+					{if isset($WSR_BLOCKS)}
 					<p><b>Blocs: </b><em>{$stat.blocks}</em></p>
 					{/if}
-					{if $WSR_DATA}
+					{if isset($WSR_DATA)}
 					<p><br/><b>Data: </b></p>
 					{$stat.tables}
 					{/if}
-					{if $WSR_FORMS}
+					{if isset($WSR_FORMS)}
 					<p><b>Forms: </b><em>{$stat.forms}</em></p>
 					{/if}
-					{if $WSR_NEWSLETTERS}
+					{if isset($WSR_NEWSLETTERS)}
 					<p><b>Newsletters</b></p>
 					<ul>
 						<li><b>Total: </b><em>{$stat.news}</em></li>
@@ -41,7 +41,7 @@
 	{/foreach}
 
 
-	{if $admin}
+	{if isset($admin)}
 		<div class="uk-width-medium-1-1">
 			<div class='uk-panel uk-panel-box uk-panel-box-secondary'>
 			<h2> S&eacute;curit&eacute; </h2>	
