@@ -137,11 +137,12 @@
 			</script>
 	</li>
 	<li>
-		<a class='uk-button uk-button-success' href='javascript:tools_erasecache();'>Effacer Cache</a>
-		<a class='uk-button' href='javascript:tools_erasestats();'>Effacer Statistiques</a>
-		<a class='uk-button' href='javascript:tools_erasehistory();'>Effacer Historique</a>
-		<a class='uk-button uk-button-danger' href='javascript:tools_phpminiadmin();'>Database Manager</a>
-		<a class='uk-button uk-button-success' href='javascript:tools_phpinfo();'>PHPINFO</a>
+		<a class='uk-button uk-button-success uk-margin-bottom' href='javascript:tools_erasecache();'>Effacer Cache</a>
+		<a class='uk-button uk-margin-bottom' href='javascript:tools_erasestats();'>Effacer Statistiques</a>
+		<a class='uk-button uk-margin-bottom' href='javascript:tools_erasehistory();'>Effacer Historique</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_phpminiadmin();'>Database Manager</a>
+		<a class='uk-button uk-margin-bottom' href='javascript:tools_showresources();'>Utilisation</a>
+		<a class='uk-button uk-button-success uk-margin-bottom' href='javascript:tools_phpinfo();'>PHPINFO</a>
 			
 		<iframe id='tools-display' style='width: 100%; height: 600px; margin-top: 10px;'>
 				Upgradez votre navigateur.
@@ -149,12 +150,16 @@
 	</li>
 	<li>
 		<!--<a class='uk-button' href='javascript:tools_dumpdatabase();'>Database Dump</a>-->
-		<a class='uk-button uk-button-danger' href='javascript:tools_statify();'>Statifier le site</a>
-		<a class='uk-button uk-button-danger' href='javascript:tools_cleanstatify();'>D&eacute;statifier le site</a>
-		<a class='uk-button uk-button-danger' href='javascript:tools_import_db();'>Database Import</a>
-		<a class='uk-button uk-button-danger' href='javascript:tools_duplicatecontent_fr_en();'>Dupliquer contenu</a>
-		<a class='uk-button uk-button-danger' href='javascript:tools_duplicatetabledata();'>Dupliquer table</a>
-		<a class='uk-button uk-button-danger' href='javascript:tools_resetsite();'>Reset Site (DANGER)</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_statify();'>Statifier le site</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_cleanstatify();'>D&eacute;statifier le site</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_import_db();'>Table Import</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_importschema();'>Database Schema Import</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_exportschema();'>Database Schema Export</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_duplicatecontent();'>Dupliquer contenu</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_relinklanguages();'>Reconnection des langues</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_touchtable();'>Retoucher table</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_duplicatetabledata();'>Dupliquer table</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_resetsite();'>Reset Site (DANGER)</a>
 			
 		<iframe id='tools-display2' style='width: 100%; height: 600px; margin-top: 10px;'>
 				Upgradez votre navigateur.
@@ -216,15 +221,24 @@
 		$('#tools-display2').attr('src', '/admin/tools/erasesafeties/');
 	}
 
-	function tools_duplicatecontent_fr_en() {
-		if (confirm('Etes-vous certain ? Ceci va remplacer tous les menus EN par une copie de FR')) {
-			$('#tools-display2').attr('src', '/admin/tools/duplicatecontent_fr_en/');
-		}
+	function tools_duplicatecontent() {
+		$('#tools-display2').attr('src', '/admin/tools/duplicatecontent/');
 	}
 
 	function tools_duplicatetabledata() {
 		$('#tools-display2').attr('src', '/admin/tools/duplicatetabledata/');
 	}
+
+	function tools_touchtable() {
+		$('#tools-display2').attr('src', '/admin/tools/touchtable/');
+	}
+
+	function tools_relinklanguages() {
+		if (confirm(l.get('PARAMETERS_CONFIRMATION_TOOLS'))) {
+			$('#tools-display2').attr('src', '/admin/tools/relinklanguages/');
+		}
+	}
+
 
 	function tools_erasestats() {
 		if (confirm('Etes-vous certain ?')) {
@@ -252,8 +266,20 @@
 		$('#tools-display').attr('src', '/admin/phpminiadmin.php?vdssdv=websites');
 	}
 
+	function tools_showresources(){
+		$('#tools-display').attr('src', '/admin/tools/showresources');
+	}
+
 	function tools_import_db(){
 		$('#tools-display2').attr('src', '/admin/tools/import_table_definition/');
+	}
+
+	function tools_importschema(){
+		$('#tools-display2').attr('src', '/admin/tools/importschema/');
+	}
+
+	function tools_exportschema(){
+		$('#tools-display2').attr('src', '/admin/tools/exportschema/');
 	}
 
 	function logs_admin() {

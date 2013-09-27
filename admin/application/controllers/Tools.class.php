@@ -5,6 +5,7 @@ WSLoader::load_helper('forms-advanced');
 WSLoader::load_helper('misc');
 WSLoader::load_base('menu');
 WSLoader::load_dictionary('languages');
+WSLoader::load_helper('database');
 
 
 $DB = array();
@@ -625,6 +626,47 @@ class Tools extends WSController {
 		file_put_contents(WS_ADMINISTERED_APPLICATION_FOLDER . '/../backups/' . $filename, $content);
 	}
 	
+function touchtable() {
+		$echo = array();
+		
+		$echo[] = " Retouche de table ";
+		$echo[] = "==================";
+		$echo[] = "";
+		$echo[] = "";
+
+		
+		echo "<html><head><title>Touch table</title></head><body style='background-color: #111; padding: 10px; color: #ccc;'>";
+		echo "<pre>";
+		echo implode("\n", $echo);
+		echo '</pre>';
+		if (!isset($_POST['post'])) {
+			echo "<form method='post'>";
+			$defined = MyActiveRecord::FindAll('tabledefinitions', null, 'name asc');
+			echo "<select name='selected_table'>";
+
+			foreach ($defined as $item) {
+				echo "<option value='{$item->name}'>{$item->name}</option>";
+			}
+			echo "</select>";
+
+			echo "<input name='post' type='submit' value='OK'>";
+			echo "</form>";
+			die();
+		}
+		
+		
+		// Lets import the table into tabledefintions
+		$stable = $_POST['selected_table'];
+
+		d($stable);
+		require_once(WS_ADMINISTERED_APPLICATION_FOLDER . '/models/' . ucwords($stable) . '.class.php');
+		foreach(MyActiveRecord::FindAll($stable) as $record) {
+			$record->saveadvanced(true);
+		}
+		die();
+
+}
+
 	function import_table_definition() {
 		$echo = array();
 		
@@ -929,7 +971,7 @@ class Tools extends WSController {
 		if (!isset($_POST['post'])) {
 
 			
-			echo "<html><head><title>Exportation Tables</title><style>.ws-debug{padding:1em;font-size:9px;background:orange;color:black;}</style></head><body style='background-color: #111; padding: 10px; color: #ccc;'>";
+			echo "<html><head><title>Importation Tables</title><style>.ws-debug{padding:1em;font-size:9px;background:orange;color:black;}</style></head><body style='background-color: #111; padding: 10px; color: #ccc;'>";
 			echo "<pre>";
 			echo implode("\n", $echo);
 			echo "<form method='post' enctype='multipart/form-data'>";
@@ -942,7 +984,7 @@ class Tools extends WSController {
 			echo '</pre>';
 			die();
 		}
-		echo "<html><head><title>Exportation Tables</title><style>.ws-debug{padding:1em;font-size:9px;background:orange;color:black;}</style></head><body style='background-color: #111; padding: 10px; color: #ccc;'>";
+		echo "<html><head><title>Importation Tables</title><style>.ws-debug{padding:1em;font-size:9px;background:orange;color:black;}</style></head><body style='background-color: #111; padding: 10px; color: #ccc;'>";
 		echo "<pre>";
 
 		$definition = file_get_contents($_FILES['file']['tmp_name']);
@@ -1013,49 +1055,102 @@ class Tools extends WSController {
 	function phpinfo() {
 		phpinfo();
 	}
+
+	function showresources() {
+
+		$files_all = glob_recursive(WS_ADMINISTERED_APPLICATION_FOLDER . "../public/*.*");
+		$realbasedir = WS_ADMINISTERED_APPLICATION_FOLDER . '..';
+		foreach($files_all as &$file) {
+			$file = substr($file, strlen($realbasedir));
+		}
+		$files_used = array();
+		$files_unused = array();
+
+		// Process contents
+		foreach(MyActiveRecord::FindAll('contents') as $content) {
+			foreach($files_all as $file) {
+				if (strpos($content->content_1, $file) !== false){
+					$files_used[] = $file;
+					// d($file);
+					// d($content->content_1);
+					// die();
+				} 
+				if (strpos($content->content_2, $file) !== false){
+					$files_used[] = $file;
+				} 
+				if (strpos($content->content_3, $file) !== false){
+					$files_used[] = $file;
+				} 
+				if (strpos($content->content_4, $file) !== false){
+					$files_used[] = $file;
+				} 
+				if (strpos($content->content_5, $file) !== false){
+					$files_used[] = $file;
+				} 
+			}
+		} 
+
+		// Process all tables, look for any field of type text, longtext or varchar
+		foreach(MyActiveRecord::FindAll('tabledefinitions') as $tdef) {
+			if ($tdef->name == 'tabledefinitions') continue;
+			if ($tdef->name == 'tablefields') continue;
+			if ($tdef->name == 'groups') continue;
+			if ($tdef->name == 'filters') continue;
+			$sfields = array();
+			foreach($tdef->find_children('tablefields') as $tfield) {
+				switch($tfield->type) {
+					case WST_STRING:
+					case WST_IMAGE:
+					case WST_FILE:
+					case WST_TEXT:
+					case WST_HTML:
+					case WST_CODE:
+						$sfields[]= $tfield->title;
+					break;
+				}
+			}
+			foreach(MyActiveRecord::FindAll($tdef->name) as $record) {
+				foreach($sfields as $field) {
+					foreach($files_all as $file)
+					if (strpos($record->{$field}, $file) !== false) {
+						$files_used[] = $file;
+					}
+				}
+			}
+
+		}
+		$files_used = array_unique($files_used);
+		$files_unused = array_diff($files_all, $files_used);
+
+		$echo = array();
+		$echo[] = " Utilisation du repertoire /public/ ";
+		$echo[] = "====================================";
+		$echo[] = "";
+		$echo[] = "";
+
+		echo "<html><head><title>Importation Tables</title><style>.ws-debug{padding:1em;font-size:9px;background:orange;color:black;}</style></head><body style='background-color: #111; padding: 10px; color: #ccc;'>";
+		echo "<pre>";
+		echo implode("\n", $echo);
+		echo "Fichiers utilisés:\n";
+		echo "------------------\n";
+		echo implode("\n", $files_used);
+		echo "\n\n";
+		echo "Fichiers non utilisés:\n";
+		echo "----------------------\n";
+		echo implode("\n", $files_used);
+		echo '</pre>';
+
+
+
+	}
 	
 }
 
-/*
-define('WST_HIDDEN',			00); // Logical overloaded type (hideedit or hidelist)
 
-define('WST_INTEGER', 			10); // INTEGER
-define('WST_BOOLEAN',			11); // INTEGER 1 or 0
-define('WST_ORDER',				17); // List of 50 items to order things
-define('WST_FIELD_TYPE',		18); // This list
-define('WST_TABLE_LINK',		19); // INTEGER 'item_id' links to table item
-
-define('WST_STRING',			20); // VARCHAR(256)
-define('WST_PASSWORD',			21); // VARCHAR(256) Password
-define('WST_IMAGE',				22); // VARCHAR(256) File selector + Cropper
-define('WST_FILE',				23); // VARCHAR(256) File selector
-define('WST_EMAIL',				24); // VARCHAR(256) Valid Email
-define('WST_TIME',				25); // TIME Time Picker
-define('WST_LANGUAGE',			29); // VARCHAR(256) Language Selector
-
-define('WST_TEXT',				30); // TEXT Textarea
-define('WST_HTML',				31); // TEXT FCKedit
-define('WST_CODE',				32); // TEXT Code Editor
-define('WST_TABLE_RIGHTS',  	33); // TEXT php serialize() of a list of tables, presented as a list of tables to check.
-define('WST_MODULES_RIGHTS',	34); // TEXT php serialize() of a list of tables, presented as a list of tables to check.
-
-define('WST_FLOAT',				40); // FLOAT
-
-define('WST_DATE',				50); // DATE Date Selector
-*/
-
-
-function sqlexec($command) {
-	$echo = "$command...";
-	if (MyActiveRecord::Query($command)) {
-		$echo .= "OK";
+function glob_recursive($pattern, $flags = 0) {
+	$files = glob($pattern, $flags);
+	foreach (glob(dirname($pattern).'/*', GLOB_ONLYDIR|GLOB_NOSORT) as $dir) {
+		$files = array_merge($files, glob_recursive($dir.'/'.basename($pattern), $flags));
 	}
-	else {
-		$echo .= "FAILED";
-	}
-	return $echo;
+	return $files;
 }
-
-
-
-

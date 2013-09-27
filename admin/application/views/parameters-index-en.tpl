@@ -137,11 +137,12 @@
 			</script>
 	</li>
 	<li>
-		<a class='uk-button uk-button-success' href='javascript:tools_erasecache();'>Delete Cache</a>
-		<a class='uk-button' href='javascript:tools_erasestats();'>Delete Stats</a>
-		<a class='uk-button' href='javascript:tools_erasehistory();'>Delete History</a>
-		<a class='uk-button uk-button-danger' href='javascript:tools_phpminiadmin();'>Database Manager</a>
-		<a class='uk-button uk-button-success' href='javascript:tools_phpinfo();'>PHPINFO</a>
+		<a class='uk-button uk-button-success uk-margin-bottom' href='javascript:tools_erasecache();'>Delete Cache</a>
+		<a class='uk-button uk-margin-bottom' href='javascript:tools_erasestats();'>Delete Stats</a>
+		<a class='uk-button uk-margin-bottom' href='javascript:tools_erasehistory();'>Delete History</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_phpminiadmin();'>Database Manager</a>
+		<a class='uk-button uk-margin-bottom' href='javascript:tools_showresources();'>Utilisation</a>
+		<a class='uk-button uk-button-success uk-margin-bottom' href='javascript:tools_phpinfo();'>PHPINFO</a>
 			
 		<iframe id='tools-display' style='width: 100%; height: 600px; margin-top: 10px;'>
 				Upgrade your browser.
@@ -149,12 +150,16 @@
 	</li>
 	<li>
 		<!--<a class='uk-button' href='javascript:tools_dumpdatabase();'>Database Dump</a>-->
-		<a class='uk-button uk-button-danger' href='javascript:tools_statify();'>Statify site</a>
-		<a class='uk-button uk-button-danger' href='javascript:tools_cleanstatify();'>Destatify site</a>
-		<a class='uk-button uk-button-danger' href='javascript:tools_import_db();'>Database Import</a>
-		<a class='uk-button uk-button-danger' href='javascript:tools_duplicatecontent_fr_en();'>Content duplication</a>
-		<a class='uk-button uk-button-danger' href='javascript:tools_duplicatetabledata();'>Duplicate table</a>
-		<a class='uk-button uk-button-danger' href='javascript:tools_resetsite();'>Reset Site (DANGER)</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_statify();'>Statify site</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_cleanstatify();'>Destatify site</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_import_db();'>Table Import</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_importschema();'>Database Schema Import</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_exportschema();'>Database Schema Export</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_duplicatecontent();'>Content duplication</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_relinklanguages();'>Language linker</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_touchtable();'>Touch table</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_duplicatetabledata();'>Duplicate table</a>
+		<a class='uk-button uk-button-danger uk-margin-bottom' href='javascript:tools_resetsite();'>Reset Site (DANGER)</a>
 			
 		<iframe id='tools-display2' style='width: 100%; height: 600px; margin-top: 10px;'>
 				Upgrade your browser.
@@ -216,9 +221,17 @@
 		$('#tools-display2').attr('src', '/admin/tools/erasesafeties/');
 	}
 
-	function tools_duplicatecontent_fr_en() {
-		if (confirm(l.get('PARAMETERS_CONFIRMATION_DUPLICATECONTENT_FR_EN'))) {
-			$('#tools-display2').attr('src', '/admin/tools/duplicatecontent_fr_en/');
+	function tools_duplicatecontent() {
+			$('#tools-display2').attr('src', '/admin/tools/duplicatecontent/');
+	}
+
+	function tools_touchtable() {
+			$('#tools-display2').attr('src', '/admin/tools/touchtable/');
+	}
+
+	function tools_relinklanguages() {
+		if (confirm(l.get('PARAMETERS_CONFIRMATION_TOOLS'))) {
+			$('#tools-display2').attr('src', '/admin/tools/relinklanguages/');
 		}
 	}
 
@@ -254,6 +267,20 @@
 
 	function tools_import_db(){
 		$('#tools-display2').attr('src', '/admin/tools/import_table_definition/');
+	}
+
+	function tools_importschema(){
+		$('#tools-display2').attr('src', '/admin/tools/importschema/');
+	}
+
+	function tools_exportschema(){
+		$('#tools-display2').attr('src', '/admin/tools/exportschema/');
+	}
+
+
+
+	function tools_showresources(){
+		$('#tools-display').attr('src', '/admin/tools/showresources');
 	}
 
 	function logs_admin() {
