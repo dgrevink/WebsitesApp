@@ -1119,7 +1119,9 @@ function touchtable() {
 			}
 
 		}
+		sort($files_used);
 		$files_used = array_unique($files_used);
+		sort($files_unused);
 		$files_unused = array_diff($files_all, $files_used);
 
 		$echo = array();
@@ -1137,7 +1139,7 @@ function touchtable() {
 		echo "\n\n";
 		echo "Fichiers non utilisés:\n";
 		echo "----------------------\n";
-		echo implode("\n", $files_used);
+		echo implode("\n", $files_unused);
 		echo '</pre>';
 
 
