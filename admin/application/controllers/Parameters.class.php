@@ -60,9 +60,9 @@ class Parameters extends WSController {
 		$smarty_contents->assign('version', generate_input_text( 'version', 'Version', $config->get('version'), "", false, "N&deg; de version du site." ));
 		$smarty_contents->assign('release', generate_input_text( 'release', 'Release', $config->get('release'), '', false, "Nom de code de cette version du site." ));
 		$smarty_contents->assign('author', generate_input_text( 'author', 'Auteur', $config->get('author'), "", false, "Personne responsable du contenu du site." ));
-		$smarty_contents->assign('uacct', generate_text_area( 'uacct', 'Google analytics', base64_decode($config->get('uacct')), 8, 100, '', false, "Code Google Analytics &agrave; utiliser dans votre site. Collez ici tout le code google analytics fourni par Google. Il sera automatiquement ajout&eacute; &agrave; toutes les pages du site." ));
+		$smarty_contents->assign('uacct', generate_text_area( 'uacct', 'Google analytics', $config->get('uacct'), 8, 100, '', false, "Code Google Analytics &agrave; utiliser dans votre site. Collez ici tout le code google analytics fourni par Google. Il sera automatiquement ajout&eacute; &agrave; toutes les pages du site." ));
 
-		$smarty_contents->assign('headers', generate_text_area( 'headers', 'Headers', base64_decode($config->get('headers')), 8, 100, '', false, "Collez ici tous les codes HTML que vous d&eacute;sirez. Ils seront ins&eacute;r&eacute;s &agrave; chaque page dans la section &lt;header&gt;." ));
+		$smarty_contents->assign('headers', generate_text_area( 'headers', 'Headers', $config->get('headers'), 8, 100, '', false, "Collez ici tous les codes HTML que vous d&eacute;sirez. Ils seront ins&eacute;r&eacute;s &agrave; chaque page dans la section &lt;header&gt;." ));
 		$smarty_contents->assign('recaptcha_public', generate_input_text( 'recaptcha_public', 'Public Key', $config->get('recaptcha_public'), '', false, "Si vous utilisez un captcha sur le site, donnez ici la clé publique." ));
 		$smarty_contents->assign('recaptcha_private', generate_input_text( 'recaptcha_private', 'Private Key', $config->get('recaptcha_private'), '', false, "Si vous utilisez un captcha sur le site, donnez ici la clé privée." ));
 
@@ -151,7 +151,7 @@ class Parameters extends WSController {
 
 
 		$smarty_contents->assign('maintenance', generate_input_checkbox( 'maintenance', 'Maintenance', $config->get('maintenance'), "Indique si le site est en maintenance/bloqué ou non." ));
-		$smarty_contents->assign('maintenance_text', generate_text_area( 'maintenance_text', 'Texte de maintenance', base64_decode($config->get('maintenance_text')), 8, 100, '', false, "Tapez le message de maintenance &agrave; afficher si n&eacute;cessaire." ));
+		$smarty_contents->assign('maintenance_text', generate_text_area( 'maintenance_text', 'Texte de maintenance', $config->get('maintenance_text'), 8, 100, '', false, "Tapez le message de maintenance &agrave; afficher si n&eacute;cessaire." ));
 		
 		// Widget Manager
 		$files = glob(WS_ADMINISTERED_APPLICATION_FOLDER . "/controllers/W*.class.php");
@@ -338,7 +338,7 @@ class Parameters extends WSController {
 					case 'uacct':
 					case 'headers':
 					case 'maintenance_text':
-						$value = base64_encode($value);
+						$value = $value;
 					break;
 					case 'routes':
 						$value = trim($value);
