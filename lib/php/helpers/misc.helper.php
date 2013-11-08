@@ -274,20 +274,33 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
 // ---- | REQUIRED GOOGLE MAPS KEY | -------- 
 
 function getCoord($postal) 
-{ 
-    $d = @file_get_contents('http://maps.google.com/maps/geo?q=' . $postal . '&output=xml&key=' . GMAPS_KEY); 
+{
+//    $d = file_get_contents('http://maps.google.com/maps/geo?q=' . $postal . '&output=xml&key=' . GMAPS_KEY); 
+    $d = file_get_contents("http://maps.googleapis.com/maps/api/geocode/xml?address={$postal}&sensor=false"); 
     if (!$d) 
         return false; // Failed to open connection 
 
     $coord = new SimpleXMLElement($d); 
-    
-    if ((string) $coord->Response->Status->code != '200') 
-        return false; // Invalid status code 
 
-    list($lng, $lat) = explode(',', (string) $coord->Response->Placemark->Point->coordinates); 
+//    if ((string) $coord->Response->Status->code != '200') {
+    // the postal code is not found
+    // if (strlen($postal) > 3) {
+    //  $postal = substr($postal, 0, 3);
+    //  return getCoord($postal);
+    // }
+    // return false;
+//  }
 
-    return array('Lat' => (float) $lat, 'Lng' => (float) $lng, 'place' => $coord->Response->Placemark->address );  
+    if ((string)$coord->status[0] != 'OK') {
+      return false;
+    }
+
+    return array(
+      'Lat' => (float) $coord->result[0]->geometry->location->lat,
+      'Lng' => (float) $coord->result[0]->geometry->location->lng,
+      'place' => (string) $coord->result[0]->formatted_address );  
 } 
+
 
 
 function dayofyear2date( $tDay, $tFormat = 'd-m-Y' ) {

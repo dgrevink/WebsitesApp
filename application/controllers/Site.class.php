@@ -344,16 +344,15 @@ class Site extends WSController {
 			$access = true;
 		}
 		else {
-			if (isset($_SESSION['ws_default']['username'])) {
-				if ($this->auth->session['challengekey'] == $_SESSION['ws_default']['challengekey']) {
-					$user = MyActiveRecord::FindFirst('users', "username = '" . $_SESSION['ws_default']['username'] . "'");
+			if (isset($_SESSION[$this->config->get('security_session', 'system')]['username'])) {
+				if ($this->auth->session['challengekey'] == $_SESSION[$this->config->get('security_session', 'system')]['challengekey']) {
+					$user = MyActiveRecord::FindFirst('users', "username = '" . $_SESSION[$this->config->get('security_session', 'system')]['username'] . "'");
 					$group = $user->find_parent('groups');
 					$access = (in_array($group->id, $this->infos['access']));
 				}
 			}
 		}
 		if (!$access) {
-			d('no access');
 			$this->redirect(403);
 		}
 	}
