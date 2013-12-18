@@ -15,11 +15,11 @@ class Tools extends WSController {
 
 	function duplicatecontent(){
 		$echo = array();
-		
+
 		$echo[] = " Duplication de contenu existants vers d'autres langues";
 		$echo[] = "========================================================";
 		$echo[] = "";
-		
+
 		echo "<html><head><title>Table duplication</title></head><body style='background-color: #111; padding: 10px; color: #ccc;'>";
 		echo "<pre>";
 		echo implode("\n", $echo);
@@ -44,7 +44,7 @@ class Tools extends WSController {
 				echo "<option value='$language'>" . WSDLanguages::getLanguageName($language) . " ($language)</option>";
 			}
 			echo "</select>";
-			
+
 			echo "<br/><br/><span style='color: red;'>ATTENTION cette opération va réellement détruire TOUTES les données dans la langue de destination.<br/>Assurez-vous d'être BIEN certain de ce que vous faites !!!!</span><br/><br/>";
 
 
@@ -55,12 +55,12 @@ class Tools extends WSController {
 		} else { // if posted
 			$source_lng = $_POST['source_language'];
 			$dest_lng = $_POST['destination_language'];
-			
+
 			MyActiveRecord::Query("delete from contents where language='".$dest_lng."';");
 			MyActiveRecord::Query("delete from blocks where language='".$dest_lng."';");
 			MyActiveRecord::Query("delete from formsdefinitions where language='".$dest_lng."';");
 			MyActiveRecord::Query("delete from slider where language='".$dest_lng."';");
-					
+
 			$has_content = false; // if false, do nothing
 			echo 'Contenu...';
 			$ids = array();
@@ -122,7 +122,7 @@ class Tools extends WSController {
 				die('nothing done, no content in ' . $source_lng);
 			}
 			echo 'DONE !<br/>';
-			
+
 
 			// blocks
 			echo 'Blocks...';
@@ -134,10 +134,10 @@ class Tools extends WSController {
 				$newblock->title					= $olditem->title . ' '.strtoupper($dest_lng);
 				$newblock->content				= $olditem->content;
 				$newblock->titleseo 			= $olditem->titleseo;
-				$newblock->position			= $olditem->position;			
+				$newblock->position			= $olditem->position;
 				$newblock->save();
 				$blockids[$newblock->id] = $olditem->id;
-			}	
+			}
 			echo 'DONE !<br/>';
 
 			// Forms
@@ -165,7 +165,7 @@ class Tools extends WSController {
 				$newform->tabledefinitions_id = $oldform->tabledefinitions_id;
 				$newform->userquestions 	= $oldform->userquestions;
 				$newform->contesterror 	= $oldform->contesterror;
-				$newform->usecaptcha	= $oldform->usecaptcha;			
+				$newform->usecaptcha	= $oldform->usecaptcha;
 				$newform->save();
 				$formids[$newform->id] = $oldform->id;
 			}
@@ -178,7 +178,7 @@ class Tools extends WSController {
 				if ($oldmenu->contents_id != 0) {
 					$newmenu->contents_id = array_search($oldmenu->contents_id, $ids);
 				}
-				
+
 				// Handle placeholder references for blocs and forms
 				for($i=1;$i<=9;$i++) {
 					$placeholder_params = explode('-',$oldmenu->{'placeholder_' . $i});
@@ -190,7 +190,7 @@ class Tools extends WSController {
 						$newmenu->{'placeholder_' . $i} = 'form-' . array_search($placeholder_params[1], $formids);
 					}
 				}
-				
+
 				$newmenu->save();
 			}
 			echo 'DONE !<br/>';
@@ -204,23 +204,23 @@ class Tools extends WSController {
 					$slider->title	= $olditem->title . ' '.strtoupper($dest_lng);
 					$slider->content	= $olditem->content;
 					$slider->titleseo 	= $olditem->titleseo;
-		
+
 					$slider->save();
 				}
 			}
 			echo 'DONE !<br/>';
-		
+
 		}
 		echo '</pre>';
-		
-		
+
+
 		echo '</body></html>';
-	
+
 	}
 
 	function relinklanguages() {
 		$echo = array();
-		
+
 		$echo[] = " Reconnection des langues";
 		$echo[] = "==========================";
 		$echo[] = "";
@@ -260,7 +260,7 @@ class Tools extends WSController {
 				}
 			}
 		}
-		
+
 		echo "<html><head><title>Reconnection des langues</title></head><style>.ws-debug{background-color:orange;padding:0.5em;font-size:10px;}</style><body style='background-color: #111; padding: 10px;'>";
 		echo "<pre style='color: #ccc'>";
 		echo implode("\n", $echo);
@@ -272,7 +272,7 @@ class Tools extends WSController {
 
 	function erasecache() {
 		$echo = array();
-		
+
 		$echo[] = " Effacement de la cache";
 		$echo[] = "========================";
 		$echo[] = "";
@@ -285,7 +285,7 @@ class Tools extends WSController {
 		$echo[] = "Cache syst&egrave;me...OK";
 		rm(WS_APPLICATION_FOLDER . '/cache/cache/*.*');
 		rm(WS_APPLICATION_FOLDER . '/cache/templates_c/*.*');
-		
+
 		echo "<html><head><title>Effacement de cache</title></head><body style='background-color: #111; padding: 10px;'>";
 		echo "<pre style='color: #ccc'>";
 		echo implode("\n", $echo);
@@ -295,14 +295,14 @@ class Tools extends WSController {
 
 	function erasestats() {
 		$echo = array();
-		
+
 		$echo[] = " Effacement des statistiques";
 		$echo[] = "=============================";
 		$echo[] = "";
 
 		$echo[] = "Statistiques...OK";
 		MyActiveRecord::Query('update contents set hits=0;');
-		
+
 		echo "<html><head><title>Effacement des stats</title></head><body style='background-color: #111; padding: 10px;'>";
 		echo "<pre style='color: #ccc'>";
 		echo implode("\n", $echo);
@@ -312,14 +312,14 @@ class Tools extends WSController {
 
 	function erasehistory() {
 		$echo = array();
-		
+
 		$echo[] = " Effacement de l'historique de contenu";
 		$echo[] = "=======================================";
 		$echo[] = "";
 
 		$echo[] = "Historique...OK";
 		MyActiveRecord::Query('truncate table wsthistory;');
-		
+
 		echo "<html><head><title>Effacement historique</title></head><body style='background-color: #111; padding: 10px;'>";
 		echo "<pre style='color: #ccc'>";
 		echo implode("\n", $echo);
@@ -329,7 +329,7 @@ class Tools extends WSController {
 
 	function erasesafeties() {
 		$echo = array();
-		
+
 		$echo[] = " Effacement des fichiers de sauvegarde de s&eacute;curit&eacute;";
 		$echo[] = "===================================================";
 		$echo[] = "";
@@ -343,14 +343,14 @@ class Tools extends WSController {
 		echo '</pre>';
 		echo '</body></html>';
 	}
-	
+
 	function resetsite() {
 		$echo = array();
-		
+
 		$echo[] = " Destruction absolue du site";
 		$echo[] = "==============================";
 		$echo[] = "";
-		
+
 		if (!isset($_POST['post'])) {
 			echo "<html><head><title>Reset de site</title><style>span.control, span.label { padding-left: 10px; }</style></head><body style='background-color: #111; padding: 10px;'>";
 			echo "<pre style='color: #ccc'>";
@@ -394,9 +394,9 @@ class Tools extends WSController {
 		$config->params['config']['contactmail'] = $_POST['siteemail'];
 
 		$config->params['config']['default_language'] = 'fr';
-		
+
 		$config->params['config']['languages'] = array( 'fr', 'en');
-		
+
 		$config->params['config']['version'] = '0.1';
 		$config->params['config']['release'] = 'alpha';
 		$config->params['config']['uacct'] = '';
@@ -412,7 +412,7 @@ class Tools extends WSController {
 
 		$config->save(WS_ADMINISTERED_APPLICATION_FOLDER . '/config/', 'config');
 		$config->save(WS_ADMINISTERED_APPLICATION_FOLDER . '/config/', 'system');
-		
+
 		$cms_config = file(WS_APPLICATION_FOLDER . '/config/config.php');
 		$cms_config[23] = '$config[\'brand\'] = \'' . $_POST['companyname'] . "';\n";
 		$cms_config[24] = '$config[\'brand-website\'] = \'' . $_POST['companyurl'] . "';\n";
@@ -496,9 +496,9 @@ class Tools extends WSController {
 
 		$echo[] = "";
 		$echo[] = "Op&eacute;ration termin&eacute;e.";
-		
-		
-		
+
+
+
 
 		echo "<html><head><title>Effacement de cache</title></head><body style='background-color: #111; padding: 10px;'>";
 		echo "<pre style='color: #ccc'>";
@@ -507,17 +507,17 @@ class Tools extends WSController {
 		echo '</body></html>';
 		$this->auth->logout();
 	}
-	
+
 	function statify() {
 		$echo = array();
-		
+
 		echo "<html><head><title>Statification du site</title></head><body style='background-color: #111; padding: 10px; color: #ccc;'>";
 		echo "<pre>";
 
 		echo " Statification du site\n";
 		echo "========================\n";
 		echo "\n";
-		
+
 		$app_config = new WSConfig;
 		$app_config->load(dirname(__FILE__) . '/../../../application/config/');
 		foreach ($app_config->get('languages') as $language) {
@@ -544,21 +544,21 @@ class Tools extends WSController {
 				}
 			}
 		}
-		
+
 		echo '</pre>';
 		echo '</body></html>';
 	}
-	
+
 	function destatify() {
 		$echo = array();
-		
+
 		echo "<html><head><title>Statification du site</title></head><body style='background-color: #111; padding: 10px; color: #ccc;'>";
 		echo "<pre>";
 
 		echo " Déstatification du site\n";
 		echo "========================\n";
 		echo "\n";
-		
+
 		$app_config = new WSConfig;
 		$app_config->load(dirname(__FILE__) . '/../../../application/config/');
 
@@ -569,11 +569,11 @@ class Tools extends WSController {
 			echo "OK !\n";
 		}
 		rm(dirname(__FILE__) . '/../../../index.html');
-		
+
 		echo '</pre>';
 		echo '</body></html>';
 	}
-	
+
 	function dumpdatabase() {
 		$app_config = new WSConfig;
 		$app_config->load(dirname(__FILE__) . '/../../../application/config/');
@@ -585,14 +585,14 @@ class Tools extends WSController {
 		$dbuser = 	$database['db_user'];
 		$dbpass = 	$database['db_password'];
 		global $VERSION;
-		
+
 		$return = '';
 		$message = '';
 
 		$creationstart=strtok(microtime()," ")+strtok(" ");
 
 		$mailto="david@starplace.org";
-		
+
 		$subject="Backup DB";
 		$from_name="Your trustworthy website";
 		$from_mail="noreply@yourwebsite.com";
@@ -600,10 +600,10 @@ class Tools extends WSController {
 
 		mysql_connect($dbhost, $dbuser, $dbpass);
 		mysql_select_db($dbname);
-		
+
 		$tables = array();
 		$result = mysql_query("SHOW TABLES");
-		
+
 		while($row = mysql_fetch_row($result))
 			$tables[] = $row[0];
 
@@ -625,16 +625,16 @@ class Tools extends WSController {
 		$content=bzcompress($return,9);
 		file_put_contents(WS_ADMINISTERED_APPLICATION_FOLDER . '/../backups/' . $filename, $content);
 	}
-	
+
 function touchtable() {
 		$echo = array();
-		
+
 		$echo[] = " Retouche de table ";
 		$echo[] = "==================";
 		$echo[] = "";
 		$echo[] = "";
 
-		
+
 		echo "<html><head><title>Touch table</title></head><body style='background-color: #111; padding: 10px; color: #ccc;'>";
 		echo "<pre>";
 		echo implode("\n", $echo);
@@ -653,8 +653,8 @@ function touchtable() {
 			echo "</form>";
 			die();
 		}
-		
-		
+
+
 		// Lets import the table into tabledefintions
 		$stable = $_POST['selected_table'];
 
@@ -667,15 +667,43 @@ function touchtable() {
 
 }
 
+function touchcontent() {
+		require_once(WS_ADMINISTERED_APPLICATION_FOLDER . '../admin/application/models/Contents.class.php');
+		foreach(MyActiveRecord::FindAll('Contents') as $record) {
+			d($record->title);
+			$record->content_1 = str_replace('../../..', '', $record->content_1);
+			$record->content_2 = str_replace('../../..', '', $record->content_2);
+			$record->content_3 = str_replace('../../..', '', $record->content_3);
+			$record->content_4 = str_replace('../../..', '', $record->content_4);
+			$record->content_5 = str_replace('../../..', '', $record->content_5);
+//			d($record->content_1);
+			$record->save();
+		}
+		die();
+}
+
+function retouch() {
+	if (isset($this->params[0])) {
+		require_once(WS_ADMINISTERED_APPLICATION_FOLDER . '../admin/application/models/Contents.class.php');
+		$id = $this->params[0];
+		d($id);
+		$record = MyActiveRecord::FindById('Contents', $id);
+		if ($record) {
+			d($record->content_1);
+			d(base64_encode($record->content_1));
+		}
+	}
+}
+
 	function import_table_definition() {
 		$echo = array();
-		
+
 		$echo[] = " Importation de Table existante dans les definitions";
 		$echo[] = "=====================================================";
 		$echo[] = "";
 		$echo[] = "";
 
-		
+
 		echo "<html><head><title>Importation DB2DEF</title></head><body style='background-color: #111; padding: 10px; color: #ccc;'>";
 		echo "<pre>";
 		echo implode("\n", $echo);
@@ -686,7 +714,7 @@ function touchtable() {
 			$existing = MyActiveRecord::Tables();
 			$defined = MyActiveRecord::FindAll('tabledefinitions', null, 'name asc');
 			$to_import = array();
-			
+
 			foreach ($existing as $e) {
 				$found = false;
 				foreach ($defined as $d) {
@@ -708,8 +736,8 @@ function touchtable() {
 			echo "</form>";
 			die();
 		}
-		
-		
+
+
 		// Lets import the table into tabledefintions
 		$stable = $_POST['selected_table'];
 		$tdef = MyActiveRecord::Create('tabledefinitions');
@@ -724,7 +752,7 @@ function touchtable() {
 		// Load up the model we just created and get the structure of the table
 		require_once(WS_ADMINISTERED_APPLICATION_FOLDER . '/models/' . ucwords($stable) . '.class.php');
 		$rd = MyActiveRecord::Columns($stable);
-		
+
 		// Determine the default sort field
 		$first = true;
 		$found = false;
@@ -752,7 +780,7 @@ function touchtable() {
 				$tdef->save();
 			}
 		}
-		
+
 		d($rd);
 		// Import individual fields
 		$found_language = false;
@@ -799,9 +827,9 @@ function touchtable() {
 				$tr->type = WST_TABLE_LINK;
 				$tr->listeditable = 1;
 			}
-			
+
 			$tr->save();
-			
+
 			if ($def['Field'] == 'language') {
 				$found_language = true;
 			}
@@ -809,7 +837,7 @@ function touchtable() {
 				$found_title = true;
 			}
 		}
-		
+
 		if (!$found_language) {
 	    		$language = MyActiveRecord::Create('tablefields');
 	    		$language->title = "language";
@@ -839,8 +867,8 @@ function touchtable() {
 	    		$language->default = 'fr';
 	    		$language->saveadvanced();
 		}
-		
-		
+
+
 		echo '</body></html>';
 	}
 
@@ -850,13 +878,13 @@ function touchtable() {
 
 	function duplicatetabledata() {
 		$echo = array();
-		
+
 		$echo[] = " Copie du contenu d'une table d'une langue à l'autre";
 		$echo[] = "=====================================================";
 		$echo[] = "";
 		$echo[] = "";
 
-		
+
 		echo "<html><head><title>Table duplication</title></head><body style='background-color: #111; padding: 10px; color: #ccc;'>";
 		echo "<pre>";
 		echo implode("\n", $echo);
@@ -890,7 +918,7 @@ function touchtable() {
 				echo "<option value='$language'>$language</option>";
 			}
 			echo "</select>";
-			
+
 			echo "<br/><label><input type='checkbox' name='destination_delete'>Détruire données dans la langue de destination</label><br/><br/>";
 
 
@@ -900,7 +928,7 @@ function touchtable() {
 			die();
 		}
 		echo '</pre>';
-		
+
 		$table = $_POST['selected_table'];
 		$slng  = $_POST['source_language'];
 		$dlng  = $_POST['destination_language'];
@@ -918,10 +946,10 @@ function touchtable() {
 			}
 		}
 		echo "Duplication terminée.";
-		
+
 		echo '</body></html>';
 	}
-	
+
 
 	function exportschema() {
 		$echo = array();
@@ -932,7 +960,7 @@ function touchtable() {
 			$echo[] = "";
 			$echo[] = "";
 
-			
+
 			echo "<html><head><title>Exportation Tables</title><style>.ws-debug{padding:1em;font-size:9px;background:orange;color:black;}</style></head><body style='background-color: #111; padding: 10px; color: #ccc;'>";
 			echo "<pre>";
 			echo implode("\n", $echo);
@@ -970,7 +998,7 @@ function touchtable() {
 
 		if (!isset($_POST['post'])) {
 
-			
+
 			echo "<html><head><title>Importation Tables</title><style>.ws-debug{padding:1em;font-size:9px;background:orange;color:black;}</style></head><body style='background-color: #111; padding: 10px; color: #ccc;'>";
 			echo "<pre>";
 			echo implode("\n", $echo);
@@ -994,7 +1022,7 @@ function touchtable() {
 
 		$echo[] = "";
 		$echo[] = "Table: {$definition->name} ({$definition->title})";
-		
+
 		$table = MyActiveRecord::Create('tabledefinitions');
 		$table->language 			= $definition->language;
 		$table->title 				= $definition->title;
@@ -1074,21 +1102,21 @@ function touchtable() {
 					// d($file);
 					// d($content->content_1);
 					// die();
-				} 
+				}
 				if (strpos($content->content_2, $file) !== false){
 					$files_used[] = $file;
-				} 
+				}
 				if (strpos($content->content_3, $file) !== false){
 					$files_used[] = $file;
-				} 
+				}
 				if (strpos($content->content_4, $file) !== false){
 					$files_used[] = $file;
-				} 
+				}
 				if (strpos($content->content_5, $file) !== false){
 					$files_used[] = $file;
-				} 
+				}
 			}
-		} 
+		}
 
 		// Process all tables, look for any field of type text, longtext or varchar
 		foreach(MyActiveRecord::FindAll('tabledefinitions') as $tdef) {
@@ -1145,7 +1173,7 @@ function touchtable() {
 
 
 	}
-	
+
 }
 
 

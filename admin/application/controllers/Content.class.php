@@ -40,7 +40,7 @@ class Content extends WSController {
 			5 => "Login page"
 		)
 	);
-	
+
 	private $page_status_select_icons = array(
 		0 => 'published.png',
 		2 => 'hidden.png',
@@ -49,7 +49,7 @@ class Content extends WSController {
 //		4 => 'login-bad.png',
 		5 => "login.png"
 	);
-	
+
 	private $access_levels = null;
 
 
@@ -62,7 +62,7 @@ class Content extends WSController {
 		$this->params 			= (isset($this->params)				? $this->params				: null);
 		$this->parameters 		= (isset($this->parameters)			? $this->parameters			: null);
 		$this->auth 			= (isset($this->auth)				? $this->auth				: null);
-		
+
 		$this->smarty 			= ($smarty==null			? $this->smarty				: $smarty);
 		$this->language 		= ($language==null			? $this->language			: $language);
 		$this->current_language = ($current_language==null	? $this->current_language	: $current_language);
@@ -83,7 +83,7 @@ class Content extends WSController {
 
 		$smarty_contents->assign('current_language', $this->current_language);
 
-		# Get available languages in app	
+		# Get available languages in app
 		$config = new WSConfig;
 		$config->load( dirname(__FILE__) . '/../../../application/config/');
 		$languages = array();
@@ -95,7 +95,7 @@ class Content extends WSController {
 			);
 		}
 		$this->languages = $languages;
-		
+
 		if (!isset($this->params[2]) || (!is_numeric($this->params[2]))) {
 			$current_template = 'index';
 			$smarty_contents->assign('menu_code', $this->getmenu());
@@ -107,9 +107,9 @@ class Content extends WSController {
 			$current_template = 'detail';
 			$id = $this->params[2];
 			$item = MyActiveRecord::FindById('contents', $id);
-			
+
 			$smarty_contents->assign('titledisplay',$item->title);
-				
+
 			$smarty_contents->assign('id', 				generate_hidden('id', $id));
 			$smarty_contents->assign('recordid', 		$id);
 			$smarty_contents->assign('language', 		generate_hidden('language', $this->current_language));
@@ -143,7 +143,7 @@ class Content extends WSController {
 			}
 			asort($groups);
 			$smarty_contents->assign('access', 			generate_select( 'access', WSDTranslations::getLabel('CONTENT_ACCESS'), $groups, $access, false, WSDTranslations::getLabel('CONTENT_ACCESS'), true ) );
-			
+
 			foreach ($this->languages as $lang) {
 				if ($lang['code'] != $this->current_language) {
 					$field_name = 'contents_' . $lang['code'] . '_id';
@@ -161,7 +161,7 @@ class Content extends WSController {
 			$smarty_contents->assign('comment', 		$item->comment);
 			$smarty_contents->assign('seodescription', 	generate_input_text( 'seodescription', WSDTranslations::getLabel('CONTENT_SEODESCRIPTION'), $item->seodescription, "", false, WSDTranslations::getLabel('CONTENT_SEODESCRIPTION_DESCRIPTION') ));
 			$smarty_contents->assign('seokeywords', 	generate_text_area( 'seokeywords', WSDTranslations::getLabel('CONTENT_SEOKEYWORDS'), $item->seokeywords, 8, 100, '', false, WSDTranslations::getLabel('CONTENT_SEOKEYWORDS_DESCRIPTION')  ));
-			
+
 			$creator = MyActiveRecord::FindById('users', $item->creator_id);
 			if ($creator) {
 				$smarty_contents->assign('creator', 		$creator->username);
@@ -195,7 +195,7 @@ class Content extends WSController {
 			// ads
 			$ads = MyActiveRecord::FindAllMD('banners', 'id, language, title', "language = '" . $this->current_language . "'", 'title asc');
 			$smarty_contents->assign('ads', activerecord2smartyarray($ads));
-		
+
 			// forms
 			$forms = MyActiveRecord::FindAllMD('formsdefinitions', 'id, language, title', "language = '" . $this->current_language . "'", 'title asc');
 			$smarty_contents->assign('forms', activerecord2smartyarray($forms));
@@ -219,10 +219,10 @@ class Content extends WSController {
 			$smarty_contents->assign('widgets', $widgets);
 
 		}
-		
+
 		return $smarty_contents->fetch( "contents-{$current_template}-{$this->language}.tpl" );
 	}
-	
+
 
 	function getmenu() {
 		$this->groups  = MyActiveRecord::FindAll('groups');
@@ -232,7 +232,7 @@ class Content extends WSController {
 		$body .= $this->getMenuItemsHTML();
 		$body .= '<ul>';
 		$body .= '</div>';
-		
+
 		return $body;
 	}
 
@@ -241,16 +241,16 @@ class Content extends WSController {
 
 		$records = MyActiveRecord::FindAll('contents', "contents_id = " . (int) $parent . " and language ='" . $this->current_language . "'", 'porder asc');
 		$u = MyActiveRecord::FindAll('users');
-		
+
 		if (!is_array($records)) {
 			return false;
 		}
 
 		$code = '';
-		
+
 		foreach ($records as $item) {
 			$children = $this->getMenuItemsHTML($item->id);
-			
+
 			$path = $this->_get_path($item->id, $this->params[0]);
 
 			$temp = array();
@@ -286,12 +286,12 @@ class Content extends WSController {
 			$tempinfo[]
 			            = "<div class='menu-info'>"
 				        . "<img src='/admin/application/lib/images/status/" . ($this->page_status_select_icons[$item->hidden])
-						. "' title='Statut: " . ($this->page_status_select[$userlanguage][$item->hidden]) 
-						. "\nMenu(s): " . $item->menus 
-						. "\nSitemap: " . ($item->sitemap==1?'Oui':'Non') 
-						. "\nStatifi&eacute;: " . (file_exists(dirname(__FILE__) . '/../../../' . $path . '/index.html')?'Oui':'Non') 
+						. "' title='Statut: " . ($this->page_status_select[$userlanguage][$item->hidden])
+						. "\nMenu(s): " . $item->menus
+						. "\nSitemap: " . ($item->sitemap==1?'Oui':'Non')
+						. "\nStatifi&eacute;: " . (file_exists(dirname(__FILE__) . '/../../../' . $path . '/index.html')?'Oui':'Non')
 						. "\nParams: " . $item->params
-						. "\nModification: " . date($item->modify_date) 
+						. "\nModification: " . date($item->modify_date)
 						. "\nPar: " . @$u[$item->modifier_id]->username
 						. "'/>"
 		 				. (($access_display == 'Tous ')?'':" <img src='/admin/application/lib/images/status/security.png' title='Acces: " . $access_display . "'/>")
@@ -311,7 +311,7 @@ class Content extends WSController {
 
 			// Assemble
 			$temp['info'] = $tempinfo;
-			
+
 			$code .= "<li id='list_" . $item->id . "'>";
 				$code .= "<div>";
 					$code .= $tempinfo[0] . $tempinfo[1] . @$tempinfo[2];
@@ -322,21 +322,21 @@ class Content extends WSController {
 					$code .= "</ul>";
 				}
 			$code .= "</li>";
-			
+
 		}
-		
+
 		return $code;
 	}
 
 
-	
 
-	
+
+
 	function _get_path($id, $language, $omit_last = false) {
 		if (!isset($this->menurecords)) {
 			$this->menurecords = MyActiveRecord::FindAll('contents');
 		}
-		
+
 		$out = false;
 		$path = array();
 		while ($out == false) {
@@ -346,16 +346,18 @@ class Content extends WSController {
 		}
 
 		$path[] = $language;
-		
+
 		$path = array_reverse($path);
-		
+
 		if ($omit_last) {
 			array_pop($path);
 		}
-		
+
 		return '/' . implode('/', $path) . '/';
 	}
-	
+
+
+
 	function savemenu() {
 		$return = array();
 		if (!$this->_check_rights(WSR_CONTENTS_ORDER)) {
@@ -369,7 +371,7 @@ class Content extends WSController {
 			foreach($norder as $item) {
 				list($id,$parent_id) = explode('=',$item);
 				$id = preg_replace("/[^0-9]/", '', $id);
-				
+
 				$record = MyActiveRecord::FindById('contents', $id);
 				if (is_numeric($parent_id)) {
 					$record->contents_id = $parent_id;
@@ -381,15 +383,15 @@ class Content extends WSController {
 				$record->save();
 				$record->fullpath = $this->_get_path($record->id, $record->language);
 				$record->save();
-				
-				$porder++;			
+
+				$porder++;
 			}
 			WSLog::admin( WS_INFO, $this->auth->session['username'], 0, 'Saved menu order.' );
 			echo 'OK';
 			die();
 		}
 	}
-	
+
 	function repositionMenuItems($array, $parent) {
 		$this->porder++;
 		$record = MyActiveRecord::FindById('contents', $array['id']);
@@ -404,7 +406,7 @@ class Content extends WSController {
 			}
 		}
 	}
-	
+
 	function addmenu() {
 
 		if (!$this->_check_rights(WSR_CONTENTS_ADD)) {
@@ -414,7 +416,7 @@ class Content extends WSController {
 		$parent = $_POST['parent'];
 		$title = $_POST['title'];
 		$language = $_POST['language'];
-		
+
 		$path = normalize_string($title);
 
 		$new = MyActiveRecord::Create('contents');
@@ -480,7 +482,7 @@ class Content extends WSController {
 				$template = new Template();
 				$layouts = $template->getLayouts( $new->language );
 				$first_layout = array_shift($layouts);
-	
+
 				$new->layout = basename($first_layout['filename'], '.html');
 				$new->placeholder_1 = 'content';
 				$new->placeholder_1_param = 'content-1';
@@ -494,7 +496,7 @@ class Content extends WSController {
 				$new->placeholder_8 = 'empty';
 				$new->placeholder_9 = 'empty';
 			}
-			
+
 		}
 
 		$user = MyActiveRecord::FindFirst('users', "username like '" . $this->auth->session['username'] . "'");
@@ -506,7 +508,7 @@ class Content extends WSController {
 		$new->modifier_id = $user->id;
 		$new->create_date = MyActiveRecord::DbDateTime();
 		$new->modify_date = MyActiveRecord::DbDateTime();
-		
+
 		if (!$new->save()) {
 			WSLog::admin( WS_ERROR, $this->auth->session['username'], 0, 'Could not create menu ' . $new->title . '.');
 			echo 'KO';
@@ -520,7 +522,7 @@ class Content extends WSController {
 			exit();
 		}
 	}
-	
+
 	function deletemenu() {
 		if (!$this->_check_rights(WSR_CONTENTS_ADD)) {
 			echo 'KO';
@@ -535,7 +537,7 @@ class Content extends WSController {
 		}
 		echo 'OK';
 	}
-	
+
 	function processDeleteMenu($id) {
 		$record = MyActiveRecord::FindById('contents', $id);
 		if ($record) {
@@ -555,13 +557,13 @@ class Content extends WSController {
 			echo "<span class='error'>Ce menu n'existe pas !</span>";
 			exit();
 		}
-		
+
 		if ($this->_check_rights(WSR_CONTENTS_ACCESS)) {
 			$record->title			= htmlentities($_POST['title'],				ENT_QUOTES, "utf-8" );
 			$record->titleshort		= htmlentities($_POST['titleshort'],		ENT_QUOTES, "utf-8" );
-			$record->hidden = $_POST['hidden'];
-			$record->access = implode(',', $_POST['access']);
-			$record->menus = implode(',', $_POST['menus']);
+			$record->hidden 		= $_POST['hidden'];
+			$record->access 		= implode(',', $_POST['access']);
+			$record->menus 			= @implode(',', @$_POST['menus']);
 			$record->path			= $_POST['path'];
 			$record->cached			= isset($_POST['cached'])?1:0;
 			$record->sitemap		= isset($_POST['sitemap'])?1:0;
@@ -574,7 +576,7 @@ class Content extends WSController {
 			$record->contents_fr_id	= isset($_POST['contents_fr_id'])?$_POST['contents_fr_id']:$record->contents_fr_id;
 			$record->contents_en_id	= isset($_POST['contents_en_id'])?$_POST['contents_en_id']:$record->contents_en_id;
 			$record->contents_es_id	= isset($_POST['contents_es_id'])?$_POST['contents_es_id']:$record->contents_es_id;
-			
+
 		}
 
 		if ($this->_check_rights(WSR_CONTENTS_CONTENT)) {
@@ -583,29 +585,24 @@ class Content extends WSController {
 //			$html = ereg_replace("<([^>]*)(lang|style|size|face)=(\"[^\"]*\"|'[^']*'|[^>]+)([^>]*)>","<\\1>",$html);
 //			$html = ereg_replace("<([^>]*)(lang|style|size|face)=(\"[^\"]*\"|'[^']*'|[^>]+)([^>]*)>","<\\1>",$html);
 //d($_POST);
-			$html = $_POST['fckeditor1'];
-			$record->content_1 = $html;
-			$html = $_POST['fckeditor2'];
-			$record->content_2 = $html;
-			$html = $_POST['fckeditor3'];
-			$record->content_3 = $html;
-			$html = $_POST['fckeditor4'];
-			$record->content_4 = $html;
-			$html = $_POST['fckeditor5'];
-			$record->content_5 = $html;
+			$record->content_1 = $_POST['fckeditor1'];
+			$record->content_2 = $_POST['fckeditor2'];
+			$record->content_3 = $_POST['fckeditor3'];
+			$record->content_4 = $_POST['fckeditor4'];
+			$record->content_5 = $_POST['fckeditor5'];
 		}
 
 
 		if ($this->_check_rights(WSR_CONTENTS_LAYOUT)) {
 			$record->layout = $_POST['layout'];
-			
+
 			for($i=1;$i<=9;$i++) {
 				if (isset($_POST['placeholder_'.$i.'_type'])) {
 					$type = 'placeholder_' . $i;
 					$value = 'placeholder_' . $i . '_value';
 					$param = 'placeholder_' . $i . '_param';
 					$record->$type = $_POST['placeholder_'.$i.'_type'];
-					
+
 					if (isset($_POST['placeholder_'.$i.'_value'])) {
 						$record->$value = $_POST['placeholder_'.$i.'_value'];
 					}
@@ -614,19 +611,21 @@ class Content extends WSController {
 					}
 
 					if (isset($_POST['placeholder_'.$i.'_value_param'])) {
-						$record->$param = $_POST['placeholder_'.$i.'_value_param'];
+						$p = str_replace('[HTTP]', 'http://', $_POST['placeholder_'.$i.'_value_param']);
+						$p = str_replace('[HTTPS]', 'https://', $p);
+						$record->$param = $p;
 					}
 				}
 			}
-		}		
+		}
 
 		if ($this->_check_rights(WSR_CONTENTS_METADATA)) {
 			if ($this->_check_rights(WSR_CONTENTS_SEO)) {
 				$record->seodescription	= htmlentities($_POST['seodescription'], 	ENT_QUOTES, "utf-8" );
 				$record->seokeywords	= htmlentities($_POST['seokeywords'], 		ENT_QUOTES, "utf-8" );
 			}
-			
-			$record->comment = $_POST['fckeditor_comment'];
+
+			$record->comment = base64_decode($_POST['fckeditor_comment']);
 		}
 
 
@@ -637,7 +636,7 @@ class Content extends WSController {
 		}
 		$record->modifier_id = $user->id;
 		$record->modify_date = MyActiveRecord::DbDateTime();
-		
+
 		if ($record->save()) {
 			$record->fullpath = $this->_get_path($record->id, $record->language);
 			$record->save();
@@ -650,14 +649,14 @@ class Content extends WSController {
 			echo '{ "type": "error", "message": "Une erreur de sauvegarde de la page ' . $record->title . ' est survenue."}';
 		}
 	}
-	
+
 	function _beautify($path) {
 		$path = ucfirst($path);
 		$path = str_replace('-', ' ', $path);
 		if ($path == '') $path = '###';
 		return $path;
 	}
-	
+
 	function getHistorySelect() {
 		$code = array();
 		$code[] = '<select>';
@@ -669,7 +668,7 @@ class Content extends WSController {
 		$code[] = '</select>';
 		echo implode('', $code);
 	}
-	
+
 	function restoreHistory() {
 		if ($this->_check_rights(WSR_CONTENTS_VERSIONS)) {
 			if (WSHistory::restore( $this->params[0] )) {
@@ -680,7 +679,7 @@ class Content extends WSController {
 			}
 		}
 	}
-	
+
 	function _check_rights( $level ) {
 		global $userlanguage;
 		$user = MyActiveRecord::FindFirst('users', "username like '" . $this->auth->session['username'] . "'");
@@ -703,7 +702,7 @@ class Content extends WSController {
 		if (!is_array($records)) {
 			return false;
 		}
-		
+
 		$ar = array();
 
 		foreach ($records as $item) {

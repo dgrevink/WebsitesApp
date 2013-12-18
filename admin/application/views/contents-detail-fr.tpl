@@ -7,7 +7,7 @@
 <div class='uk-article'>
 	<h2 class='uk-article-title' id='sub-page-title'>{$titledisplay}</h2>
 
-	<div class='uk-alert'>Page creation or modification.</div>
+	<div class='uk-alert'>Création et modification de pages.</div>
 
 		<div class='uk-float-right'>
 			{if isset($WSR_CONTENTS_VERSIONS)}
@@ -31,7 +31,7 @@
 			<li><a href="#tab4">Metadata</a></li>
 			{/if}
 		</ul>
-		
+
 		<ul id="tabs" class="uk-switcher uk-margin">
 			<li>
 				{if ($WSR_CONTENTS_CONTENT) }
@@ -113,7 +113,7 @@
 										<option value='content-{$content}'>Texte {$content}</option>
 									{/for}
 								</optgroup>
-								
+
 								{if !empty($blocks)}
 									<optgroup label='Blocs'>
 										{foreach name=blocks item=block from=$blocks}
@@ -192,14 +192,14 @@
 					<h3>SEO</h3>
 					{$seodescription}
 					{$seokeywords}
-			
+
 					{/if}
 					<h3>Site Admin only</h3>
 					<div id='editor' style='width: 100%'>
 						<textarea name='fckeditor_comment' id='fckeditor_comment' class='form_textarea'>{$comment}</textarea>
 					</div>
-			
-					
+
+
 					<p class='page-infos'>
 						Created par <strong>{$creator}</strong> le {$create_date}.<br/>
 						Derniere modification: {$modify_date} par <strong>{$modifier}</strong>.
@@ -208,8 +208,8 @@
 			</li>
 		</ul>
 
-				
-		
+
+
 	</div>
 	</form>
 

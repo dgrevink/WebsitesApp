@@ -12,7 +12,7 @@ class Parameters extends WSController {
 
 	function Parameters($smarty=null, $language=null, $current_language=null, $params=null, $parameters=null, &$auth=null) {
 		parent::WSController();
-		
+
 		$this->smarty 			= (isset($this->smarty)				? $this->smarty				: null);
 		$this->language 		= (isset($this->language)			? $this->language			: null);
 		$this->current_language = (isset($this->current_language)	? $this->current_language	: null);
@@ -44,13 +44,13 @@ class Parameters extends WSController {
 		$smarty_contents->assign('company', generate_input_text( 'company', 'Entreprise', $config->get('company'), '', false, "Le nom de votre site. Ceci appara&icirc;tra &agrave; tous les endroits pertinents de votre site (Titre, ... )" ));
 		$smarty_contents->assign('contactmail', generate_input_text( 'contactmail', 'E-Mail de contact', $config->get('contactmail'), "", false, "Adresse utilis&eacute;e pour les formulaires de contact. Tous les messages provenant du site arriverons &agrave; cette adresse." ));
 
-		// Set available languages	
+		// Set available languages
 		$languages = array();
 		foreach($config->get('reasonable_languages', 'system') as $language) {
 			$languages[$language] = WSDLanguages::getLanguageName($language);
 		}
 		$smarty_contents->assign('default_language', generate_select( 'default_language', 'Langue principale', $languages, $config->get('default_language'), false, "Langue utilis&eacute;e dans le site lorsque l'utilisateur entre dans le site directement." ) );
-			
+
 		$languages = array();
 		foreach($config->get('reasonable_languages', 'system') as $language) {
 			$languages[$language] = WSDLanguages::getLanguageName($language);
@@ -60,9 +60,9 @@ class Parameters extends WSController {
 		$smarty_contents->assign('version', generate_input_text( 'version', 'Version', $config->get('version'), "", false, "N&deg; de version du site." ));
 		$smarty_contents->assign('release', generate_input_text( 'release', 'Release', $config->get('release'), '', false, "Nom de code de cette version du site." ));
 		$smarty_contents->assign('author', generate_input_text( 'author', 'Auteur', $config->get('author'), "", false, "Personne responsable du contenu du site." ));
-		$smarty_contents->assign('uacct', generate_text_area( 'uacct', 'Google analytics', $config->get('uacct'), 8, 100, '', false, "Code Google Analytics &agrave; utiliser dans votre site. Collez ici tout le code google analytics fourni par Google. Il sera automatiquement ajout&eacute; &agrave; toutes les pages du site." ));
+		$smarty_contents->assign('uacct', generate_text_area( 'uacct', 'Google analytics', base64_decode($config->get('uacct')), 8, 100, '', false, "Code Google Analytics &agrave; utiliser dans votre site. Collez ici tout le code google analytics fourni par Google. Il sera automatiquement ajout&eacute; &agrave; toutes les pages du site." ));
 
-		$smarty_contents->assign('headers', generate_text_area( 'headers', 'Headers', $config->get('headers'), 8, 100, '', false, "Collez ici tous les codes HTML que vous d&eacute;sirez. Ils seront ins&eacute;r&eacute;s &agrave; chaque page dans la section &lt;header&gt;." ));
+		$smarty_contents->assign('headers', generate_text_area( 'headers', 'Headers', base64_decode($config->get('headers')), 8, 100, '', false, "Collez ici tous les codes HTML que vous d&eacute;sirez. Ils seront ins&eacute;r&eacute;s &agrave; chaque page dans la section &lt;header&gt;." ));
 		$smarty_contents->assign('recaptcha_public', generate_input_text( 'recaptcha_public', 'Public Key', $config->get('recaptcha_public'), '', false, "Si vous utilisez un captcha sur le site, donnez ici la clé publique." ));
 		$smarty_contents->assign('recaptcha_private', generate_input_text( 'recaptcha_private', 'Private Key', $config->get('recaptcha_private'), '', false, "Si vous utilisez un captcha sur le site, donnez ici la clé privée." ));
 
@@ -125,7 +125,7 @@ class Parameters extends WSController {
 			$tables[$table->name] = $table->title;
 		}
 		$smarty_contents->assign('security_table', generate_select( 'security_table', 'Table', $tables, $config->get('security_table', 'system'), false, "Table utilis&eacute;e pour la gestion de la s&eacute;curit&eacute;." ) );
-		
+
 		$smarty_contents->assign('timeout_history', generate_select( 'timeout_history', 'Historique', $timeouts, $config->get('timeout_history', 'system'), false, "Temps pendant laquelle un historique est conserv&eacute; avant d'&ecirc;tre purg&eacute;." ));
 		$smarty_contents->assign('timeout_logs', generate_select( 'timeout_logs', 'Logs', $timeouts, $config->get('timeout_logs', 'system'), false, "Temps pendant laquelle une entr&eacute;e de log est conserv&eacute;." ));
 		$smarty_contents->assign('timeout_sessions', generate_select( 'timeout_sessions', 'Sessions', $timeouts, $config->get('timeout_sessions', 'system'), false, "Dur&eacute;e de vie d'une session." ));
@@ -151,8 +151,8 @@ class Parameters extends WSController {
 
 
 		$smarty_contents->assign('maintenance', generate_input_checkbox( 'maintenance', 'Maintenance', $config->get('maintenance'), "Indique si le site est en maintenance/bloqué ou non." ));
-		$smarty_contents->assign('maintenance_text', generate_text_area( 'maintenance_text', 'Texte de maintenance', $config->get('maintenance_text'), 8, 100, '', false, "Tapez le message de maintenance &agrave; afficher si n&eacute;cessaire." ));
-		
+		$smarty_contents->assign('maintenance_text', generate_text_area( 'maintenance_text', 'Texte de maintenance', base64_decode($config->get('maintenance_text')), 8, 100, '', false, "Tapez le message de maintenance &agrave; afficher si n&eacute;cessaire." ));
+
 		// Widget Manager
 		$files = glob(WS_ADMINISTERED_APPLICATION_FOLDER . "/controllers/W*.class.php");
 		$widgets = array();
@@ -199,19 +199,19 @@ class Parameters extends WSController {
 		$config->params['config']['company'] = $_POST['company'];
 		$config->params['config']['contactmail'] = $_POST['contactmail'];
 		$config->params['config']['default_language'] = $_POST['default_language'];
-		
+
 		$config->params['config']['languages'] = $_POST['languages'];
-		
+
 		$config->params['config']['version'] = $_POST['version'];
 		$config->params['config']['release'] = $_POST['release'];
 		$config->params['config']['author'] = $_POST['author'];
-		$config->params['config']['uacct'] = $_POST['uacct'];
-		$config->params['config']['headers'] = $_POST['headers'];
+		$config->params['config']['uacct'] = base64_decode($_POST['uacct']);
+		$config->params['config']['headers'] = base64_decode($_POST['headers']);
 		$config->params['config']['recaptcha_public'] = $_POST['recaptcha_public'];
 		$config->params['config']['recaptcha_private'] = $_POST['recaptcha_private'];
 		$config->params['config']['recaptcha_theme'] = $_POST['recaptcha_theme'];
 		$config->params['uroutes'] = $_POST['routes'];
-		
+
 		$config->params['system']['speedup'] = isset($_POST['speedup']);
 		$config->params['system']['caching'] = isset($_POST['caching'])?2:0;
 		$config->params['system']['cache_lifetime'] = $_POST['cache_lifetime'];
@@ -253,7 +253,7 @@ class Parameters extends WSController {
 			echo '{ "type": "error", "message": "Fichier de configuration non sauvegard&eacute;; contactez votre administrateur."}';
 		}
 	}
-	
+
 	function save_database() {
 		$this->clean_post();
 
@@ -268,7 +268,7 @@ class Parameters extends WSController {
 				$id = substr($key, 5, strlen($key));
 				$name = trim($value);
 				$sql = trim($_POST['sql_' . $id]);
-				
+
 				if ( ($name != '') && ($sql != '') ) {
 					$tables[] = array(
 						'name' => $name,
@@ -289,14 +289,14 @@ class Parameters extends WSController {
 			echo "<span style='color: red;'>Fichier de configuration non sauvegard&eacute;; contactez votre administrateur.</span>";
 		}
 	}
-	
+
 	function save_deployment() {
 		$this->clean_post();
-		
+
 		$config = new WSConfig;
 		$dest = dirname(__FILE__) . '/../../../application/config/';
 		$config->load($dest);
-		
+
 		$config->params['config']['deployment'] = $_POST['deployment'][0];
 
 
@@ -318,8 +318,8 @@ class Parameters extends WSController {
 		$config->params['config']['production']['db_password'] = $_POST['db_password_3'];
 		$config->params['config']['production']['db_name'] 	 = $_POST['db_name_3'];
 		$config->params['config']['production']['db_server'] 	 = $_POST['db_server_3'];
-		
-		
+
+
 		// Save Configuration files
 		if ($config->save($dest, 'config')) {
 			echo "<span style='color: green;'>Fichier de configuration sauvegard&eacute;.</span>";
@@ -327,7 +327,7 @@ class Parameters extends WSController {
 		else {
 			echo "<span style='color: red;'>Fichier de configuration non sauvegard&eacute;; contactez votre administrateur.</span>";
 		}
-		
+
 	}
 
 	function clean_post() {
@@ -338,7 +338,7 @@ class Parameters extends WSController {
 					case 'uacct':
 					case 'headers':
 					case 'maintenance_text':
-						$value = $value;
+						$value = base64_encode($value);
 					break;
 					case 'routes':
 						$value = trim($value);
@@ -363,7 +363,7 @@ class Parameters extends WSController {
 		}
 		array_walk($_POST, 'process_value');
 	}
-	
+
 	function set_widgets() {
 		if (!isset($this->auth->session)) {
 			echo 'KO';
@@ -391,7 +391,7 @@ class Parameters extends WSController {
 		}
 		echo ($content != $new_content);
 	}
-	
+
 	function init_widget() {
 		if (!isset($this->auth->session)) {
 			echo 'KO';
@@ -401,12 +401,12 @@ class Parameters extends WSController {
 			echo 'KO';
 			die();
 		}
-		
+
 		$widget_filename = $_POST['url'];
 		$widget_class = file_basename(basename($_POST['url']));
-		
+
 		include($widget_filename);
-		
+
 		$widget = new $widget_class;
 
 		$initinfo = array();
@@ -416,7 +416,7 @@ class Parameters extends WSController {
 		}
 
 		$initinfo = $widget->_init();
-		
+
 		$this->init_remove_tables($initinfo);
 
 		if ($_POST['init'] == 1) {
@@ -426,9 +426,9 @@ class Parameters extends WSController {
 		$this->init_create_tables($initinfo);
 
 		echo "Opération terminée.";
-		
+
 	}
-	
+
 	function init_remove_tables($tables) {
 		foreach ($tables as $table) {
 			$tabledefinition = MyActiveRecord::FindFirst('tabledefinitions', "name = '" . $table->name . "'");
@@ -437,7 +437,7 @@ class Parameters extends WSController {
 			}
 		}
 	}
-	
+
 	function init_create_tables($tables) {
 		foreach ($tables as $table) {
 			// New table to create
@@ -447,7 +447,7 @@ class Parameters extends WSController {
 			$nt->title			= $table->title;
 			$nt->description	= $table->description;
 			$nt->sortparams		= $table->sortparams;
-			
+
 			if ($table->inlineadd   != null) { $nt->inlineadd		= $table->inlineadd;   }
 			if ($table->filtrable   != null) { $nt->filtrable		= $table->filtrable;   }
 			if ($table->childtable  != null) { $nt->childtable		= $table->childtable;  }
@@ -458,7 +458,7 @@ class Parameters extends WSController {
 
 			$nt->saveadvanced('create', true);
 
-			// Additional fields			
+			// Additional fields
 			$counter = 10;
 			foreach ($table->fields as $f) {
 				$nf = MyActiveRecord::Create('tablefields');
@@ -480,7 +480,7 @@ class Parameters extends WSController {
 
 		}
 	}
-	
+
 	function _check_rights( $level ) {
 		$user = MyActiveRecord::FindFirst('users', "username like '" . $this->auth->session['username'] . "'");
 		$user_group = $user->find_parent('groups');

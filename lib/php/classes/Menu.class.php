@@ -18,22 +18,28 @@ class WSMenu extends WSLoader {
 
 		$this->load('config');
 		$this->config->load();
-		
+
 		$this->language = $language;
 
 		// Load menu
 		$this->dbmenu = MyActiveRecord::FindAll('contents', "language = '" . $this->language . "'", 'contents_id asc, porder asc');
 
-		// Get default page id		
+		// Get default page id
 		$this->default_page_id = key($this->dbmenu);
-		
+
 		$this->_parse();
 	}
-	
+
 	function _parse() {
 		foreach($this->dbmenu as $entry) {
 			$access = explode(',', str_replace(' ', '', $entry->access));
 			$path = $this->get_path($entry->id);
+			$redirect = false;
+			for ($i = 1 ; $i<=9; $i++) {
+				if ($entry->{'placeholder_' . $i} == 'widget-WRedirector.class.php') $redirect = true;
+			}
+
+//			d($entry);
 			$this->menu[$entry->id] = array(
 				'id'	=> $entry->id,
 				'parent' => $entry->contents_id,
@@ -49,19 +55,20 @@ class WSMenu extends WSLoader {
 				'menus' => $entry->menus,
 				'language' => $this->language,
 				'params' => $entry->params,
-				'layout' => $entry->layout
+				'layout' => $entry->layout,
+				'hasredirect' => $redirect
 			);
 			$this->valid_paths[$this->get_path($entry->id)] = $entry->id;
 		}
 		$this->valid_paths['/'] = $this->default_page_id;
-		
+
 	}
-	
+
 	function get_path($id) {
 		if ($id == 0) return null;
 		return $this->get_path($this->dbmenu[$id]->contents_id) . '/' . $this->dbmenu[$id]->path;
 	}
-	
+
 	function get($id) {
 		if ($id == 0) return null;
 		return $this->menu[$id];
@@ -82,10 +89,10 @@ class WSMenu extends WSLoader {
 				$page = substr($page, 0, strlen($page) -1 );
 			}
 		}
-		
+
 		return (isset($this->valid_paths[$page])?$this->valid_paths[$page]:null);
 	}
-	
+
 	function get_layout_id($id) {
 		return $this->dbmenu[$id]->layout;
 	}
@@ -101,31 +108,58 @@ class WSMenu extends WSLoader {
 		}
 		return false;
 	}
-	
+
+	// check if $id has a child with id $child_id
+	function has_child($id, $child_id) {
+		$has_child = false;
+
+		$children = array();
+
+		$child = $this->menu[$child_id];
+
+		if ($child['parent'] == $id) return true;
+
+		// make it recursive one day
+		if ($this->menu[$child_id]['parent'] != 0) {
+			$child = $this->menu[$this->menu[$child_id]['parent']];
+			if ($child['parent'] == $id) return true;
+			if ($this->menu[$child_id]['parent'] != 0) {
+				$child = $this->menu[$this->menu[$child_id]['parent']];
+				if ($child['parent'] == $id) return true;
+				if ($this->menu[$child_id]['parent'] != 0) {
+					$child = $this->menu[$this->menu[$child_id]['parent']];
+					if ($child['parent'] == $id) return true;
+				}
+			}
+		}
+
+		return (in_array($id, $children));
+	}
+
 	function get_children($id) {
 		$m = array();
-		
+
 		foreach($this->menu as $entry_id => $entry) {
 			if ($entry['parent'] == $id) {
 				$m[$entry_id] = $entry;
 			}
 		}
-		
+
 		return $m;
 	}
-	
 
-	
+
+
 	function get_seo($element, $id) {
 		$seo = '';
 		$index = 'seo' . $element;
-		
+
 		if (trim($this->dbmenu[$id]->$index) == '') {
 			$id = $this->default_page_id;
 		}
 		return $this->dbmenu[$id]->$index;
 	}
-	
+
 
 	function hit($id) {
 		$menu = MyActiveRecord::FindById('contents', $id);
@@ -145,7 +179,7 @@ class WSMenu extends WSLoader {
 		$menu_set_id = (string) $menu_set_id;
 		$changed = false;
 		$menu = array();
-		
+
 		// If the current page has children
 		if ($this->has_children($current_page_id, $menu_set_id)) {
 				$top_entry = $this->menu[$current_page_id];
@@ -188,7 +222,7 @@ class WSMenu extends WSLoader {
 				));
 			}
 		}
-			
+
 		return $menu;
 	}
 
@@ -203,6 +237,11 @@ class WSMenu extends WSLoader {
 				if ( ($menu_set_id == -1) || ( ($menu_set_id != -1) && ( strpos($entry['menus'], $menu_set_id) !== false ) ) ) {
 					$path = ($entry['path'] == '/')?'':$entry['path'];
 					if ($this->menu[$current_page_id]['path'] != '/') $current_page = $this->menu[$current_page_id]['path'];
+					$selected = false;
+					if ($entry_id == $current_page_id) $selected = true;
+					else if ($this->has_child($entry_id, $current_page_id)) {
+						$selected = true;
+					}
 					$access = implode(',',$entry['access']);
 					$menuentry = array(
 						'id' => $entry_id,
@@ -212,7 +251,9 @@ class WSMenu extends WSLoader {
 						'class' => str_replace('/', '-', $path),
 						'path' => $this->config->get(DEPLOYMENT, 'config', 'html_root') . '/' . $this->menu[$current_page_id]['language'] . $path,
 						'shortpath' => $entry['spath'],
-						'state' => (substr($current_page, 0, strlen($path) ) == $path)?'selected':''
+//						'state' => (substr($current_page, 0, strlen($path) ) == $path)?'selected':'',
+						'state' => $selected?'selected':'',
+						'hasredirect' => $entry['hasredirect']
 					);
 					if ($this->has_children($entry_id, $menu_set_id)) {
 //			d('given id: ' . $menu_set_id . ' --- current menu ids: ' . $entry['menus']);
@@ -229,5 +270,5 @@ class WSMenu extends WSLoader {
 		}
 		return $menu;
 	}
-	
+
 }

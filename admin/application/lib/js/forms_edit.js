@@ -117,7 +117,7 @@ function saveForm() {
 		questions[counter].label = $('#' + this.id + '_label').val();
 		questions[counter].comment = $('#' + this.id + '_comment').val();
 		questions[counter].error = $('#' + this.id + '_error').val();
-		questions[counter].mandatory = $('#' + this.id + '_mandatory').prop('checked');
+		questions[counter].mandatory = $('#' + this.id + '_mandatory').attr('checked');
 		
 		switch (questions[counter].type) {
 			case 'text':

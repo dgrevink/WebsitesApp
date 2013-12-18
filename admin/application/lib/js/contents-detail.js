@@ -18,9 +18,18 @@ function restorehistory( id ) {
 	});
 }
 
+// 100 $ for anyone who can guess that crap
+function recode(str) {
+	if (typeof str == 'string') {
+		str = str.replace('http://', '[HTTP]');
+		str = str.replace('https://', '[HTTPS]');
+	}
+	return str;
+}
+
 function jQuerySubmit(id) {
-    $.blockUI({ 
-        theme:     false, 
+    $.blockUI({
+        theme:     false,
         message: "<h3 style='padding: 10px 20px;'>Sauvegarde en cours, veuillez patienter SVP.</h3>"
     });
 	el = $(id);
@@ -31,15 +40,62 @@ function jQuerySubmit(id) {
 	if ($('#fckeditor4')) { $('#fckeditor4').val(CKEDITOR.instances.fckeditor4.getData()); }
 	if ($('#fckeditor5')) { $('#fckeditor5').val(CKEDITOR.instances.fckeditor5.getData()); }
 	if ($('#fckeditor_comment')) { $('#fckeditor_comment').val(CKEDITOR.instances.fckeditor_comment.getData()); }
-	el.ajaxSubmit(function(data) {
-		$.unblockUI();
+
+	p1param = $('#placeholder_1_value_param').val(); $('#placeholder_1_value_param').val(recode(p1param));
+	p2param = $('#placeholder_2_value_param').val(); $('#placeholder_2_value_param').val(recode(p2param));
+	p3param = $('#placeholder_3_value_param').val(); $('#placeholder_3_value_param').val(recode(p3param));
+	p4param = $('#placeholder_4_value_param').val(); $('#placeholder_4_value_param').val(recode(p4param));
+	p5param = $('#placeholder_5_value_param').val(); $('#placeholder_5_value_param').val(recode(p5param));
+	p6param = $('#placeholder_6_value_param').val(); $('#placeholder_6_value_param').val(recode(p6param));
+	p7param = $('#placeholder_7_value_param').val(); $('#placeholder_7_value_param').val(recode(p7param));
+	p8param = $('#placeholder_8_value_param').val(); $('#placeholder_8_value_param').val(recode(p8param));
+	p9param = $('#placeholder_9_value_param').val(); $('#placeholder_9_value_param').val(recode(p9param));
+
+	url = $(id).attr('action');
+
+	var jqxhr = $.post( url, $( id ).serialize(), function(data) {
+//		alert( "success" );
 		showNotify(data);
+	})
+	.fail(function() {
+		alert( "error" );
+	})
+	.always(function() {
+		$('#placeholder_1_value_param').val(p1param);
+		$('#placeholder_2_value_param').val(p2param);
+		$('#placeholder_3_value_param').val(p3param);
+		$('#placeholder_4_value_param').val(p4param);
+		$('#placeholder_5_value_param').val(p5param);
+		$('#placeholder_6_value_param').val(p6param);
+		$('#placeholder_7_value_param').val(p7param);
+		$('#placeholder_8_value_param').val(p8param);
+		$('#placeholder_9_value_param').val(p9param);
+		$.unblockUI();
 		$('#history').load('/admin/Content/getHistorySelect/' + recordid, {}, function(){
 			$('#history select').change(function() {
 				restorehistory($('#history select').val());
 			});
 		});
 	});
+
+	// el.ajaxSubmit(function(data) {
+	// 	$('#placeholder_1_value_param').val(p1param);
+	// 	$('#placeholder_2_value_param').val(p2param);
+	// 	$('#placeholder_3_value_param').val(p3param);
+	// 	$('#placeholder_4_value_param').val(p4param);
+	// 	$('#placeholder_5_value_param').val(p5param);
+	// 	$('#placeholder_6_value_param').val(p6param);
+	// 	$('#placeholder_7_value_param').val(p7param);
+	// 	$('#placeholder_8_value_param').val(p8param);
+	// 	$('#placeholder_9_value_param').val(p9param);
+	// 	$.unblockUI();
+	// 	showNotify(data);
+	// 	$('#history').load('/admin/Content/getHistorySelect/' + recordid, {}, function(){
+	// 		$('#history select').change(function() {
+	// 			restorehistory($('#history select').val());
+	// 		});
+	// 	});
+	// });
 }
 
 
@@ -49,9 +105,9 @@ function showHideContainers() {
 	$('div.placeholder').each(function() {
 		layout = $('input.layout-selector').fieldValue();
 		phid = $(this).attr('id');
-	
+
 		phid = phid.substr(phid.indexOf('_') + 1, phid.length);
-		
+
 		if (phlist[layout][phid-1]) {
 			$(this).fadeIn();
 		}
@@ -186,7 +242,7 @@ $(document).ready(function() {
 		jQuerySubmit('#contentform');
 		return false;
 	});
-	
+
 	$('#history').load('/admin/Content/getHistorySelect/' + recordid, {}, function(){
 		$('#history select').change(function() {
 			restorehistory($('#history select').val());
@@ -290,7 +346,7 @@ $(document).ready(function() {
 		}
 		return false;
 	});
-	
+
 	if ($('#fckeditor2')) {
 		if ($('#fckeditor2').val() != '') {
 			$('.toggle-content-2').html('-');
